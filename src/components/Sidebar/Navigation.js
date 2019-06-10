@@ -68,8 +68,8 @@ const Anchor = ({active, page, onclick}) => {
 
     return (
         <Link
-            to={`${page.link}.html`}
-            className={style}
+            to={`${page.link}`}
+            className="align-middle"
         >
             <span>{page.title}</span>
         </Link>
