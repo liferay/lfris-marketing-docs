@@ -3,13 +3,13 @@
 const componentWithMDXScope = require('gatsby-mdx/component-with-mdx-scope');
 const path = require('path');
 
-const createPages = (actions, edges) => {
+const createPages = (actions, edges, scope) => {
 	const {createPage, createRedirect} = actions;
 
 	edges.forEach(({node}, index) => {
 		const {slug, redirect, mainPage} = node.fields;
 
-		const templateKey = slug.split('/')[0];
+		const templateKey = 'docs';
 
 		if (redirect || mainPage) {
 			const slugWithBar = slug.startsWith('/') ? slug : `/${slug}`;
@@ -26,16 +26,13 @@ const createPages = (actions, edges) => {
 		}
 
 		if (!redirect) {
-            let previous = index === 0 ? false : edges[index - 1].node;
-            let next = index === edges.length - 1 ? false : edges[index + 1].node;
+			let previous = index === 0 ? false : edges[index - 1].node;
+			let next = index === edges.length - 1 ? false : edges[index + 1].node;
 
-            createPage({
-				path: slug,
-				component: componentWithMDXScope(
-					path.resolve(__dirname, `../src/templates/${templateKey}.js`),
-					node.code.scope,
-					__dirname,
-				),
+			let slugPath = slug.replace('.html', '')
+			createPage({
+				path: slugPath,
+				component: path.resolve(__dirname, `../src/templates/${templateKey}.js`),
 				context: {
 					slug,
 					previous,
@@ -53,29 +50,26 @@ module.exports = async ({actions, graphql}) => {
 		toPath: '/',
 	});
 
-	return graphql(`
-		query {
-			allMdx(sort: {order:ASC, fields: frontmatter___stepNumber}) {
-				edges {
-					node {
-						fields {
-							redirect
-							slug
-							mainPage
-						}
-						code {
-							scope
+	return graphql(
+		`
+			query {
+				allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+					edges {
+						node {
+							fields {
+								slug
+							}
 						}
 					}
 				}
 			}
-		}
-	`).then(({data, errors}) => {
+		`
+	).then(({data, errors}) => {
 		if (errors) {
 			return Promise.reject(errors);
 		}
 
-		const {edges} = data.allMdx;
+		const {edges} = data.allMarkdownRemark;
 
 		createPages(actions, edges);
 	});
