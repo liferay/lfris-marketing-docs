@@ -1,5 +1,9 @@
 const clay = require('clay-css');
 const path = require('path');
+const fs = require('fs');
+
+const apiKeyData = fs.readFileSync('./google-api-key.json', 'utf8');
+const jsonData = JSON.parse(apiKeyData);
 
 module.exports = {
 	// pathPrefix: '/gatsby-boilerplate',
@@ -7,8 +11,11 @@ module.exports = {
 		{
 			resolve: "gatsby-source-google-docs",
 			options: {
-				foldersIds: ["1P0FKeyLlOrixBAmLlXSEmBlEFrLSKglt"], // folders Ids can be found in Google Drive URLs
+				foldersIds: jsonData.folder_ids, // folders Ids can be found in Google Drive URLs
 				config: {
+					api_key: jsonData.api_key,
+					client_id: jsonData.client_id,
+					client_secret: jsonData.client_secret,
 					// token_path: "google-docs-token.json",
 				},
 				fields: ["createdTime"],

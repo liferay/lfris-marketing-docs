@@ -1,4 +1,5 @@
 #Google API
+google-docs-token.json
 google-api-key.json
 
 # Logs
@@ -59,11 +60,9 @@ typings/
 
 # dotenv environment variables file
 .env
-.env.production
-.env.development
 
 .cache/
-public/
+public
 yarn-error.log
 
 # IntelliJ IDEA
