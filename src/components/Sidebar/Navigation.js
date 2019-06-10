@@ -69,7 +69,7 @@ const Anchor = ({page}) => {
 
     return (
         <Link
-            to={`${page.link}.html`}
+            to={`${page.link}`}
             className="align-middle"
         >
             <span>{page.title}</span>

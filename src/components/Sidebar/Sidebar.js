@@ -6,8 +6,8 @@ import Search from './Search';
 const SideNavRef = React.createRef();
 
 const getSection = data => {
-	const elements = data.allMdx.edges.map(({node}) => {
-		const { fields: { slug, title, alwaysActive, order } } = node;
+	const elements = data.allMarkdownRemark.edges.map(({node}) => {
+		const { fields: { slug, alwaysActive, order }, frontmatter: { title }} = node;
 
 		return toSectionElements(slug.replace('.html', ''), title, order, alwaysActive);
 	});
@@ -71,15 +71,14 @@ export default (props) => (
 	<StaticQuery
 		query={graphql`
 			query {
-				allMdx(filter: { fields: { slug: { regex: "/^docs/i" } } }) {
+				allMarkdownRemark(filter: { fields: { slug: { regex: "//i" } } }) {
 					edges {
 						node {
 							fields {
-								alwaysActive
-								redirect
 								slug
+							}
+							frontmatter {
 								title
-								order
 							}
 						}
 					}

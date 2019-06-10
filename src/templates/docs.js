@@ -1,6 +1,5 @@
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import React from 'react';
 
 import SimpleFooter from '../components/SimpleFooter';
@@ -8,7 +7,6 @@ import Sidebar from '../components/Sidebar';
 import LayoutNav from '../components/LayoutNav';
 import CodeTabs from '../components/CodeTabs';
 import CodeClipboard from '../components/CodeClipboard';
-import Typography from '../components/Typography';
 import Auth from '../components/Auth';
 import { logout } from '../services/auth';
 
@@ -45,10 +43,10 @@ export default class Docs extends React.Component {
     render() {
         const { data, location } = this.props;
 
-        const { mdx: { code, frontmatter: {title, needsAuth}, excerpt, timeToRead } } = data;
+        const { markdownRemark: { html, frontmatter: {title}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={needsAuth}>
+            <Auth needsAuth={false}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
@@ -79,18 +77,7 @@ export default class Docs extends React.Component {
                             <div className="clay-site-container container-fluid">
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <article>
-                                            <MDXRenderer
-                                                components={{
-                                                    h1: Typography.H1,
-                                                    h2: Typography.H2,
-                                                    h3: Typography.H3,
-                                                    h4: Typography.H4,
-                                                    p: Typography.P,
-                                                }}
-                                            >
-                                                {code.body}
-                                            </MDXRenderer>
+                                        <article dangerouslySetInnerHTML={{__html: html}}>
                                         </article>
                                     </div>
                                 </div>
@@ -107,15 +94,12 @@ export default class Docs extends React.Component {
 
 export const pageQuery = graphql`
     query($slug: String!) {
-        mdx(fields: { slug: { eq: $slug } }) {
+        markdownRemark(fields: { slug: { eq: $slug } }) {
+            html
             excerpt
             timeToRead
             frontmatter {
                 title
-                needsAuth
-            }
-            code {
-                body
             }
         }
     }

@@ -1,7 +1,7 @@
 module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 	const {createNodeField} = actions;
 
-	if (node.internal.type === 'Mdx') {
+	if (node.internal.type === 'MarkdownRemark') {
 		const {
 			alwaysActive,
 			path,
@@ -37,7 +37,7 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 		createNodeField({
 			name: 'title',
 			node,
-			value: node.frontmatter.title,
+			value: title || 'none',
 		});
 
 		createNodeField({
