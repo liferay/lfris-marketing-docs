@@ -43,10 +43,10 @@ export default class Docs extends React.Component {
     render() {
         const { data, location } = this.props;
 
-        const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
+        const { markdownRemark: { html, frontmatter: {title}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={needsAuth}>
+            <Auth needsAuth={false}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
@@ -98,8 +98,7 @@ export const pageQuery = graphql`
             html
             excerpt
             timeToRead
-            fields {
-                needsAuth
+            frontmatter {
                 title
             }
         }
