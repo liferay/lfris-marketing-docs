@@ -1,14 +1,16 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Link, withPrefix } from "gatsby"
 
 class Navigation extends React.Component {
     _handleOnClick(index, depth, section, event) {
-        const el = event.currentTarget;
-
-        event.preventDefault();
         event.stopPropagation();
 
-        el.classList.toggle('active');
+        const elementRef = this.refs[`navItem${index}${depth}`];
+
+        if (!elementRef.classList.contains('active') || !!section.items) {
+            elementRef.classList.toggle('active');
+        }
     }
 
     _isActive(section) {
@@ -27,11 +29,14 @@ class Navigation extends React.Component {
         const { sectionList, location, depth = 0 } = this.props;
 
         return sectionList.map((section, index) => {
-            let style = section.items ? 'nav-heading nav-item' : 'nav-item';
+            let style = classNames({
+                'active': this._isActive(section) === true,
+                'nav-heading': section.items
+            });
 
             return(
-                <li key={index} ref={`navItem${index}${depth}`} className={style}>
-                    <Anchor active={this._isActive(section)} page={section} onclick={this._handleOnClick.bind(this, index, depth, section)} />
+                <li key={index} ref={`navItem${index}${depth}`} className={style} onClick={this._handleOnClick.bind(this, index, depth, section)}>
+                    <Anchor page={section} />
 
                     {section.items && (
                         <Navigation sectionList={section.items} location={location} depth={depth + 1} />
@@ -43,23 +48,19 @@ class Navigation extends React.Component {
 
     render() {
         return(
-            <ul className="nav nav-stacked">
+            <ul className="nav nav-nested nav-pills nav-stacked">
                 {this.renderNavigationItems()}
             </ul>
         );
     }
 }
 
-const Anchor = ({active, page, onclick}) => {
-    let style = active ? 'active nav-link ' : 'nav-link ';
-
+const Anchor = ({page}) => {
     if (page.items) {
-        style += 'collapse-toggle';
-
         return(
-            <a className={style} href="#no" onClick={onclick}>
+            <a className="align-middle" href="#no">
                 <span>{page.title}</span>
-                <svg className="lexicon-icon lexicon-icon-caret-bottom">
+                <svg className="collapse-toggle clay-icon icon-monospaced">
                     <use xlinkHref={withPrefix("images/icons/icons.svg#caret-bottom")} />
                 </svg>
             </a>
@@ -68,8 +69,8 @@ const Anchor = ({active, page, onclick}) => {
 
     return (
         <Link
-            to={`${page.link}.html`}
-            className={style}
+            to={`${page.link}`}
+            className="align-middle"
         >
             <span>{page.title}</span>
         </Link>

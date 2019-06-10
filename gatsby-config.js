@@ -4,6 +4,24 @@ const path = require('path');
 module.exports = {
 	// pathPrefix: '/gatsby-boilerplate',
 	plugins: [
+		{
+			resolve: "gatsby-source-google-docs",
+			options: {
+				foldersIds: ["1P0FKeyLlOrixBAmLlXSEmBlEFrLSKglt"], // folders Ids can be found in Google Drive URLs
+				config: {
+					// token_path: "google-docs-token.json",
+				},
+				fields: ["createdTime"],
+				fieldsMapper: {createdTime: "date", name: "title"},
+				fieldsDefault: {draft: false},
+			},
+		},
+		{
+			resolve: "gatsby-transformer-remark",
+			options: {
+				footnotes: false,
+			},
+		},
 		'gatsby-plugin-meta-redirect',
 		{
 			resolve: 'gatsby-plugin-sass',
