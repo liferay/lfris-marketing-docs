@@ -1,3 +1,7 @@
+#Google API
+google-docs-token.json
+google-api-key.json
+
 # Logs
 logs
 *.log
