@@ -62,7 +62,7 @@ typings/
 .env
 
 .cache/
-public
+public/
 yarn-error.log
 
 # IntelliJ IDEA
