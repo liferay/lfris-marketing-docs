@@ -5,18 +5,24 @@ const fs = require('fs');
 const apiKeyData = fs.readFileSync('./google-api-key.json', 'utf8');
 const jsonData = JSON.parse(apiKeyData);
 
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
+
+const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
+
 module.exports = {
 	// pathPrefix: '/gatsby-boilerplate',
 	plugins: [
 		{
 			resolve: "gatsby-source-google-docs",
 			options: {
-				foldersIds: jsonData.folder_ids, // folders Ids can be found in Google Drive URLs
+				foldersIds: folderId, // folders Ids can be found in Google Drive URLs
 				config: {
-					api_key: jsonData.api_key,
-					client_id: jsonData.client_id,
-					client_secret: jsonData.client_secret,
-					// token_path: "google-docs-token.json",
+					api_key: process.env.GATSBY_API_KEY,
+					client_id: process.env.GATSBY_CLIENT_ID,
+					client_secret: process.env.GATSBY_CLIENT_SECRET,
+					token_path: "google-docs-token.json",
 				},
 				fields: ["createdTime"],
 				fieldsMapper: {createdTime: "date", name: "title"},
@@ -27,6 +33,7 @@ module.exports = {
 			resolve: "gatsby-transformer-remark",
 			options: {
 				footnotes: false,
+				plugins: []
 			},
 		},
 		'gatsby-plugin-meta-redirect',
