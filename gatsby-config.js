@@ -2,9 +2,6 @@ const clay = require('clay-css');
 const path = require('path');
 const fs = require('fs');
 
-const apiKeyData = fs.readFileSync('./google-api-key.json', 'utf8');
-const jsonData = JSON.parse(apiKeyData);
-
 require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
