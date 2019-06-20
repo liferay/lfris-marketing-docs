@@ -1,25 +1,16 @@
 const clay = require('clay-css');
 const path = require('path');
-const fs = require('fs');
-
-require("dotenv").config({
-	path: `.env.${process.env.NODE_ENV}`,
-});
-
-const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
 
 module.exports = {
-	// pathPrefix: '/gatsby-boilerplate',
 	plugins: [
 		{
 			resolve: "gatsby-source-google-docs",
 			options: {
-				foldersIds: folderId, // folders Ids can be found in Google Drive URLs
+				foldersIds: ["1pWpfx8vlWBZ143og1ULr5tA1uVOzQ4s7"], // folders Ids can be found in Google Drive URLs
 				config: {
-					api_key: process.env.GATSBY_API_KEY,
-					client_id: process.env.GATSBY_CLIENT_ID,
-					client_secret: process.env.GATSBY_CLIENT_SECRET,
-					token_path: "google-docs-token.json",
+					api_key: "AIzaSyAiZIgZeWtVWXBhDQQw7uolIorjigqPleM",
+					client_id: "218133277930-ifsoi0v646onlttbunub4bh7noge0c0c.apps.googleusercontent.com",
+					client_secret: "cRJEohYQX7KcGJAgCH2VIV1m",
 				},
 				fields: ["createdTime"],
 				fieldsMapper: {createdTime: "date", name: "title"},
