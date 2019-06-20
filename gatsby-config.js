@@ -103,6 +103,7 @@ module.exports = {
 				trackingId: process.env.GA_TRACKING_ID,
 			},
 		},
+		'gatsby-plugin-netlify-cms',
 		'gatsby-plugin-react-helmet',
 		{
 			resolve: 'gatsby-plugin-manifest',
