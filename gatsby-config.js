@@ -1,16 +1,23 @@
 const clay = require('clay-css');
 const path = require('path');
+const fs = require('fs');
+
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
+
+const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
 
 module.exports = {
 	plugins: [
 		{
 			resolve: "gatsby-source-google-docs",
 			options: {
-				foldersIds: ["1pWpfx8vlWBZ143og1ULr5tA1uVOzQ4s7"], // folders Ids can be found in Google Drive URLs
+				foldersIds: folderId, // folders Ids can be found in Google Drive URLs
 				config: {
-					api_key: "AIzaSyAiZIgZeWtVWXBhDQQw7uolIorjigqPleM",
-					client_id: "218133277930-ifsoi0v646onlttbunub4bh7noge0c0c.apps.googleusercontent.com",
-					client_secret: "cRJEohYQX7KcGJAgCH2VIV1m",
+					api_key: process.env.GATSBY_API_KEY,
+					client_id: process.env.GATSBY_CLIENT_ID,
+					client_secret: process.env.GATSBY_CLIENT_SECRET,
 				},
 				fields: ["createdTime"],
 				fieldsMapper: {createdTime: "date", name: "title"},
@@ -21,7 +28,31 @@ module.exports = {
 			resolve: "gatsby-transformer-remark",
 			options: {
 				footnotes: false,
-				plugins: []
+				plugins: [
+					{
+						resolve:`gatsby-remark-default-html-attrs`,
+						options: {
+							"h1": {
+								className: "documentation-h1",
+							},
+							"h2": {
+								className: "documentation-h2",
+							},
+							"h3": {
+								className: "documentation-h3",
+							},
+							"h4": {
+								className: "documentation-h4",
+							},
+							"h5": {
+								className: "documentation-h5",
+							},
+							"p": {
+								className: "documentation-p",
+							}
+						}
+					  }
+				]
 			},
 		},
 		'gatsby-plugin-meta-redirect',
