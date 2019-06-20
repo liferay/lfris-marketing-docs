@@ -21,6 +21,18 @@
 				margin-top: $base-size * 2;
 			}
 		}
+
+		p {
+			margin-bottom: 0;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			margin-top: 1.5rem;
+		}
+
+		img {
+			max-width: 100%;
+		}
 	}
 
 	.clay-site-row-spacer {
