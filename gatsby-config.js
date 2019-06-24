@@ -11,7 +11,7 @@ const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
 module.exports = {
 	plugins: [
 		{
-			resolve: "gatsby-source-google-docs",
+			resolve: "gatsby-source-google-docs-lfrsite",
 			options: {
 				foldersIds: folderId, // folders Ids can be found in Google Drive URLs
 				config: {
