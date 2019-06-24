@@ -24,7 +24,7 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -b gh-pages",
     "develop": "rimraf public .cache && gatsby develop",
     "start": "npm run develop",
-    "build": "gatsby build",
+    "build": "cd ./plugins/gatsby-source-google-docs-lfrsite && npm i && cd ../../ && gatsby build",
     "serve": "gatsby serve"
   },
   "dependencies": {
