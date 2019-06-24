@@ -35,7 +35,6 @@ const DEFAULT_CONFIG = {
     "https://www.googleapis.com/auth/drive.metadata.readonly",
   ],
   token_path: "google-docs-token.json",
-  token_env_variable: "GDOCS_TOKEN",
 }
 
 async function getGoogleImages(document) {
