@@ -46,7 +46,7 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, frontmatter: {title}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={false}>
+            <Auth needsAuth={true}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
