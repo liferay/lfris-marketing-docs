@@ -2,18 +2,59 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import {handleLogin, isBrowser, isLoggedIn} from '../../services/auth';
 
-class Auth extends React.Component {
-    render() {
-        if (this.props.needsAuth && !isLoggedIn()) {
-            handleLogin().then(() => {
-                if(isBrowser()) {
-                    navigate(window.location.pathname);
-                }
-            });
-            return null;
-        }
+import { firebase } from '@firebase/app'
+import Login from '../Login'
 
-        return this.props.children;
+class Auth extends React.Component {
+    state = {
+		user: null,
+	}
+
+	componentDidMount() {
+		this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				this.setUser(user)
+			}
+		})
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe()
+	}
+
+	setUser = user => {
+		this.setState({
+			user: user
+				? { email: user.email, avatar: user.photoURL, name: user.displayName }
+				: null,
+		})
+    }
+
+    renderPrivateContent() {
+		const authenticatedUsers = ['liferay.com', 'triblio.com', 'kyrodigital.com']
+		const currentUser = this.state.user
+
+		const isUserAuthenticated =
+			currentUser &&
+			authenticatedUsers.some(user => {
+				return currentUser.email.includes(user)
+			})
+
+		if (isUserAuthenticated) {
+			return this.props.children
+		}
+
+		return (
+                <Login />
+		)
+    }
+
+    render() {
+        return (
+            <div>
+                {this.renderPrivateContent()}
+            </div>
+        )
     }
 }
 
