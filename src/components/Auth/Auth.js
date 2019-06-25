@@ -1,6 +1,9 @@
-import Login from '../Login'
-import React from 'react'
+import React from 'react';
+import { navigate } from 'gatsby';
+import {handleLogin, isBrowser, isLoggedIn} from '../../services/auth';
+
 import { firebase } from '@firebase/app'
+import Login from '../Login'
 
 class Auth extends React.Component {
     state = {
@@ -37,17 +40,12 @@ class Auth extends React.Component {
 				return currentUser.email.includes(user)
 			})
 
-            if (isUserAuthenticated || !this.props.needsAuth) {
-                return this.props.children
-            }
+		if (isUserAuthenticated) {
+			return this.props.children
+		}
 
 		return (
-			<div className="auth-container">
-				<div className="auth-login-container">
-					<h3 className="auth-login-warning">You must be a Liferay Employee to view this page</h3>
-					<Login />
-				</div>
-			</div>
+                <Login />
 		)
     }
 
