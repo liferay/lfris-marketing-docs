@@ -2,7 +2,7 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 	const {createNodeField} = actions;
 
 	if (node.internal.type === 'MarkdownRemark') {
-		const {
+		let {
 			alwaysActive,
 			path,
 			redirect,
@@ -21,6 +21,10 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 		} = node.frontmatter;
 
 		const {relativePath} = getNode(node.parent);
+
+		if (needsAuth === undefined) {
+			needsAuth = true;
+		}
 
 		let slug = path;
 
@@ -109,7 +113,7 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 		createNodeField({
 			node,
 			name: 'needsAuth',
-			value: needsAuth || 0,
+			value: needsAuth,
 		});
 
 		createNodeField({
@@ -122,6 +126,6 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 			node,
 			name: 'url',
 			value: url || [],
-		})
+		});
 	}
 };
