@@ -1,7 +1,7 @@
-import "firebase/firestore"
-import React from 'react';
-import firebase from "firebase"
-import { navigate } from 'gatsby';
+import 'firebase/auth'
+import React from 'react'
+import { firebase } from '@firebase/app'
+import { navigate } from 'gatsby'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBUTSq9EUbIzNBZVzvtbIPQ8eaeWo3ccDI",
