@@ -1,6 +1,4 @@
 import React from 'react';
-import { navigate } from 'gatsby';
-import {handleLogin, isBrowser, isLoggedIn} from '../../services/auth';
 
 import { firebase } from '@firebase/app'
 import Login from '../Login'
@@ -40,12 +38,12 @@ class Auth extends React.Component {
 				return currentUser.email.includes(user)
 			})
 
-		if (isUserAuthenticated) {
-			return this.props.children
-		}
+            if (isUserAuthenticated || !this.props.needsAuth) {
+                return this.props.children
+            }
 
 		return (
-                <Login />
+            <Login />
 		)
     }
 
