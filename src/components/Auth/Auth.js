@@ -1,7 +1,6 @@
-import React from 'react';
-
-import { firebase } from '@firebase/app'
 import Login from '../Login'
+import React from 'react'
+import { firebase } from '@firebase/app'
 
 class Auth extends React.Component {
     state = {
