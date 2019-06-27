@@ -20,7 +20,7 @@
     "node": ">= 8"
   },
   "scripts": {
-    "dev": "rimraf public .cache && gatsby develop",
+    "dev": "rimraf public .cache && cd ./plugins/gatsby-source-google-docs-lfrsite && npm i && cd ../../ && gatsby develop",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -b gh-pages",
     "develop": "rimraf public .cache && gatsby develop",
     "start": "npm run develop",
@@ -35,6 +35,7 @@
     "clay-component": "2.14.0",
     "clay-css": "2.14.0",
     "clay-tooltip": "2.14.0",
+    "firebase": "^6.2.3",
     "gatsby": "2.0.104",
     "gatsby-mdx": "0.1.4",
     "gatsby-plugin-google-analytics": "2.0.12",
