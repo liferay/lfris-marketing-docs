@@ -18,6 +18,7 @@ module.exports = {
 					api_key: process.env.GATSBY_API_KEY,
 					client_id: process.env.GATSBY_CLIENT_ID,
 					client_secret: process.env.GATSBY_CLIENT_SECRET,
+					token_env_variable: "GATSBY_GDOCS_TOKEN"
 				},
 				fields: ["createdTime"],
 				fieldsMapper: {createdTime: "date", name: "title"},
