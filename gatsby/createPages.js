@@ -1,6 +1,6 @@
 'use strict';
 
-const componentWithMDXScope = require('gatsby-mdx/component-with-mdx-scope');
+//const componentWithMDXScope = require('gatsby-mdx/component-with-mdx-scope');
 const path = require('path');
 
 const createPages = (actions, edges, scope) => {
