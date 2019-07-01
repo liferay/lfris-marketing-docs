@@ -11,7 +11,7 @@ const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
 module.exports = {
 	plugins: [
 		{
-			resolve: "gatsby-source-google-docs-lfrsite",
+			resolve: "gatsby-source-google-docs",
 			options: {
 				foldersIds: folderId, // folders Ids can be found in Google Drive URLs
 				config: {
@@ -78,26 +78,26 @@ module.exports = {
 				path: `${__dirname}/content`,
 			},
 		},
-		{
-			resolve: 'gatsby-mdx',
-			options: {
-				extensions: ['.mdx', '.md'],
-				gatsbyRemarkPlugins: [
-					{
-						resolve: path.resolve(__dirname, './plugins/gatsby-remark-code-label-extractor'),
-					},
-					{
-						resolve: 'gatsby-remark-prismjs',
-						pluginOptions: {
-							classPrefix: 'gatsby-code-',
-						},
-					},
-					{
-						resolve: path.resolve(__dirname, './plugins/gatsby-remark-use-clipboard'),
-					},
-				],
-			},
-		},
+		// {
+		// 	resolve: 'gatsby-mdx',
+		// 	options: {
+		// 		extensions: ['.mdx', '.md'],
+		// 		gatsbyRemarkPlugins: [
+		// 			{
+		// 				resolve: path.resolve(__dirname, './plugins/gatsby-remark-code-label-extractor'),
+		// 			},
+		// 			{
+		// 				resolve: 'gatsby-remark-prismjs',
+		// 				pluginOptions: {
+		// 					classPrefix: 'gatsby-code-',
+		// 				},
+		// 			},
+		// 			{
+		// 				resolve: path.resolve(__dirname, './plugins/gatsby-remark-use-clipboard'),
+		// 			},
+		// 		],
+		// 	},
+		// },
 		{
 			resolve: 'gatsby-plugin-google-analytics',
 			options: {
