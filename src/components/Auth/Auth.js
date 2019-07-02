@@ -42,7 +42,12 @@ class Auth extends React.Component {
             }
 
 		return (
-            <Login />
+			<div className="auth-container">
+				<div className="auth-login-container">
+					<h3 className="auth-login-warning">You must be a Liferay Employee to view this page</h3>
+					<Login />
+				</div>
+			</div>
 		)
     }
 
