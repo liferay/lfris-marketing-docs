@@ -86,11 +86,6 @@ class LayoutNav extends React.Component {
                         <li className="nav-item">
                             <Login />
                         </li>
-                        <li className="nav-item">
-                            <a className="mx-3 mr-lg-0" href={process.env.GITHUB_REPO}  target="_blank" rel="noopener noreferrer">
-                                <img src={withPrefix("/images/home/GitHub-Mark-64px.svg")} alt="" />
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </nav>
