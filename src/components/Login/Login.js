@@ -2,6 +2,7 @@ import 'firebase/auth'
 import React from 'react'
 import { firebase } from '@firebase/app'
 import { navigate } from 'gatsby'
+import LogoutContainer from '../LogoutContainer'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBUTSq9EUbIzNBZVzvtbIPQ8eaeWo3ccDI",
@@ -82,10 +83,7 @@ class Login extends React.Component {
         let button;
         if(this.state.user) {
             button =
-                <button className="btn btn-sm btn-outline-light font-weight-bold mx-3"
-                        onClick={this._handleLogout}>
-                    Logout
-                </button>;
+                <LogoutContainer user={this.state.user} _handleLogout={this._handleLogout} />;
         } else {
             button =
                 <button className="btn btn-sm btn-outline-light font-weight-bold mx-3"
