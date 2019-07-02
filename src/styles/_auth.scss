@@ -6,17 +6,17 @@
 	height: 100vh;
 	justify-content: center;
 	width: 100vw;
-	
+
 	.auth-login-container {
 		background: #0b5fff;
 		border-radius: 4px;
+		color: #FFF;
 		display: flex;
 		flex-direction: column;
 		padding: 2em;
 	}
-	
+
 	.auth-login-warning {
-		color: #FFF;
 		padding: 2em 0;
 	}
 }
