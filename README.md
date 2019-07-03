@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# lfris-marketing-docs
-=======
 # Gatsby Boilerplate 🚀
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3e176df0-47bd-4985-a6ab-7de0903c87dd/deploy-status)](https://app.netlify.com/sites/gatsbyboilerplate/deploys)
@@ -26,4 +23,3 @@ If you want to check the documentation 📚 click on this [link](https://github.
 ## License
 
 [BSD License](https://github.com/metal/metal.js/blob/master/LICENSE.md) © Liferay, Inc.
->>>>>>> d9691f85d09a98aef45b0d79ecd419b7614d00cb
