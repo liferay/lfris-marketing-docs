@@ -18,12 +18,12 @@
 @import "sidebar";
 @import "updates";
 
-@import "/site/auth.scss";
-@import "/sitelogin";
+@import "site/auth";
+@import "site/login";
 @import "site/content-site";
 @import "site/logoutcontainer";
 @import "site/site";
-@import 'site/sidebar-site';
+@import "site/sidebar-site";
 
 @import '~react-md/src/scss/react-md';
 @include react-md-everything;
