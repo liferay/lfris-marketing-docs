@@ -14,16 +14,17 @@
 @import "footer";
 @import "guide";
 @import "landing";
-@import "login";
-@import "logoutcontainer";
 @import "navbar";
 @import "prismjs";
 @import "sidebar";
 @import "updates";
 
-@import "site/site";
+@import "site/auth";
+@import "site/login";
 @import "site/content-site";
-@import 'site/sidebar-site';
+@import "site/logoutcontainer";
+@import "site/site";
+@import "site/sidebar-site";
 
 @import '~react-md/src/scss/react-md';
 @include react-md-everything;
