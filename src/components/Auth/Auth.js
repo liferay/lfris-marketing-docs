@@ -1,6 +1,7 @@
 import Login from '../Login'
 import React from 'react'
 import { firebase } from '@firebase/app'
+import styles from './styles.module.scss'
 
 class Auth extends React.Component {
     state = {
@@ -42,9 +43,9 @@ class Auth extends React.Component {
             }
 
 		return (
-			<div className="auth-container">
-				<div className="auth-login-container">
-					<h3 className="auth-login-warning">You must be a Liferay Employee to view this page</h3>
+			<div className={styles.authContainer}>
+				<div className={styles.authLoginContainer}>
+					<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
 					<Login />
 				</div>
 			</div>
