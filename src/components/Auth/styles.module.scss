@@ -1,4 +1,4 @@
-.auth-container {
+.authContainer {
 	align-items: center;
 	background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='52' height='26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4a6 6 0 0 1-6-6h2c0 2.21 1.79 4 4 4a6 6 0 0 1 6 6c0 2.21 1.79 4 4 4a6 6 0 0 1 6 6c0 2.21 1.79 4 4 4v2a6 6 0 0 1-6-6c0-2.21-1.79-4-4-4a6 6 0 0 1-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' fill='%230b5fff' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
 	background-size: 75%;
@@ -7,7 +7,7 @@
 	justify-content: center;
 	width: 100vw;
 	
-	.auth-login-container {
+	.authLoginContainer {
 		background: #0b5fff;
 		border-radius: 4px;
 		display: flex;
@@ -15,7 +15,7 @@
 		padding: 2em;
 	}
 	
-	.auth-login-warning {
+	.authLoginWarning {
 		color: #FFF;
 		padding: 2em 0;
 	}
