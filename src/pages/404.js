@@ -1,8 +1,8 @@
 import Footer from '../components/Footer';
 import LayoutNav from '../components/LayoutNav';
 import React from 'react';
-import Sidebar from '../components/Sidebar';
 import { withPrefix } from 'gatsby';
+import styles from './styles.module.scss';
 
 const ErrorPage = ({ location }) => (
     <div className="error-page">
@@ -11,14 +11,11 @@ const ErrorPage = ({ location }) => (
                 <LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} />
             </header>
 
-            <div className="container-fluid container-fluid-max-lg">
-                <img className="image-fluid" alt="not found" src={withPrefix("images/ray.png")}></img>
-                <h1 className="h1">Not Founded</h1>
-
-                {/* <Sidebar location={location} navbarToggled={true} /> */}
+            <div className={`container-fluid container-fluid-max-lg ${styles.container}`}>
+                <img className={`image-fluid ${styles.img}`} alt="not found" src={withPrefix("images/404_Illustration.jpg")}></img>
             </div>
 
-            <section>
+            <section className={styles.footerContainer}>
                 <Footer />
             </section>
         </main>
