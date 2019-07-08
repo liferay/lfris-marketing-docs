@@ -1,8 +1,6 @@
 # Gatsby Boilerplate 🚀
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3e176df0-47bd-4985-a6ab-7de0903c87dd/deploy-status)](https://app.netlify.com/sites/gatsbyboilerplate/deploys)
-[![Build Status](https://img.shields.io/travis/diegonvs/gatsby-boilerplate/master.svg?style=flat)](https://travis-ci.org/diegonvs/gatsby-boilerplate)
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d21611ff-c487-4b64-a42a-ae585f12702b/deploy-status)](https://app.netlify.com/sites/lfrism-doc/deploys)
 
 <!-- Markdown snippet -->
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/justinsunho/lfrsitedocs)
