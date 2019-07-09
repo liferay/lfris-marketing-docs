@@ -4,6 +4,7 @@ import { withPrefix, Link } from 'gatsby';
 import LayoutNav from '../components/LayoutNav';
 import {WOW} from 'wowjs';
 import Footer from '../components/Footer';
+import DeployButton from '../components/DeployButton'
 
 /**
  * Index page
@@ -51,6 +52,8 @@ class Index extends React.Component {
                             </div>
                         </div>
                     </header>
+
+                    <DeployButton />
 
                     <section className="contact-us">
                         <div className="container-fluid container-fluid-max-lg">
