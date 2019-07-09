@@ -1,6 +1,9 @@
 backend:
   name: git-gateway
   branch: master # Branch to update (optional; defaults to master)
+  accept_roles: 
+    - admin
+    - editor
 
 publish_mode: editorial_workflow
 
