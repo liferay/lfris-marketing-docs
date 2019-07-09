@@ -4,10 +4,6 @@ import axios from 'axios'
 class DeployButton extends React.Component {
 	handleDeploy = event => {
 		axios.post(`${process.env.GATSBY_DEPLOY_HOOK}`, {})
-		.then(res => {
-			console.log(res);
-			console.log(res.data);
-		})
 	}
 
     render() {
