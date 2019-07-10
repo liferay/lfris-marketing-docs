@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import styles from './styles.module.scss'
 
 class DeployButton extends React.Component {
 	handleDeploy = event => {
@@ -8,7 +9,9 @@ class DeployButton extends React.Component {
 
     render() {
         return (
-			<button onClick={this.handleDeploy()}>Click me</button>
+			<a className={styles.deployButton} onClick={this.handleDeploy()}>
+				<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />
+			</a>
         )
     }
 }
