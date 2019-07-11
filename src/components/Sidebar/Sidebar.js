@@ -5,43 +5,48 @@ import Search from './Search';
 
 const SideNavRef = React.createRef();
 
-const getSection = data => {
-	const elements = data.allMarkdownRemark.edges.map(({node}) => {
-		const { fields: { slug, alwaysActive, order }, frontmatter: { title }} = node;
+const getTree = data => {
+	let tree = [];
+	let paths = data.allMarkdownRemark.edges.map(({node}) => {
+		const { fields: { slug } } = node;
 
-		return toSectionElements(slug.replace('.html', ''), title, order, alwaysActive);
+		return slug.startsWith('/') ? slug.slice(1).split('/') : slug.split('/');
 	});
 
-	let rootElements = elements.filter(path => path.isRoot);
+	paths.forEach(path => {
+        var currentLevel = tree;
+        path.forEach((folder, index) => {	
+			var existingPath = findFolder(currentLevel, 'name', folder);
+	
+			if (existingPath) {
+				currentLevel = existingPath.children;
+			} else {
+				var newFolder = {
+					children: [],
+					isFolder: index < path.length - 1,
+					link: '/' + path.join('/').replace(/.html|.md|.mdx/g, ''),
+					name: folder.replace(/.html|.md|.mdx/g, '')
+				};
+	
+				currentLevel.push(newFolder);
+				currentLevel = newFolder.children;
+			}
+		});
+	});
 
-	return rootElements.map(path => toSectionItem(path, elements))
-		.sort((a, b) => a.order - b.order);
+	return tree;
 };
 
-const toSectionElements = (slug, title, order, alwaysActive) => {
-	const slugs = slug.split("/");
-	const lastSlug = slugs[slugs.length - 1];
-	const penultimateSlug = slugs[slugs.length - 2];
+function findFolder(array, key, value) {
+	var t = 0;
+	while (t < array.length && array[t][key] !== value) { t++; };
 
-	const id = lastSlug === "index" ? penultimateSlug : lastSlug;
-	const link = '/' + slug;
-	const parentLink = '/' + slug.substring(0, slug.lastIndexOf("/") + 1);
-	const isFolder = lastSlug === "index";
-	const isRoot = (slugs.length === 3 && isFolder) || (slugs.length === 2 && !isFolder);
-
-	return {id, link, title, parentLink, isFolder, isRoot, order, alwaysActive};
-};
-
-const toSectionItem = (item, paths) => {
-	if (item.isFolder) {
-		item.items = paths.filter(path => path.link !== item.link)
-			.filter(path => path.link === (item.parentLink + path.id + (path.isFolder ? "/index" : "")))
-			.map(path => toSectionItem(path, paths))
-			.sort((a, b) => a.order - b.order);
+	if (t < array.length) {
+		return array[t]
+	} else {
+		return false;
 	}
-
-	return item;
-};
+}
 
 let scrollTop = 0;
 
@@ -98,7 +103,7 @@ export default (props) => (
 						<div className="sidebar-body mb-auto mt-5">
 							<Search placeholder="Search" />
 
-							<Navigation sectionList={getSection(data)} location={props.location} />
+							<Navigation sectionList={getTree(data)} location={props.location} />
 						</div>
 					</SideNavScroll>
 				</nav>
