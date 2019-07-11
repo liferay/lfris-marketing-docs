@@ -1,14 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Link, withPrefix } from "gatsby"
+import { Link, withPrefix } from 'gatsby';
 
 class Navigation extends React.Component {
     _handleOnClick(index, depth, section, event) {
         event.stopPropagation();
 
+        const { location } = this.props;
         const elementRef = this.refs[`navItem${index}${depth}`];
+        const sameElement = location.pathname === section.link;
 
-        if (!elementRef.classList.contains('active') || !!section.items) {
+        if ((!elementRef.classList.contains('active')  && !sameElement) || !!section.children.length) {
             elementRef.classList.toggle('active');
         }
     }
@@ -16,13 +18,28 @@ class Navigation extends React.Component {
     _isActive(section) {
         const { location } = this.props;
 
-        const sectionLocation = location.pathname.split('.')[0];
-
-        if (section.isFolder) {
-            return sectionLocation.includes(section.id);
+        if (!section.isFolder) {
+            return location.pathname === section.link;
         }
 
-        return sectionLocation === section.link;
+        let sectionLocation = location.pathname;
+        let sectionLink = section.link.split('/');
+        let isActive = false;
+
+        sectionLink.pop();
+        sectionLink = sectionLink.join('/');
+
+        for (let lastIndex = sectionLocation.split('/').length - 1; lastIndex > 0; lastIndex--) {
+            sectionLocation = sectionLocation.split('/');
+            sectionLocation.pop();
+            sectionLocation = sectionLocation.join('/');
+
+            if (sectionLocation === sectionLink || isActive){
+                isActive = true;
+            }
+        }
+
+        return isActive;
     }
 
     renderNavigationItems() {
@@ -30,16 +47,16 @@ class Navigation extends React.Component {
 
         return sectionList.map((section, index) => {
             let style = classNames({
-                'active': this._isActive(section) === true,
-                'nav-heading': section.items
+                'active': this._isActive(section),
+                'nav-heading': section.children
             });
 
             return(
                 <li key={index} ref={`navItem${index}${depth}`} className={style} onClick={this._handleOnClick.bind(this, index, depth, section)}>
                     <Anchor page={section} />
 
-                    {section.items && (
-                        <Navigation sectionList={section.items} location={location} depth={depth + 1} />
+                    {!!section.children.length && (
+                        <Navigation sectionList={section.children} location={location} depth={depth + 1} />
                     )}
                 </li>
             );
@@ -56,14 +73,19 @@ class Navigation extends React.Component {
 }
 
 const Anchor = ({page}) => {
-    if (page.items) {
+    const properName = page.name.toLowerCase().split('-').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+
+    if (page.children.length > 0) {
         return(
-            <a className="align-middle" href="#no">
-                <span>{page.title}</span>
+            <Link
+                to={`${page.link}`}
+                className="align-middle"
+            >
+                <span>{properName}</span>
                 <svg className="collapse-toggle clay-icon icon-monospaced">
                     <use xlinkHref={withPrefix("images/icons/icons.svg#caret-bottom")} />
                 </svg>
-            </a>
+            </Link>
         );
     }
 
@@ -72,7 +94,7 @@ const Anchor = ({page}) => {
             to={`${page.link}`}
             className="align-middle"
         >
-            <span>{page.title}</span>
+            <span>{properName}</span>
         </Link>
     );
 };

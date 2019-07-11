@@ -1,5 +1,6 @@
 import { window, document } from 'browser-monads';
 import React from 'react';
+import NavList from './NavList';
 import { Link, withPrefix } from 'gatsby';
 import classnames from 'classnames';
 
@@ -70,23 +71,7 @@ class LayoutNav extends React.Component {
                         </button>
                     }
 
-                    <ul className="navbar-nav ml-md-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link ml-lg-3" to="/docs/">Docs</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link ml-lg-3" to="/blog/">Blog</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link ml-lg-3" to="/onboarding/">Onboarding</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link ml-lg-3" to="/updates/">Updates</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Login />
-                        </li>
-                    </ul>
+                    <NavList />
                 </div>
             </nav>
         );
