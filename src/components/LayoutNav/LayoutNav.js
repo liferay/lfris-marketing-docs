@@ -4,8 +4,6 @@ import NavList from './NavList';
 import { Link, withPrefix } from 'gatsby';
 import classnames from 'classnames';
 
-import Login from '../Login';
-
 class LayoutNav extends React.Component {
     constructor() {
         super();

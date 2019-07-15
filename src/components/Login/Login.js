@@ -4,14 +4,14 @@ import { firebase } from '@firebase/app'
 import { navigate } from 'gatsby'
 import LogoutContainer from '../LogoutContainer'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBUTSq9EUbIzNBZVzvtbIPQ8eaeWo3ccDI",
-    authDomain: "firm-retina-244218.firebaseapp.com",
-    databaseURL: "https://firm-retina-244218.firebaseio.com",
-    projectId: "firm-retina-244218",
-    storageBucket: "",
-    messagingSenderId: "241311197232",
-    appId: "1:241311197232:web:f0dd9b4c21bbe641"
+var firebaseConfig = {
+apiKey: "AIzaSyAr72TWuE2qciFQSbo8lV-rSJciZ5GSuR4",
+authDomain: "lfris-marketing-docs.firebaseapp.com",
+databaseURL: "https://lfris-marketing-docs.firebaseio.com",
+projectId: "lfris-marketing-docs",
+storageBucket: "",
+messagingSenderId: "744937136612",
+appId: "1:744937136612:web:496560d4b822e967"
 };
 
 firebase.initializeApp(firebaseConfig);
