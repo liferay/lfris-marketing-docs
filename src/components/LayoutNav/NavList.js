@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from '../Login';
 import { StaticQuery, graphql, Link } from 'gatsby';
 
 const getRootFolders = data => {
@@ -54,6 +55,10 @@ class NavList extends React.Component {
                         </li>
                     )
                 }
+
+                <li className="nav-item">
+                    <Login />
+                </li>
             </ul>
         );
     }
