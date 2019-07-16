@@ -1,5 +1,11 @@
 .container {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	margin-top: 83px;
+	padding-top: 5em;
+	text-align: center;
 
 	.img {
 		max-width: 100%;
