@@ -3,6 +3,7 @@ import LayoutNav from '../components/LayoutNav';
 import Footer from '../components/Footer';
 import DeployButton from '../components/DeployButton'
 import Auth from '../components/Auth';
+import styles from './styles.module.scss';
 
 class Deploy extends React.Component {
     render() {
@@ -14,11 +15,20 @@ class Deploy extends React.Component {
 							<LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} />
 						</header>
 
-						<section className="container-fluid container-fluid-max-lg">
-							<DeployButton />
+						<section className={`container-fluid container-fluid-max-lg ${styles.container}`}>
+							<ol>
+								<li>
+									<h2>Write your documentation here: https://drive.google.com/drive/u/1/folders/1M0L3J8z5MTjppfs7uJrahVTDti1TZewh
+									</h2>
+								</li>
+								<li>
+									<h2>Push this button to deploy changes to the site: <DeployButton />
+									</h2>
+								</li>
+							</ol>
 						</section>
 
-						<section>
+						<section className={styles.footerContainer}>
 							<Footer />
 						</section>
 					</main>
