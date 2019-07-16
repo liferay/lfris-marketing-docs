@@ -4,13 +4,14 @@ import styles from './styles.module.scss'
 
 class DeployButton extends React.Component {
 	handleDeploy = event => {
-		axios.post(`${process.env.GATSBY_DEPLOY_HOOK}`, {})
+		axios.post(this.props.deployHook, {})
+		console.log(this.props.deployHook);
 	}
 
     render() {
         return (
-			<button className={styles.deployButton} onClick={this.handleDeploy}>
-				<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />
+			<button className={`btn btn-sm btn-primary btn-outline-light font-weight-bold mx-3 ${styles.deployButton}`} onClick={this.handleDeploy}>
+				{this.props.children}
 			</button>
         )
     }
