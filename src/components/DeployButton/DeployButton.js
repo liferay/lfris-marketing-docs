@@ -9,9 +9,9 @@ class DeployButton extends React.Component {
 
     render() {
         return (
-			<a className={styles.deployButton} onClick={this.handleDeploy()}>
+			<button className={styles.deployButton} onClick={this.handleDeploy}>
 				<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />
-			</a>
+			</button>
         )
     }
 }
