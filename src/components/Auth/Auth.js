@@ -1,63 +1,19 @@
-import Login from '../Login'
-import React from 'react'
-import { firebase } from '@firebase/app'
-import styles from './styles.module.scss'
+import React from 'react';
+import { navigate } from 'gatsby';
+import {handleLogin, isBrowser, isLoggedIn} from '../../services/auth';
 
 class Auth extends React.Component {
-    state = {
-		user: null,
-	}
-
-	componentDidMount() {
-		this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
-			if (user) {
-				this.setUser(user)
-			}
-		})
-	}
-
-	componentWillUnmount() {
-		this.unsubscribe()
-	}
-
-	setUser = user => {
-		this.setState({
-			user: user
-				? { email: user.email, avatar: user.photoURL, name: user.displayName }
-				: null,
-		})
-    }
-
-    renderPrivateContent() {
-		const authenticatedUsers = ['liferay.com', 'triblio.com', 'kyrodigital.com']
-		const currentUser = this.state.user
-
-		const isUserAuthenticated =
-			currentUser &&
-			authenticatedUsers.some(user => {
-				return currentUser.email.includes(user)
-			})
-
-            if (isUserAuthenticated || !this.props.needsAuth) {
-                return this.props.children
-            }
-
-		return (
-			<div className={styles.authContainer}>
-				<div className={styles.authLoginContainer}>
-					<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
-					<Login />
-				</div>
-			</div>
-		)
-    }
-
     render() {
-        return (
-            <div>
-                {this.renderPrivateContent()}
-            </div>
-        )
+        if (this.props.needsAuth && !isLoggedIn()) {
+            handleLogin().then(() => {
+                if(isBrowser()) {
+                    navigate(window.location.pathname);
+                }
+            });
+            return null;
+        }
+
+        return this.props.children;
     }
 }
 
