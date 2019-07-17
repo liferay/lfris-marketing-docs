@@ -21,6 +21,7 @@ export const handleLogin = () => {
 }
 
 export const isLoggedIn = () => {
+    console.log(netlifyIdentity.currentUser());
     return !!netlifyIdentity.currentUser();
 }
 
