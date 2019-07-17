@@ -4,9 +4,7 @@ import { handleLogin, logout, isLoggedIn, isBrowser } from '../../services/auth'
 import { navigate } from 'gatsby';
 import netlifyIdentity from 'netlify-identity-widget';
 
-
 class Login extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -36,10 +34,15 @@ class Login extends React.Component {
             }
         });
 	}
+
+	componentDidMount() {
+		this.setState({
+			login: isLoggedIn()
+		});	
+	}
 	
 	componentDidUpdate() {
 		netlifyIdentity.on('open', () => {
-		
 			this.setState({
 				login: isLoggedIn()
 			});	
@@ -47,7 +50,6 @@ class Login extends React.Component {
 		);
 
 		netlifyIdentity.on('close', () => {
-		
 			this.setState({
 				login: isLoggedIn()
 			});	
@@ -69,7 +71,6 @@ class Login extends React.Component {
                         onClick={this._handleLogin}>
                     Sign Up / Login
                 </button>;
-
 		}
 	
         return (

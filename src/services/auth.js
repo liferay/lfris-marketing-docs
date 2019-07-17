@@ -24,8 +24,19 @@ export const isLoggedIn = () => {
     return !!netlifyIdentity.currentUser();
 }
 
-export const getUser = () => {
-    return netlifyIdentity.currentUser();
+export const getUserAuthentication = () => {
+    let isUserAuthenticated = false;
+
+    if(isLoggedIn()) {
+        const authenticatedUsers = ['liferay.com', 'triblio.com', 'kyrodigital.com'];
+        const userEmail = netlifyIdentity.currentUser().email;
+
+        isUserAuthenticated = userEmail && authenticatedUsers.some(user => {
+            return userEmail.includes(user);
+        });
+    }
+
+    return isUserAuthenticated;
 }
 
 export const logout = () => {
