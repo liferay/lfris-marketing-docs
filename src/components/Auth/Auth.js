@@ -16,10 +16,6 @@ class Auth extends React.Component {
 		}
 	}
 
-	componentWillUnmount() {
-		this.unsubscribe()
-	}
-
 	setUser = user => {
 		this.setState({
 			user: user
