@@ -16,6 +16,24 @@ class Auth extends React.Component {
 		}
 	}
 
+	componentDidUpdate() {
+		netlifyIdentity.on('open', () => {
+		
+			this.setState({
+				login: isLoggedIn()
+			});	
+			}
+		);
+
+		netlifyIdentity.on('close', () => {
+		
+			this.setState({
+				login: isLoggedIn()
+			});	
+		}
+		);
+	}
+
 	setUser = user => {
 		this.setState({
 			user: user
