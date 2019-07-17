@@ -1,77 +1,43 @@
-import Login from '../Login'
-import React from 'react'
+import React from 'react';
+import { isBrowser, getUserAuthentication } from '../../services/auth';
 import styles from './styles.module.scss'
-
-import { isLoggedIn, getUser } from '../../services/auth';
-
+import { navigate } from 'gatsby';
+import Login from '../Login'
+import netlifyIdentity from 'netlify-identity-widget';
 
 class Auth extends React.Component {
-    state = {
-		user: null,
-	}
-
-	componentDidMount() {
-		if(isLoggedIn()) {
-			this.setUser(getUser());
-		}
+	constructor(props) {
+        super(props);
+        this.state = {
+            isAuthenticated: getUserAuthentication()
+        }
 	}
 
 	componentDidUpdate() {
-		netlifyIdentity.on('open', () => {
-		
-			this.setState({
-				login: isLoggedIn()
-			});	
-			}
-		);
-
 		netlifyIdentity.on('close', () => {
-		
-			this.setState({
-				login: isLoggedIn()
-			});	
+			this.setState({isAuthenticated: getUserAuthentication()});
+		});
+
+		if(!this.state.isAuthenticated) {
+			if(isBrowser()) {
+				navigate(window.location.pathname);
+			}
 		}
-		);
 	}
 
-	setUser = user => {
-		this.setState({
-			user: user
-				? { email: user.email, avatar: user.avatar_url, name: user.full_name }
-				: null,
-		})
-    }
-
-    renderPrivateContent() {
-		const authenticatedUsers = ['liferay.com', 'triblio.com', 'kyrodigital.com']
-		const currentUser = this.state.user
-
-		const isUserAuthenticated =
-			currentUser &&
-			authenticatedUsers.some(user => {
-				return currentUser.email.includes(user)
-			})
-
-            if (isUserAuthenticated || !this.props.needsAuth) {
-                return this.props.children
-            }
-
-		return (
-			<div className={styles.authContainer}>
-				<div className={styles.authLoginContainer}>
-					<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
-					<Login />
-				</div>
-			</div>
-		)
-    }
-
     render() {
-        return (
-            <div>
-                {this.renderPrivateContent()}
-            </div>
-        )
+        if (this.props.needsAuth && !this.state.isAuthenticated) {
+            return (
+				<div className={styles.authContainer}>
+					<div className={styles.authLoginContainer}>
+						<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
+						<Login />
+					</div>
+				</div>
+			);
+        }
+
+        return this.props.children;
     }
 }
 
