@@ -34,12 +34,6 @@ class Login extends React.Component {
         });
 	}
 
-	componentDidMount() {
-		this.setState({
-			login: isLoggedIn()
-		});	
-	}
-	
 	componentDidUpdate() {
 		netlifyIdentity.on('open', () => {
 			this.setState({
