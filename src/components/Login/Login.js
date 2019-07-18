@@ -1,8 +1,7 @@
-
 import React from 'react';
+import netlifyIdentity from 'netlify-identity-widget';
 import { handleLogin, logout, isLoggedIn, isBrowser } from '../../services/auth'
 import { navigate } from 'gatsby';
-import netlifyIdentity from 'netlify-identity-widget';
 
 class Login extends React.Component {
     constructor(props) {
