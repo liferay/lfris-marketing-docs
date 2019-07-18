@@ -1,9 +1,9 @@
-import React from 'react';
-import { isBrowser, getUserAuthentication } from '../../services/auth';
-import styles from './styles.module.scss'
-import { navigate } from 'gatsby';
 import Login from '../Login'
+import React from 'react';
 import netlifyIdentity from 'netlify-identity-widget';
+import styles from './styles.module.scss'
+import { isBrowser, getUserAuthentication } from '../../services/auth';
+import { navigate } from 'gatsby';
 
 class Auth extends React.Component {
 	constructor(props) {

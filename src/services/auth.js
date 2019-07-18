@@ -2,7 +2,6 @@ import netlifyIdentity from 'netlify-identity-widget';
 
 export const isBrowser = () => typeof window !== "undefined"
 
-// handle login & signup
 export const handleLogin = () => {
     return new Promise((resolve, reject) => {
         if (isLoggedIn()) {
