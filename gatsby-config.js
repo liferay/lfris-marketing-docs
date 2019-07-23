@@ -108,7 +108,7 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-netlify-identity',
 			options: {
-				url: 'https://lwm-docs.liferay.com'
+				url: 'https://5d377a122188030008aedbbb--lfrism-doc.netlify.com/'
 			}
 		},
 		'gatsby-plugin-react-helmet',
