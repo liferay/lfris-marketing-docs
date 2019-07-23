@@ -1,6 +1,6 @@
 import Login from '../Login'
 import React from 'react';
-import netlifyIdentity from 'netlify-identity-widget';
+import IdentityModal, { useIdentityContext } from "react-netlify-identity-widget"
 import styles from './styles.module.scss'
 import { isBrowser, getUserAuthentication } from '../../services/auth';
 import { navigate } from 'gatsby';
@@ -9,20 +9,17 @@ class Auth extends React.Component {
 	constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: getUserAuthentication()
+            isAuthenticated: false
         }
 	}
 
-	componentDidUpdate() {
-		netlifyIdentity.on('close', () => {
-			this.setState({isAuthenticated: getUserAuthentication()});
-		});
-
-		if(!this.state.isAuthenticated) {
-			if(isBrowser()) {
-				navigate(window.location.pathname);
-			}
-		}
+	componentDidMount() {
+		const identity = useIdentityContext()
+		const isLoggedIn = identity && identity.isLoggedIn;
+		
+		this.setState({
+			isAuthenticated: isLoggedIn
+		})
 	}
 
     render() {
