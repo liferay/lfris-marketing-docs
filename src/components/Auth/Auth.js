@@ -5,37 +5,21 @@ import styles from './styles.module.scss'
 import { isBrowser, getUserAuthentication } from '../../services/auth';
 import { navigate } from 'gatsby';
 
-class Auth extends React.Component {
-	constructor(props) {
-        super(props);
-        this.state = {
-            isAuthenticated: false
-        }
-	}
+const Auth = ({ needsAuth, children }) => {
+	const identity = useIdentityContext();
+	const isLoggedIn = identity && identity.isLoggedIn;
 
-	componentDidMount() {
-		const identity = useIdentityContext()
-		const isLoggedIn = identity && identity.isLoggedIn;
-		
-		this.setState({
-			isAuthenticated: isLoggedIn
-		})
-	}
-
-    render() {
-        if (this.props.needsAuth && !this.state.isAuthenticated) {
-            return (
-				<div className={styles.authContainer}>
-					<div className={styles.authLoginContainer}>
-						<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
-						<Login />
-					</div>
+	if (needsAuth && !isLoggedIn) {
+		return (
+			<div className={styles.authContainer}>
+				<div className={styles.authLoginContainer}>
+					<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
+					<Login />
 				</div>
-			);
-        }
-
-        return this.props.children;
-    }
+			</div>
+		);
+	} 
+	return children;
 }
 
-export default Auth;
+export default Auth
