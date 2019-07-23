@@ -1,77 +1,27 @@
-import React from 'react';
-import netlifyIdentity from 'netlify-identity-widget';
-import { handleLogin, logout, isLoggedIn, isBrowser } from '../../services/auth'
-import { navigate } from 'gatsby';
+import React from "react"
+import IdentityModal, { useIdentityContext } from "react-netlify-identity-widget"
+import "react-netlify-identity-widget/styles.css" // delete if you want to bring your own CSS
 
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            login: isLoggedIn()
-        }
-        this._handleLogin = this._handleLogin.bind(this);
-        this._handleLogout = this._handleLogout.bind(this);
-    }
+const Login = () => {
+  const identity = useIdentityContext()
+  const [dialog, setDialog] = React.useState(false)
+  const name =
+    (identity && identity.user && identity.user.user_metadata && identity.user.user_metadata.name) || "NoName"
 
-    _handleLogin = (event) => {
-		event.preventDefault();
-        handleLogin().then(() => {
-            this.setState({
-                login: isLoggedIn()
-            });
-        });
-    }
-
-    _handleLogout = (event) => {
-        event.preventDefault();
-        logout().then(() => {
-            this.setState({
-                login: isLoggedIn()
-            });
-            if(isBrowser()) {
-                navigate('/');
-            }
-        });
-	}
-
-	componentDidUpdate() {
-		netlifyIdentity.on('open', () => {
-			this.setState({
-				login: isLoggedIn()
-			});	
-			}
-		);
-
-		netlifyIdentity.on('close', () => {
-			this.setState({
-				login: isLoggedIn()
-			});	
-		}
-		);
-	}
-
-    render() {
-        let button;
-        if(this.state.login) {
-            button =
-                <button className="btn btn-sm btn-outline-light font-weight-bold mx-3"
-                        onClick={this._handleLogout}>
-                    Logout
-                </button>;
-        } else {
-            button =
-                <button className="btn btn-sm btn-outline-light font-weight-bold mx-3"
-                        onClick={this._handleLogin}>
-                    Sign Up / Login
-                </button>;
-		}
-	
-        return (
-            <>
-                {button}
-            </>
-        )
-    }
+  console.log(JSON.stringify(identity))
+  const isLoggedIn = identity && identity.isLoggedIn
+  return (
+    <>
+      <nav style={{ background: "green" }}>
+        {" "}
+        Login Status:
+        <button className="btn" onClick={() => setDialog(true)}>
+          {isLoggedIn ? `Hello ${name}, Log out here!` : "LOG IN"}
+        </button>
+      </nav>
+      <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog(false)} />
+    </>
+  )
 }
 
-export default Login;
+export default Login
