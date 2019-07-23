@@ -28,7 +28,7 @@ Navigating to the Blogs folder is easy from /marketing-blogs-admin. Go To &gt; C
 1. Navigate to the [Marketing Blogs Admin](https://web.liferay.com/marketing-blogs-admin) page.
 	* For practicing, please use the [UAT Marketing Blogs Admin](https://web-uat.liferay.com/marketing-blogs-admin) page on our User Acceptance Testing (UAT) environment.
 2. Select "Add New Entry." If you don't see the button you probably don't have the correct permissions. Find out how to request them [here](https://liferay.github.io/web-dev-lrdcom/#/docs/General~2Fpermissions).
-3. Fill in the Title (required) in English.  <img src="/images/web/Landing_Pages/title and-or display-title.png">A unique URL will be generated based on the Title, so make sure to select a title that is great for SEO!</img>
+3. Fill in the Title (required) in English.  <img src="/images/web/Marketing_Blogs/title and-or display-title.png">A unique URL will be generated based on the Title, so make sure to select a title that is great for SEO!</img>
 4. Enter Content (see "Editing Content" below for more information on editing content).
 5. If your blog is written in a non-Latin character set (i.e., Japanese or Chinese), please use the Display Title field to enter your localized blog title. This field may also be used optionally if would like to specify an alternate display title.
 6. Select an option for the "Marketing Blogs" category (Digital Business, Digital Transformation, etc.). Only choose one (see "Important Notes" section).
@@ -47,9 +47,9 @@ Navigating to the Blogs folder is easy from /marketing-blogs-admin. Go To &gt; C
 ## Editing Content
 * For information on how to add a blog entry, please see the [Liferay Documentation](https://dev.liferay.com/discover/portal/-/knowledge_base/6-1/expressing-yourself-using-blogs#adding-blog-entries) on adding a blog entry.
 * To add an image to your blog entry:
-	* <img src="/images/web/Landing_Pages/add-image.png">Select the "Image" button on the editor.</img>
-	* <img src="/images/web/Landing_Pages/image-url.png">Paste the full URL of the desired image into the URL field of the pop-up.</img>
-	* <img src="/images/web/Landing_Pages/save-img.png">Select "Ok."</img>
+	* <img src="/images/web/Marketing_Blogs/add-image.png">Select the "Image" button on the editor.</img>
+	* <img src="/images/web/Marketing_Blogs/image-url.png">Paste the full URL of the desired image into the URL field of the pop-up.</img>
+	* <img src="/images/web/Marketing_Blogs/save-img.png">Select "Ok."</img>
 * Upload images to web.liferay.com Documents & Media in the `/Blogs` folder.
 	* Navigating to the Blogs folder is easy from /marketing-blogs-admin. Go To > Control Panel > Documents and Media
 * Avoid using the copy/paste functionality to add content to your blog entry. Only use it if you are copying plain text (from a .txt file) exclusively.
@@ -60,11 +60,11 @@ To populate SEO information for both Blog Categories and Topics:
 
 * Go to Category section in Control Panel
 * Go to "Marketing Blogs" Category
-* <img src="/images/web/Landing_Pages/seo-category.png">Within the category you want to alter the description for, select the category, then hit add a category property by hitting "Edit"</img>
-* <img src="/images/web/Landing_Pages/seo-category-description.png">Property Key: `description`.<br/>Property Value: `[Enter the category description]`</img>
+* <img src="/images/web/Marketing_Blogs/seo-category.png">Within the category you want to alter the description for, select the category, then hit add a category property by hitting "Edit"</img>
+* <img src="/images/web/Marketing_Blogs/seo-category-description.png">Property Key: `description`.<br/>Property Value: `[Enter the category description]`</img>
 * Hit Save
 
 ## Important Notes
-<img src="/images/web/Landing_Pages/dont-choose-parent.png">
+<img src="/images/web/Marketing_Blogs/dont-choose-parent.png">
 	When selecting an option for "Marketing Blogs" **make sure the parent folders of the category you choose are not selected.**
 </img>
