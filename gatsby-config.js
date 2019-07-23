@@ -105,6 +105,12 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-netlify-cms',
+		{
+			resolve: 'gatsby-plugin-netlify-identity',
+			options: {
+				url: 'https://lwm-docs.liferay.com'
+			}
+		},
 		'gatsby-plugin-react-helmet',
 		{
 			resolve: 'gatsby-plugin-manifest',
