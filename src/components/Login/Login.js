@@ -7,13 +7,15 @@ const Login = () => {
   const identity = useIdentityContext()
   const [loggedIn, setLoggedIn] = React.useState(0);
 
-  console.log(JSON.stringify(identity))
+  console.log(JSON.stringify(identity));
 
+  
   return (
     <>
         <button className="btn btn-sm btn-outline-light font-weight-bold mx-3" onClick={() => {
           netlifyIdentity.open();
-          setLoggedIn(identity.isLoggedIn);
+          netlifyIdentity.on('login', setLoggedIn(true));
+          netlifyIdentity.on('logout', setLoggedIn(false));
         }}>
           {loggedIn ? `LOG OUT` : "LOG IN"}
         </button>
