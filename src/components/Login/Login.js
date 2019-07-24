@@ -7,8 +7,11 @@ export default class Login extends Component {
   state = { loggedIn: false }
 
   componentDidMount() {
-    netlifyIdentity.on('login', this.setState({ loggedIn: true }));
-    netlifyIdentity.on('logout', this.setState({ loggedIn: false }));
+    const identity = useIdentityContext();
+    const isLoggedIn = identity && identity.isLoggedIn;
+
+    netlifyIdentity.on('login', this.setState({ loggedIn: isLoggedIn }));
+    netlifyIdentity.on('logout', this.setState({ loggedIn: isLoggedIn }));
   }
 
   render() {
