@@ -40,7 +40,7 @@ export const getUserAuthentication = () => {
 
 export const logout = () => {
     return new Promise((resolve, reject) => {
-        netlifyIdentity.logout();
+        netlifyIdentity.open();
         netlifyIdentity.on('logout', () => {
             resolve();
         });
