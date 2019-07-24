@@ -13,8 +13,8 @@ export default class Login extends Component {
       this.setState({ loggedIn: isLoggedIn });
     }
 
-    netlifyIdentity.on('login', loggedInFunction());
-    netlifyIdentity.on('logout', loggedInFunction());
+    netlifyIdentity.on('login', console.log(isLoggedIn));
+    netlifyIdentity.on('logout', console.log(isLoggedIn));
   }
 
   render() {
