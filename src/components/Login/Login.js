@@ -1,26 +1,24 @@
-import React from "react"
+import React, { Component } from "react"
 import { useIdentityContext } from "react-netlify-identity-widget"
 import netlifyIdentity from 'netlify-identity-widget'
 import './styles.module.scss'
 
-const Login = () => {
-  const identity = useIdentityContext()
-  const [loggedIn, setLoggedIn] = React.useState(0);
+export default class Login extends Component {
+  state = { loggedIn: 0 }
 
-  console.log(JSON.stringify(identity));
+  componentDidMount() {
+    netlifyIdentity.on('login', this.setState({ loggedIn: true }));
+    netlifyIdentity.on('logout', this.setState({ loggedIn: false }));
+  }
 
-  
-  return (
-    <>
-        <button className="btn btn-sm btn-outline-light font-weight-bold mx-3" onClick={() => {
-          netlifyIdentity.open();
-          netlifyIdentity.on('login', setLoggedIn(true));
-          netlifyIdentity.on('logout', setLoggedIn(false));
-        }}>
-          {loggedIn ? `LOG OUT` : "LOG IN"}
-        </button>
-    </>
-  )
+  render() {
+    return (
+      <>
+          <button className="btn btn-sm btn-outline-light font-weight-bold mx-3" onClick={() => {
+            netlifyIdentity.open();
+          }}>
+            {this.state.loggedIn ? `LOG OUT` : `LOG IN`}
+          </button>
+      </>)
+  }
 }
-
-export default Login
