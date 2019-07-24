@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { useIdentityContext } from "react-netlify-identity-widget"
 import netlifyIdentity from 'netlify-identity-widget'
 import './styles.module.scss'
 
@@ -9,8 +8,13 @@ export default class Login extends Component {
   componentDidMount() {
     const isLoggedIn = !!netlifyIdentity.currentUser();
 
-    netlifyIdentity.on('login', this.setState({ loggedIn: isLoggedIn }));
-    netlifyIdentity.on('logout', this.setState({ loggedIn: isLoggedIn }));
+    const loggedInFunction = () => {
+      console.log('is logged in:' + isLoggedIn);
+      this.setState({ loggedIn: isLoggedIn });
+    }
+
+    netlifyIdentity.on('login', loggedInFunction());
+    netlifyIdentity.on('logout', loggedInFunction());
   }
 
   render() {
