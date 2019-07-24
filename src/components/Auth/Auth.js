@@ -1,9 +1,7 @@
 import Login from '../Login'
 import React from 'react';
-import IdentityModal, { useIdentityContext } from "react-netlify-identity-widget"
+import { useIdentityContext } from "react-netlify-identity-widget"
 import styles from './styles.module.scss'
-import { isBrowser, getUserAuthentication } from '../../services/auth';
-import { navigate } from 'gatsby';
 
 const Auth = ({ needsAuth, children }) => {
 	const identity = useIdentityContext();
