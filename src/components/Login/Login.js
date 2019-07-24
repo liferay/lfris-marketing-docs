@@ -4,7 +4,7 @@ import netlifyIdentity from 'netlify-identity-widget'
 import './styles.module.scss'
 
 export default class Login extends Component {
-  state = { loggedIn: 0 }
+  state = { loggedIn: false }
 
   componentDidMount() {
     netlifyIdentity.on('login', this.setState({ loggedIn: true }));
