@@ -22,6 +22,8 @@ export default class Docs extends React.Component {
     componentDidMount() {
         this._codeTabs = new CodeTabs();
         this._codeClipboard = new CodeClipboard();
+
+        this.setState({ isAuthenticated: getUserAuthentication() });
     }
 
     componentWillUnmount() {
