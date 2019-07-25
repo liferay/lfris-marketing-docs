@@ -9,7 +9,7 @@ class Auth extends React.Component {
 	constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: getUserAuthentication()
+            isAuthenticated: this.props.isAuthenticated
         }
 	}
 

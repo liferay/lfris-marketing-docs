@@ -8,13 +8,14 @@ import LayoutNav from '../components/LayoutNav';
 import CodeTabs from '../components/CodeTabs';
 import CodeClipboard from '../components/CodeClipboard';
 import Auth from '../components/Auth';
-import { logout } from '../services/auth';
+import { logout, getUserAuthentication } from '../services/auth';
 
 export default class Docs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            navbarToggled: false
+            navbarToggled: false,
+            isAuthenticated: getUserAuthentication()
 		}
     }
 
@@ -46,7 +47,7 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={needsAuth}>
+            <Auth needsAuth={needsAuth} isAuthenticated={this.state.isAuthenticated}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
