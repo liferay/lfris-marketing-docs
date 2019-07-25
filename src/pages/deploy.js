@@ -4,11 +4,19 @@ import Footer from '../components/Footer';
 import DeployButton from '../components/DeployButton'
 import Auth from '../components/Auth';
 import styles from './styles.module.scss';
+import { getUserAuthentication } from '../services/auth';
+
 
 class Deploy extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			isAuthenticated: getUserAuthentication()
+		}
+	}
     render() {
         return (
-			<Auth needsAuth={false}>
+			<Auth needsAuth={true} isAuthenticated={this.state.isAuthenticated}>
 				<div className="deploy-page">
 					<main className="content">
 						<header className="header">
