@@ -2,6 +2,8 @@ const clay = require('clay-css');
 const path = require('path');
 const fs = require('fs');
 
+const queries = require('./src/utils/algolia')
+
 require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
@@ -56,6 +58,15 @@ module.exports = {
 				]
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-algolia',
+			options: {
+				appId: process.env.GATSBY_ALGOLIA_APP_ID,
+				apiKey: process.env.ALGOLIA_ADMIN_KEY,
+				queries,
+				chunkSize: 10000,
+			},
+		},
 		'gatsby-plugin-meta-redirect',
 		{
 			resolve: 'gatsby-plugin-sass',
@@ -98,6 +109,7 @@ module.exports = {
 		// 		],
 		// 	},
 		// },
+		'gatsby-plugin-styled-components',
 		{
 			resolve: 'gatsby-plugin-google-analytics',
 			options: {
