@@ -10,6 +10,8 @@ import CodeClipboard from '../components/CodeClipboard';
 import Auth from '../components/Auth';
 import { logout, getUserAuthentication } from '../services/auth';
 
+import netlifyIdentity from 'netlify-identity-widget'
+
 export default class Docs extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +25,7 @@ export default class Docs extends React.Component {
         this._codeTabs = new CodeTabs();
         this._codeClipboard = new CodeClipboard();
 
-        this.setState({ isAuthenticated: getUserAuthentication() });
+        netlifyIdentity.on('init', this.setState({ isAuthenticated: getUserAuthentication() }));
     }
 
     componentWillUnmount() {
