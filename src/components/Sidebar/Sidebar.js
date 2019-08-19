@@ -75,7 +75,7 @@ class SideNavScroll extends React.Component {
 export default (props) => (
 	<StaticQuery
 		query={graphql`
-			query {
+			query SearchIndexQuery {
 				allMarkdownRemark(filter: { fields: { slug: { regex: "//i" } } }) {
 					edges {
 						node {
@@ -87,6 +87,9 @@ export default (props) => (
 							}
 						}
 					}
+				}
+				siteSearchIndex {
+					index
 				}
 			}
 		`}
@@ -101,7 +104,7 @@ export default (props) => (
 				<nav className={navbarClasses} id="clay-sidebar">
 					<SideNavScroll>
 						<div className="sidebar-body mb-auto mt-5">
-							<Search placeholder="Search" />
+							<Search searchIndex={data.siteSearchIndex.index} />
 
 							<Navigation sectionList={getTree(data)} location={props.location} />
 						</div>
