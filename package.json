@@ -28,6 +28,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
     "@mdx-js/mdx": "^0.15.7",
     "@mdx-js/react": "^1.0.21",
     "@mdx-js/tag": "^0.18.0",

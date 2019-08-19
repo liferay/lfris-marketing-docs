@@ -1,62 +1,47 @@
-import React from 'react';
-import { withPrefix } from 'gatsby';
+import React, { Component } from "react"
+import { Index } from "elasticlunr"
+import { Link } from "gatsby"
 
-const apiKey = process.env.ALGOLIA_API_KEY;
+// Search component
+export default class Search extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      query: ``,
+      results: [],
+    }
+  }
 
-const indexName = process.env.ALGOLIA_INDEX_NAME;
+  render() {
+    return (
+      <div>
+        <input type="text" value={this.state.query} onChange={this.search} />
+        <ul>
+          {this.state.results.map(page => (
+            <li key={page.id}>
+              <Link to={"/" + page.path}>{page.title}</Link>
+			</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+  getOrCreateIndex = () =>
+    this.index
+      ? this.index
+      : // Create an elastic lunr index and hydrate with graphql query results
+        Index.load(this.props.searchIndex)
 
-const isProduction = process.env.NODE_ENV === 'production' ? true : false;
-
-class Search extends React.Component {
-	state = {
-		disabled: false
-	};
-
-	componentDidMount() {
-		if (window.docsearch && apiKey !== '' && indexName !== '') {
-			window.docsearch({
-				apiKey: apiKey || 'apiKey',
-				indexName: indexName || 'indexName',
-				inputSelector: '#algolia-doc-search',
-			});
-		} else {
-			this.setState({disabled: true});
-		}
-	}
-
-	render() {
-		const { placeholder } = this.props;
-
-		if (isProduction && this.state.disabled) {
-			return false;
-		}
-
-
-		return (
-			<div className="sidebar-search">
-				<div className="page-autocomplete">
-					<div className="form-group">
-						<div className="input-group">
-							<input
-								disabled={this.state.disabled}
-								className="form-control"
-								id="algolia-doc-search"
-								name="q"
-								placeholder={placeholder}
-								required
-								type="text"
-							/>
-							<span className="input-group-addon">
-								<svg className="lexicon-icon">
-									<use xlinkHref={withPrefix("images/icons/icons.svg#search")} />
-								</svg>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		)
-	}
+  search = evt => {
+    const query = evt.target.value
+    this.index = this.getOrCreateIndex()
+    this.setState({
+      query,
+      // Query the index with search string to get an [] of IDs
+      results: this.index
+        .search(query, {})
+        // Map over each ID and return the full document
+        .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+    })
+  }
 }
-
-export default Search;
