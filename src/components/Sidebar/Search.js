@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
 import { Link } from "gatsby"
+import styles from './styles.module.scss'
 
 // Search component
 export default class Search extends Component {
@@ -13,14 +14,17 @@ export default class Search extends Component {
   }
 
   render() {
+    const entryNumber = 5;
+
     return (
-      <div>
+      <div className={styles.searchContainer}>
         <input type="text" value={this.state.query} onChange={this.search} />
 
-        <ul>
-          {this.state.results.map(page => (
-            <li key={page.id}>
-              <Link to={page.path}>
+        {this.state.results.length > 0 ?
+          <ul className={styles.searchResultsContainer}>
+          {this.state.results.slice(0, entryNumber).map(page => (
+            <li className={styles.searchResultsItem} key={page.id}>
+              <a href={page.path}>
                   <h4>
                     {page.title}
                   </h4>
@@ -28,11 +32,13 @@ export default class Search extends Component {
                   <span>
                     {page.description ? page.description : page.excerpt}
                   </span>
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
-
+        :
+        ''
+        }
       </div>
     )
   }

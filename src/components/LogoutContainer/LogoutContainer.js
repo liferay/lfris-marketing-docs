@@ -19,7 +19,7 @@ export default class LogoutContainer extends Component {
 		const { collapsed } = this.state
 
 		return (
-			<div class={styles.logoutContainerWrapper}>
+			<div className={styles.logoutContainerWrapper}>
 				<Avatar className={styles.logoutContainerAvatar} src={this.props.user.avatar} onClick={this.toggle} role="presentation" />
 				<Collapse animate={false} collapsed={collapsed}>
 					<div className="caret"></div>
