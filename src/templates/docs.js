@@ -51,11 +51,7 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-<<<<<<< HEAD
             <Auth needsAuth={needsAuth} isAuthenticated={this.state.isAuthenticated}>
-=======
-            <Auth needsAuth={false}>
->>>>>>> LWM-1632 Lunr Init
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
