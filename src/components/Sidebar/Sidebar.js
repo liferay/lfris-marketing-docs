@@ -84,7 +84,9 @@ export default (props) => (
 							}
 							frontmatter {
 								title
+								description
 							}
+							excerpt
 						}
 					}
 				}

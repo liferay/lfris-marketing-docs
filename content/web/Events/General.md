@@ -1,3 +1,8 @@
+---
+title: Events
+description: Hi this is a description
+---
+
 # Events Microsites
 > Supporting Liferay's year-round event marketing initiatives.
 
