@@ -24,7 +24,7 @@ export default class Search extends Component {
           <ul className={styles.searchResultsContainer}>
           {this.state.results.slice(0, entryNumber).map(page => (
             <li className={styles.searchResultsItem} key={page.id}>
-              <a href={page.path}>
+              <Link to={page.path}>
                   <h4>
                     {page.title}
                   </h4>
@@ -32,7 +32,7 @@ export default class Search extends Component {
                   <span>
                     {page.description ? page.description : page.excerpt}
                   </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
