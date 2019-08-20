@@ -80,26 +80,6 @@ module.exports = {
 				path: `${__dirname}/content`,
 			},
 		},
-		// {
-		// 	resolve: 'gatsby-mdx',
-		// 	options: {
-		// 		extensions: ['.mdx', '.md'],
-		// 		gatsbyRemarkPlugins: [
-		// 			{
-		// 				resolve: path.resolve(__dirname, './plugins/gatsby-remark-code-label-extractor'),
-		// 			},
-		// 			{
-		// 				resolve: 'gatsby-remark-prismjs',
-		// 				pluginOptions: {
-		// 					classPrefix: 'gatsby-code-',
-		// 				},
-		// 			},
-		// 			{
-		// 				resolve: path.resolve(__dirname, './plugins/gatsby-remark-use-clipboard'),
-		// 			},
-		// 		],
-		// 	},
-		// },
 		{
 			resolve: 'gatsby-plugin-google-analytics',
 			options: {
@@ -141,11 +121,8 @@ module.exports = {
 		{
 			resolve: '@gatsby-contrib/gatsby-plugin-elasticlunr-search',
 			options: {
-			  // Fields to index
 			  fields: [`description`, `excerpt`,  `path`, `tags`,`title`, `markdown`],
-			  // How to resolve each field`s value for a supported node type
 			  resolvers: {
-				// For any node of type MarkdownRemark, list how to resolve the fields` values
 				MarkdownRemark: {
 				  description: node => node.frontmatter.description,
 				  excerpt: node => {
@@ -159,7 +136,6 @@ module.exports = {
 				  markdown: node => node.rawMarkdownBody
 				},
 			  },
-			  // Optional filter to limit indexed nodes
 			  filter: (node, getNode) =>
 				node.frontmatter.tags !== 'exempt',
 			},
