@@ -1,0 +1,25 @@
+.searchContainer {
+	position: relative;
+
+	.searchResultsContainer {
+		position: absolute;
+		top: 2em;
+		background: #FFF;
+		border-radius: 4px;
+		border: 1px solid gray;
+		z-index: 1;
+		list-style: none;
+		margin: 0;
+		padding: 1em;
+
+		.searchResultsItem {
+			border-bottom: 1px solid gray;
+			padding: 1em 0;
+			text-decoration: none;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+}
