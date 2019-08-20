@@ -1,6 +1,8 @@
 const clay = require('clay-css');
 const path = require('path');
 const fs = require('fs');
+const remark = require('remark');
+const stripMarkdown = require('strip-markdown');
 
 require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
@@ -10,26 +12,6 @@ const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
 
 module.exports = {
 	plugins: [
-		{
-			resolve: '@gatsby-contrib/gatsby-plugin-elasticlunr-search',
-			options: {
-			  // Fields to index
-			  fields: [`title`, `tags`, `description`],
-			  // How to resolve each field`s value for a supported node type
-			  resolvers: {
-				// For any node of type MarkdownRemark, list how to resolve the fields` values
-				MarkdownRemark: {
-				  title: node => node.frontmatter.title,
-				  tags: node => node.frontmatter.tags,
-				  path: node => node.frontmatter.path,
-				  description: node => node.frontmatter.description
-				},
-			  },
-			  // Optional filter to limit indexed nodes
-			  filter: (node, getNode) =>
-				node.frontmatter.tags !== 'exempt',
-			},
-		  },
 		{
 			resolve: "gatsby-source-google-docs",
 			options: {
@@ -155,6 +137,32 @@ module.exports = {
 				globPatterns: ['**/*.{js,jpg,png,gif,html,css,svg}'],
 			},
 		},
-		'gatsby-plugin-zopfli'
+		'gatsby-plugin-zopfli',
+		{
+			resolve: '@gatsby-contrib/gatsby-plugin-elasticlunr-search',
+			options: {
+			  // Fields to index
+			  fields: [`description`, `excerpt`,  `path`, `tags`,`title`, `markdown`],
+			  // How to resolve each field`s value for a supported node type
+			  resolvers: {
+				// For any node of type MarkdownRemark, list how to resolve the fields` values
+				MarkdownRemark: {
+				  description: node => node.frontmatter.description,
+				  excerpt: node => {
+					  const text = remark().use(stripMarkdown).processSync(node.rawMarkdownBody);
+					  const excerptLength = 140;
+					  return String(text).substring(0, excerptLength) + "...";
+				  },
+				  path: node => node.fields.slug,
+				  tags: node => node.frontmatter.tags,
+				  title: node => node.frontmatter.title,
+				  markdown: node => node.rawMarkdownBody
+				},
+			  },
+			  // Optional filter to limit indexed nodes
+			  filter: (node, getNode) =>
+				node.frontmatter.tags !== 'exempt',
+			},
+		  }
 	],
 };

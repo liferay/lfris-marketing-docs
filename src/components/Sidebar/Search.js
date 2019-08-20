@@ -16,13 +16,23 @@ export default class Search extends Component {
     return (
       <div>
         <input type="text" value={this.state.query} onChange={this.search} />
+
         <ul>
           {this.state.results.map(page => (
             <li key={page.id}>
-              <Link to={"/" + page.path}>{page.title}</Link>
-			</li>
+              <Link to={page.path}>
+                  <h4>
+                    {page.title}
+                  </h4>
+
+                  <span>
+                    {page.description ? page.description : page.excerpt}
+                  </span>
+              </Link>
+            </li>
           ))}
         </ul>
+
       </div>
     )
   }
@@ -38,10 +48,10 @@ export default class Search extends Component {
     this.setState({
       query,
       // Query the index with search string to get an [] of IDs
-      results: this.index
-        .search(query, {})
-        // Map over each ID and return the full document
-        .map(({ ref }) => this.index.documentStore.getDoc(ref)),
-    })
+	  results: this.index
+		.search(query, { expand: true }) // Accept partial matches
+		// Map over each ID and return the full document
+		.map(({ ref }) => this.index.documentStore.getDoc(ref)),
+	})
   }
 }

@@ -29,7 +29,7 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 		let slug = path;
 
 		if (!slug) {
-			slug = relativePath.replace('.md', '.html');
+			slug = relativePath.replace('.md', '');
 		}
 
 		createNodeField({
