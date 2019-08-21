@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import styles from './styles.module.scss'
 
 // Search component
@@ -16,8 +16,10 @@ export default class Search extends Component {
   render() {
     const entryNumber = 5;
 
+    const childClass = (this.props.childClass ? styles[this.props.childClass] : '')
+
     return (
-      <div className={styles.searchContainer}>
+      <div className={childClass + ' ' + styles.searchContainer}>
         <input type="text" value={this.state.query} onChange={this.search} />
 
         {this.state.results.length > 0 ?
@@ -50,6 +52,7 @@ export default class Search extends Component {
 
   search = evt => {
     const query = evt.target.value
+
     this.index = this.getOrCreateIndex()
     this.setState({
       query,

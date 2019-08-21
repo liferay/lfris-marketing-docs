@@ -1,7 +1,7 @@
 import { StaticQuery, graphql } from 'gatsby';
 import Navigation from './Navigation';
 import React from 'react';
-import Search from './Search';
+import Search from '../Search';
 
 const SideNavRef = React.createRef();
 
@@ -106,7 +106,7 @@ export default (props) => (
 				<nav className={navbarClasses} id="clay-sidebar">
 					<SideNavScroll>
 						<div className="sidebar-body mb-auto mt-5">
-							<Search searchIndex={data.siteSearchIndex.index} />
+							<Search childClass="sidebarWrapper"  searchIndex={data.siteSearchIndex.index} />
 
 							<Navigation sectionList={getTree(data)} location={props.location} />
 						</div>
