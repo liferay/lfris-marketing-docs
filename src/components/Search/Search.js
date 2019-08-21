@@ -43,7 +43,7 @@ export default class Search extends Component {
         Index.load(this.props.searchIndex)
 
   search = (evt) => {
-    navigate(`/search?keywords=${encodeURIComponent(evt.target.value)}`)
+    // navigate(`/search?keywords=${encodeURIComponent(evt.target.value)}`)
     
     const query = evt.target.value;
 
