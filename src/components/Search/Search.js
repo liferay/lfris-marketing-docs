@@ -42,9 +42,7 @@ export default class Search extends Component {
       : // Create an elastic lunr index and hydrate with graphql query results
         Index.load(this.props.searchIndex)
 
-  search = (evt) => {
-    // navigate(`/search?keywords=${encodeURIComponent(evt.target.value)}`)
-    
+  search = (evt) => {    
     const query = evt.target.value;
 
     this.index = this.getOrCreateIndex()
