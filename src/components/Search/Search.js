@@ -2,14 +2,17 @@ import React, { Component } from "react"
 import { Index } from "elasticlunr"
 import { Link, navigate } from "gatsby"
 import styles from './styles.module.scss'
+import SearchResults from './SearchResults'
+import SearchForm from './SearchForm'
 
-// Search component
 export default class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      query: ``,
-      results: [],
+      query: new URLSearchParams(this.props.location.search).get("keywords") || '',
+      results: Index.load(this.props.searchIndex)
+      .search((new URLSearchParams(this.props.location.search).get("keywords") || ''), { expand: true })
+      .map(({ ref }) => Index.load(this.props.searchIndex).documentStore.getDoc(ref)),
     }
   }
 
@@ -18,26 +21,15 @@ export default class Search extends Component {
 
     const childClass = (this.props.childClass ? styles[this.props.childClass] : '')
 
-    return (
+    return (    
       <div className={childClass + ' ' + styles.searchContainer}>
-        <input type="text" value={this.state.query} onChange={this.search} />
+        {console.log('results: ' + this.state.results)}
+        {console.log('query: ' + this.state.query)}
+
+        <SearchForm query={this.state.query} onChangeEvent={evt => this.search(evt, this.state.query)} />
 
         {this.state.results.length > 0 ?
-          <ul className={styles.searchResultsContainer}>
-          {this.state.results.slice(0, entryNumber).map(page => (
-            <li className={styles.searchResultsItem} key={page.id}>
-              <Link to={page.path}>
-                  <h4>
-                    {page.title}
-                  </h4>
-
-                  <span>
-                    {page.description ? page.description : page.excerpt}
-                  </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <SearchResults results={this.state.results} entryNumber={entryNumber} />
         :
         ''
         }
@@ -50,17 +42,18 @@ export default class Search extends Component {
       : // Create an elastic lunr index and hydrate with graphql query results
         Index.load(this.props.searchIndex)
 
-  search = evt => {
-    const query = evt.target.value
+  search = (evt) => {
+    navigate(`/search?keywords=${encodeURIComponent(evt.target.value)}`)
+    
+    const query = evt.target.value;
 
     this.index = this.getOrCreateIndex()
+
     this.setState({
       query,
-      // Query the index with search string to get an [] of IDs
-	  results: this.index
-		.search(query, { expand: true }) // Accept partial matches
-		// Map over each ID and return the full document
-		.map(({ ref }) => this.index.documentStore.getDoc(ref)),
-	})
+	    results: this.index
+      .search(query, { expand: true })
+      .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+	  })
   }
 }
