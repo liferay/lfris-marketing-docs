@@ -20,7 +20,7 @@ export default class Search extends Component {
   }
 
   handleInputBlur(evt) {
-    if(this.props.location.pathname != '/search') {
+    if(!this.props.location.pathname.includes('/search')) {
       this.setState({
         results: ''
       })  
@@ -36,7 +36,7 @@ export default class Search extends Component {
     const entryNumber = 5;
 
     return (    
-      <div className={childClass + ' ' + styles.searchContainer}>
+      <div className={childClass + ' ' + styles.searchContainer} onblur={this.handleInputBlur}>
 
         <SearchForm inputFocusEvent={this.handleInputFocus} inputBlurEvent={this.handleInputBlur} query={this.state.query} onChangeEvent={evt => this.search(evt, this.state.query)} />
 

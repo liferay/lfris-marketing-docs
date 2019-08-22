@@ -6,7 +6,7 @@ const SearchResults = ({ results, entryNumber }) => (
   <ul className={styles.searchResultsContainer}>
   {results.slice(0, entryNumber).map(page => (
     <li className={styles.searchResultsItem} key={page.id}>
-      <Link to={page.path}>
+      <Link to={`${page.path}`}>
           <h4>
             {page.title}
           </h4>

@@ -1,10 +1,14 @@
 import React from "react"
-import { navigate, withPrefix } from "gatsby"
+import { withPrefix } from "gatsby"
+import { navigate } from "@reach/router"
 import styles from "./styles.module.scss"
 
-const SearchForm = ({ query, onChangeEvent, inputBlurEvent, inputFocusEvent }) => (
-  <form className={styles.searchForm} role="search" method="GET" onSubmit={evt => navigate(`/search?keywords=${encodeURIComponent(evt.target.value)}`)
-}>
+const SearchForm = ({ query, onChangeEvent, inputFocusEvent }) => (
+  <form
+  className={styles.searchForm}
+  role="search" method="GET"
+  onSubmit={evt => navigate(`/search?keywords=${encodeURIComponent(query)}`)}
+  >
     <input
       className={styles.searchInput}
       type="search"
@@ -13,7 +17,6 @@ const SearchForm = ({ query, onChangeEvent, inputBlurEvent, inputFocusEvent }) =
       aria-controls="search-results-count"
       onChange={onChangeEvent}
       value={query}
-      onBlur={inputBlurEvent}
       onFocus={inputFocusEvent}
     />
     <button className={styles.searchButton} type="submit">
