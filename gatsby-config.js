@@ -59,7 +59,12 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-meta-redirect',
-		'gatsby-plugin-remove-trailing-slashes',
+		{
+			resolve: "gatsby-plugin-force-trailing-slashes",
+			options: {
+				excludedPaths: ['/search'],
+			}
+		},
 		{
 			resolve: 'gatsby-plugin-sass',
 			options: {
