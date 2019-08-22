@@ -5,7 +5,6 @@ import styles from './styles.module.scss'
 class DeployButton extends React.Component {
 	handleDeploy = event => {
 		axios.post(this.props.deployHook, {})
-		console.log(this.props.deployHook);
 	}
 
     render() {

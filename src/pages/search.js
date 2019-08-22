@@ -35,7 +35,7 @@ class search extends React.Component {
 								`}
 								render={data => {
 									return (
-										<Search location={this.props.location} searchIndex={data.siteSearchIndex.index} />
+										<Search location={this.props.location} childClass="searchPage"  searchIndex={data.siteSearchIndex.index} />
 									)}
 								}
 							/>						

@@ -14,6 +14,10 @@ const SearchResults = ({ results, entryNumber }) => (
           <span>
             {page.description ? page.description : page.excerpt}
           </span>
+
+          <div>
+            {page.path ? page.path : ''}
+          </div>
       </Link>
     </li>
   ))}
