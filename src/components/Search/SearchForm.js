@@ -1,23 +1,23 @@
 import React from "react"
-import { withPrefix } from "gatsby"
-import { navigate } from "@reach/router"
 import styles from "./styles.module.scss"
+import { navigate } from "@reach/router"
+import { withPrefix } from "gatsby"
 
 const SearchForm = ({ query, onChangeEvent, inputFocusEvent }) => (
   <form
-  className={styles.searchForm}
-  role="search" method="GET"
-  onSubmit={evt => navigate(`/search?keywords=${encodeURIComponent(query)}`)}
+    className={styles.searchForm}
+    onSubmit={evt => navigate(`/search?keywords=${encodeURIComponent(query)}`)}
+    role="search" method="GET"
   >
     <input
+      aria-controls="search-results-count"
       className={styles.searchInput}
-      type="search"
       id="search-input"
       name="keywords"
-      aria-controls="search-results-count"
       onChange={onChangeEvent}
-      value={query}
       onFocus={inputFocusEvent}
+      type="search"
+      value={query}
     />
     <button className={styles.searchButton} type="submit">
       <svg className="lexicon-icon">

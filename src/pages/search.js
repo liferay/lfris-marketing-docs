@@ -1,11 +1,11 @@
-import React from 'react';
-import LayoutNav from '../components/LayoutNav';
-import Footer from '../components/Footer';
 import Auth from '../components/Auth';
-import styles from './styles.module.scss';
-import { getUserAuthentication } from '../services/auth';
-import { StaticQuery } from 'gatsby';
+import Footer from '../components/Footer';
+import LayoutNav from '../components/LayoutNav';
+import React from 'react';
 import Search from '../components/Search'
+import styles from './styles.module.scss';
+import { StaticQuery } from 'gatsby';
+import { getUserAuthentication } from '../services/auth';
 
 class search extends React.Component {
 	constructor(props) {
@@ -33,6 +33,7 @@ class search extends React.Component {
 										}
 									}
 								`}
+
 								render={data => {
 									return (
 										<Search location={this.props.location} childClass="searchPage"  searchIndex={data.siteSearchIndex.index} />
