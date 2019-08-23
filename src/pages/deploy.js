@@ -16,7 +16,6 @@ class Deploy extends React.Component {
 	}
     render() {
         return (
-			<Auth needsAuth={true} isAuthenticated={this.state.isAuthenticated}>
 				<div className="deploy-page">
 					<main className="content">
 						<header className="header">
@@ -56,7 +55,6 @@ class Deploy extends React.Component {
 						</section>
 					</main>
 				</div>
-			</Auth>
     )};
 }
 
