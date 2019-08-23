@@ -5,7 +5,6 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 		let {
 			alwaysActive,
 			path,
-			redirect,
 			title,
 			order,
 			date,
@@ -60,12 +59,6 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 			node,
 			name: 'order',
 			value: order,
-		});
-
-		createNodeField({
-			node,
-			name: 'redirect',
-			value: redirect,
 		});
 
 		createNodeField({

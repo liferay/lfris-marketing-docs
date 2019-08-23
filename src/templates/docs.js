@@ -70,6 +70,7 @@ export default class Docs extends React.Component {
                     <header>
                         <LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} onNavbarToggleClick={this.docsNavbarToggleClick.bind(this)} />
                     </header>
+
                     <main className="content">
                         <Sidebar location={location} navbarToggled={this.state.navbarToggled} />
                         <div className="sidebar-offset">
