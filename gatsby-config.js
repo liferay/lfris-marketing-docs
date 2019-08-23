@@ -58,7 +58,7 @@ module.exports = {
 				]
 			},
 		},
-		'gatsby-plugin-meta-redirect',
+		'gatsby-plugin-remove-trailing-slashes',
 		{
 			resolve: 'gatsby-plugin-sass',
 			options: {
@@ -109,12 +109,6 @@ module.exports = {
 						"type": "image/png"
 					}
 				]
-			},
-		},
-		{
-			resolve: 'gatsby-plugin-offline',
-			options: {
-				globPatterns: ['**/*.{js,jpg,png,gif,html,css,svg}'],
 			},
 		},
 		'gatsby-plugin-zopfli',

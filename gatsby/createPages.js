@@ -4,51 +4,31 @@
 const path = require('path');
 
 const createPages = (actions, edges, scope) => {
-	const {createPage, createRedirect} = actions;
+	const {createPage} = actions;
 
 	edges.forEach(({node}, index) => {
-		const {slug, redirect, mainPage} = node.fields;
+		const {slug} = node.fields;
 
 		const templateKey = 'docs';
 
-		if (redirect || mainPage) {
-			const slugWithBar = slug.startsWith('/') ? slug : `/${slug}`;
-			const fromPath = slugWithBar.endsWith('index.html') ? slugWithBar.replace('index.html', '') : slugWithBar;
+		let previous = index === 0 ? false : edges[index - 1].node;
+		let next = index === edges.length - 1 ? false : edges[index + 1].node;
 
-			const toPath = mainPage ? slugWithBar : redirect;
-
-			createRedirect({
-				fromPath,
-				isPermanent: true,
-				redirectInBrowser: true,
-				toPath: toPath,
-			});
-		}
-
-		if (!redirect) {
-			let previous = index === 0 ? false : edges[index - 1].node;
-			let next = index === edges.length - 1 ? false : edges[index + 1].node;
-
-			let slugPath = slug.replace('.html', '')
-			createPage({
-				path: slugPath,
-				component: path.resolve(__dirname, `../src/templates/${templateKey}.js`),
-				context: {
-					slug,
-					previous,
-					next,
-				},
-			});
-		}
+		let slugPath = slug.replace('.html', '')
+		createPage({
+			path: slugPath,
+			component: path.resolve(__dirname, `../src/templates/${templateKey}.js`),
+			context: {
+				slug,
+				previous,
+				next,
+			},
+		});
 	});
 };
 
 module.exports = async ({actions, graphql}) => {
-	actions.createRedirect({
-		fromPath: '/index.html',
-		redirectInBrowser: true,
-		toPath: '/',
-	});
+
 
 	return graphql(
 		`

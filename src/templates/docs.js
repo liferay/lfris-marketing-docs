@@ -46,7 +46,7 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={false} isAuthenticated={this.state.isAuthenticated}>
+            <Auth needsAuth={needsAuth}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
@@ -65,6 +65,7 @@ export default class Docs extends React.Component {
                     <header>
                         <LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} onNavbarToggleClick={this.docsNavbarToggleClick.bind(this)} />
                     </header>
+
                     <main className="content">
                         <Sidebar location={location} navbarToggled={this.state.navbarToggled} />
                         <div className="sidebar-offset">
