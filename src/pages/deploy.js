@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 class Deploy extends React.Component {
     render() {
         return (
-			<Auth needsAuth={false}>
+			<Auth needsAuth={true}>
 				<div className="deploy-page">
 					<main className="content">
 						<header className="header">
