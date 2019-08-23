@@ -60,12 +60,6 @@ module.exports = {
 		},
 		'gatsby-plugin-meta-redirect',
 		{
-			resolve: "gatsby-plugin-force-trailing-slashes",
-			options: {
-				excludedPaths: ['/search'],
-			}
-		},
-		{
 			resolve: 'gatsby-plugin-sass',
 			options: {
 				precision: 8,

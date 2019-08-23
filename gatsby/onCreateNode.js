@@ -47,7 +47,7 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 		createNodeField({
 			node,
 			name: 'slug',
-			value: slug + '/',
+			value: slug,
 		});
 
 		createNodeField({
