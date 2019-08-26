@@ -8,6 +8,8 @@ import LayoutNav from '../components/LayoutNav';
 import CodeTabs from '../components/CodeTabs';
 import CodeClipboard from '../components/CodeClipboard';
 
+import Auth from '../components/Auth'
+
 export default class Docs extends React.Component {
     constructor(props) {
         super(props);
@@ -26,8 +28,6 @@ export default class Docs extends React.Component {
         this._codeClipboard.dispose();
     }
 
-
-
     docsNavbarToggleClick() {
         this.setState(prevState => ({
             navbarToggled: !prevState.navbarToggled
@@ -40,6 +40,7 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
+            <Auth needsAuth={needsAuth}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
@@ -81,6 +82,7 @@ export default class Docs extends React.Component {
                         </div>
                     </main>
                 </div>
+            </Auth>
         );
     }
 }
