@@ -1,13 +1,15 @@
-import React from 'react';
-import LayoutNav from '../components/LayoutNav';
-import Footer from '../components/Footer';
+import Auth from '../components/Auth'
 import DeployButton from '../components/DeployButton'
+import Footer from '../components/Footer';
+import LayoutNav from '../components/LayoutNav';
+import React from 'react';
 import styles from './styles.module.scss';
 
 class Deploy extends React.Component {
     render() {
         return (
-				<div className="deploy-page">
+			<div className="deploy-page">
+				<Auth needsAuth={true}>
 					<main className="content">
 						<header className="header">
 							<LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} />
@@ -45,7 +47,8 @@ class Deploy extends React.Component {
 							<Footer />
 						</section>
 					</main>
-				</div>
+				</Auth>
+			</div>
     )};
 }
 
