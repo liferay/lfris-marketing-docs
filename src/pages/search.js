@@ -1,3 +1,4 @@
+import Auth from '../components/Auth'
 import Footer from '../components/Footer';
 import LayoutNav from '../components/LayoutNav';
 import React from 'react';
@@ -16,7 +17,8 @@ class search extends React.Component {
 
     render() {
         return (
-				<div className="deploy-page">
+			<div className="deploy-page">
+				<Auth needsAuth={true}>
 					<main className="content">
 						<header className="header">
 							<LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} />
@@ -44,7 +46,8 @@ class search extends React.Component {
 							<Footer />
 						</section>
 					</main>
-				</div>
+				</Auth>
+			</div>
     )};
 }
 

@@ -1,14 +1,12 @@
-import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
-import React from 'react';
-
-import SimpleFooter from '../components/SimpleFooter';
-import Sidebar from '../components/Sidebar';
-import LayoutNav from '../components/LayoutNav';
-import CodeTabs from '../components/CodeTabs';
-import CodeClipboard from '../components/CodeClipboard';
-
 import Auth from '../components/Auth'
+import CodeClipboard from '../components/CodeClipboard';
+import CodeTabs from '../components/CodeTabs';
+import Helmet from 'react-helmet';
+import LayoutNav from '../components/LayoutNav';
+import React from 'react';
+import Sidebar from '../components/Sidebar';
+import SimpleFooter from '../components/SimpleFooter';
+import { graphql } from 'gatsby';
 
 export default class Docs extends React.Component {
     constructor(props) {
@@ -40,8 +38,8 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={needsAuth}>
-                <div className="docs">
+            <div className="docs">
+                <Auth needsAuth={needsAuth}>
                     <Helmet>
                         <title>{title}</title>
                         <meta name="description" content={excerpt} />
@@ -81,8 +79,8 @@ export default class Docs extends React.Component {
                             <SimpleFooter editContentURL={process.env.EDIT_CONTENT_URL} issuesURL={process.env.ISSUES_URL} slug={this.props["*"]}/>
                         </div>
                     </main>
-                </div>
-            </Auth>
+                </Auth>
+            </div>
         );
     }
 }
