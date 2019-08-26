@@ -7,7 +7,6 @@ import Sidebar from '../components/Sidebar';
 import LayoutNav from '../components/LayoutNav';
 import CodeTabs from '../components/CodeTabs';
 import CodeClipboard from '../components/CodeClipboard';
-import { logout } from '../services/auth';
 
 export default class Docs extends React.Component {
     constructor(props) {
@@ -27,11 +26,7 @@ export default class Docs extends React.Component {
         this._codeClipboard.dispose();
     }
 
-    _handleLogout() {
-        logout().then(() => {
-            this.forceUpdate();
-        });
-    }
+
 
     docsNavbarToggleClick() {
         this.setState(prevState => ({
