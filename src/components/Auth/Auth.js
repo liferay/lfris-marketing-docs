@@ -12,7 +12,7 @@ class Auth extends React.Component {
 
     render() {
 		return (
-			!getUserAuthentication() ? 
+			(this.props.needsAuth && !getUserAuthentication()) ? 
 			(<div className={styles.authContainer}>
 				<div className={styles.authLoginContainer}>
 					<h3 className={styles.authLoginWarning}>You must be a Liferay Employee to view this page</h3>
