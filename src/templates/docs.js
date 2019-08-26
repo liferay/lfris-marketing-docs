@@ -7,7 +7,6 @@ import Sidebar from '../components/Sidebar';
 import LayoutNav from '../components/LayoutNav';
 import CodeTabs from '../components/CodeTabs';
 import CodeClipboard from '../components/CodeClipboard';
-import Auth from '../components/Auth';
 import { logout } from '../services/auth';
 
 export default class Docs extends React.Component {
@@ -46,7 +45,6 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-            <Auth needsAuth={needsAuth}>
                 <div className="docs">
                     <Helmet>
                         <title>{title}</title>
@@ -88,7 +86,6 @@ export default class Docs extends React.Component {
                         </div>
                     </main>
                 </div>
-            </Auth>
         );
     }
 }

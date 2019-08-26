@@ -86,6 +86,12 @@ module.exports = {
 				trackingId: process.env.GA_TRACKING_ID,
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-layout',
+			options: {
+				component: require.resolve('./src/components/Auth')
+			}
+		},
 		'gatsby-plugin-netlify-cms',
 		'gatsby-plugin-react-helmet',
 		{

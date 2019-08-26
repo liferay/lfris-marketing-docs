@@ -1,4 +1,3 @@
-import Auth from '../components/Auth';
 import Footer from '../components/Footer';
 import LayoutNav from '../components/LayoutNav';
 import React from 'react';
@@ -17,7 +16,6 @@ class search extends React.Component {
 
     render() {
         return (
-			<Auth needsAuth={true} isAuthenticated={this.state.isAuthenticated}>
 				<div className="deploy-page">
 					<main className="content">
 						<header className="header">
@@ -47,7 +45,6 @@ class search extends React.Component {
 						</section>
 					</main>
 				</div>
-			</Auth>
     )};
 }
 

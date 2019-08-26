@@ -26,7 +26,7 @@ class Auth extends React.Component {
 	}
 
     render() {
-        if (this.props.needsAuth && !this.state.isAuthenticated) {
+        if (!this.state.isAuthenticated) {
             return (
 				<div className={styles.authContainer}>
 					<div className={styles.authLoginContainer}>

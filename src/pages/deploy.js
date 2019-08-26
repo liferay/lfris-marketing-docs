@@ -2,13 +2,11 @@ import React from 'react';
 import LayoutNav from '../components/LayoutNav';
 import Footer from '../components/Footer';
 import DeployButton from '../components/DeployButton'
-import Auth from '../components/Auth';
 import styles from './styles.module.scss';
 
 class Deploy extends React.Component {
     render() {
         return (
-			<Auth needsAuth={true}>
 				<div className="deploy-page">
 					<main className="content">
 						<header className="header">
@@ -48,7 +46,6 @@ class Deploy extends React.Component {
 						</section>
 					</main>
 				</div>
-			</Auth>
     )};
 }
 
