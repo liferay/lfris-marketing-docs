@@ -52,6 +52,9 @@ module.exports = {
 							},
 							"p": {
 								className: "documentation-p",
+							},
+							"table": {
+								className: "table table-autofit table-hover table-bordered table-valign-top"
 							}
 						}
 					  }
