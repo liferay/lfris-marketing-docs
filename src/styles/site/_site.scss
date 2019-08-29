@@ -1,6 +1,6 @@
 body {
 	background-color: $bg-color;
-	font-size: 1rem;
+	font: 400 16px/1.5 $font-family-system;
 
     .bg-primary, .btn-primary {
         background-color: $brand-primary !important;
