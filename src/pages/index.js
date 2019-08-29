@@ -16,7 +16,7 @@ class Index extends React.Component {
     }
 
     render() {
-        const description = "Start using Gatsby for make powerful static sites";
+        const description = "Empowering Liferay Marketing";
 
         return (
             <div className="home">

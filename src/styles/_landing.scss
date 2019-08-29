@@ -111,19 +111,20 @@
     }
 
     .h1 {
-        font-size: 36px;
+        color: $brand-light;
+        font-size: 32px;
         font-weight: 900;
         line-height: 1;
         margin: 52px 0 24px;
         word-break: normal;
 
         @include media-breakpoint-up(sm) {
-            font-size: 64px;
+            font-size: 42px;
         }
 
         @include media-breakpoint-up(lg) {
-            font-size: 96px;
-            margin-bottom: 48px;
+            font-size: 52px;
+            margin-bottom: 30px;
         }
     }
 
