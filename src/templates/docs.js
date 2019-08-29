@@ -61,12 +61,6 @@ export default class Docs extends React.Component {
                     <main className="content">
                         <Sidebar location={location} navbarToggled={this.state.navbarToggled} />
                         <div className="sidebar-offset">
-                            <header>
-                                <div className="clay-site-container container-fluid">
-                                    <h1>{title}</h1>
-                                </div>
-                            </header>
-
                             <div className="clay-site-container container-fluid">
                                 <div className="row">
                                     <div className="col-md-12">
