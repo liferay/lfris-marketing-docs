@@ -17,7 +17,7 @@ class search extends React.Component {
 
     render() {
         return (
-			<div className="deploy-page">
+			<div className="search-page">
 				<Auth needsAuth={true}>
 					<main className="content">
 						<header className="header">
