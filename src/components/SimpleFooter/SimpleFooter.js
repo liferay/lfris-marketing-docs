@@ -13,7 +13,7 @@ const SimpleFooter = (props) => {
                 </div>
                 <div className="col-6 p-md-0">
                     <ul className="social-icons">
-                        <li className="mr-2">
+                        {/* <li className="mr-2">
                             <a className="rounded-circle sticker sticker-secondary" href={issuesURL} target="_blank" rel="noopener noreferrer">
                                 <svg aria-hidden="true" className="lexicon-icon lexicon-icon-bars">
                                     <use xlinkHref={withPrefix("images/icons/icons.svg#comments")} />
@@ -21,10 +21,10 @@ const SimpleFooter = (props) => {
                             </a>
                         </li>
                         <li>
-                            <a className="rounded-circle sticker sticker-secondary" href={`${editContentURL}/${slug.replace("html", "md")}`} target="_blank" rel="noopener noreferrer">
+                            <a className="rounded-circle sticker sticker-secondary" href="#" target="_blank" rel="noopener noreferrer">
                                 <img src={withPrefix("images/home/GitHub-Mark-64px.svg")} alt="Github Logo" />
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
