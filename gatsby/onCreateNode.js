@@ -25,6 +25,10 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode}) => {
 			needsAuth = true;
 		}
 
+		if (process.env.NODE_ENV === 'development') {
+			needsAuth = false;
+		}
+
 		let slug = path;
 
 		if (!slug) {

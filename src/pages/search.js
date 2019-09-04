@@ -16,9 +16,15 @@ class search extends React.Component {
 	}
 
     render() {
+		let needsAuth = true;
+
+		if (process.env.NODE_ENV === 'development') {
+			needsAuth = false;
+		}
+
         return (
 			<div className="search-page">
-				<Auth needsAuth={true}>
+				<Auth needsAuth={needsAuth}>
 					<main className="content">
 						<header className="header">
 							<LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} />
