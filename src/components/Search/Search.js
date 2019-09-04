@@ -37,9 +37,6 @@ export default class Search extends Component {
 
     return (    
       <div className={childClass + ' ' + styles.searchContainer} onblur={this.handleInputBlur}>
-
-        {console.log(this.props.location)}
-
         <SearchForm inputFocusEvent={this.handleInputFocus} inputBlurEvent={this.handleInputBlur} query={this.state.query} onChangeEvent={evt => this.search(evt, this.state.query)} />
 
         {this.state.results.length > 0 ?
