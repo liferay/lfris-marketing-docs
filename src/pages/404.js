@@ -1,8 +1,7 @@
-import Footer from '../components/Footer';
-import LayoutNav from '../components/LayoutNav';
 import React from 'react';
-import { withPrefix } from 'gatsby';
 import styles from './styles.module.scss';
+import { Footer, LayoutNav } from 'components/organisms';
+import { withPrefix } from 'gatsby';
 
 const ErrorPage = ({ location }) => (
     <div className="error-page">

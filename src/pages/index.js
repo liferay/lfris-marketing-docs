@@ -1,9 +1,8 @@
-import React from 'react';
 import Helmet from 'react-helmet';
+import React from 'react';
+import { Footer, LayoutNav } from 'components/organisms';
+import { WOW } from 'wowjs';
 import { withPrefix, Link } from 'gatsby';
-import LayoutNav from '../components/LayoutNav';
-import {WOW} from 'wowjs';
-import Footer from '../components/Footer';
 
 class Index extends React.Component {
     componentDidMount() {
