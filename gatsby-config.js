@@ -11,6 +11,12 @@ require("dotenv").config({
 const folderId = JSON.parse(process.env.GATSBY_FOLDER_ID);
 
 module.exports = {
+	siteMetadata: {
+		title: 'Marketing Documentation',
+		author: 'IS Marketing',
+		description:
+			'All your marketing documentation needs in one place',
+	},
 	plugins: [
 		{
 			resolve: "gatsby-source-google-docs",
