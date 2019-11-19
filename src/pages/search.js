@@ -1,11 +1,9 @@
-import Auth from '../components/Auth'
-import Footer from '../components/Footer';
-import LayoutNav from '../components/LayoutNav';
 import React from 'react';
-import Search from '../components/Search'
 import styles from './styles.module.scss';
+import { Auth, Search } from 'components/molecules'
+import { Footer, LayoutNav } from 'components/organisms';
 import { StaticQuery } from 'gatsby';
-import { getUserAuthentication } from '../services/auth';
+import { getUserAuthentication } from 'services/auth';
 
 class search extends React.Component {
 	constructor(props) {

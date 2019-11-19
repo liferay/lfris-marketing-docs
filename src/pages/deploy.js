@@ -1,9 +1,7 @@
-import Auth from '../components/Auth'
-import DeployButton from '../components/DeployButton'
-import Footer from '../components/Footer';
-import LayoutNav from '../components/LayoutNav';
 import React from 'react';
 import styles from './styles.module.scss';
+import { Auth, DeployButton } from 'components/molecules'
+import { Footer, LayoutNav } from 'components/organisms';
 
 class Deploy extends React.Component {
     render() {

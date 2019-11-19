@@ -9,15 +9,13 @@ const createPages = (actions, edges, scope) => {
 	edges.forEach(({node}, index) => {
 		const {slug} = node.fields;
 
-		const templateKey = 'docs';
-
 		let previous = index === 0 ? false : edges[index - 1].node;
 		let next = index === edges.length - 1 ? false : edges[index + 1].node;
 
 		let slugPath = slug.replace('.html', '')
 		createPage({
 			path: slugPath,
-			component: path.resolve(__dirname, `../src/templates/${templateKey}.js`),
+			component: path.resolve(__dirname, `../src/components/templates/Articles/index.js`),
 			context: {
 				slug,
 				previous,

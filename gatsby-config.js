@@ -62,6 +62,7 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-remove-trailing-slashes',
+		'gatsby-plugin-resolve-src',
 		{
 			resolve: 'gatsby-plugin-sass',
 			options: {

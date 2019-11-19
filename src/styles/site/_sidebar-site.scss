@@ -164,6 +164,23 @@
 			border-radius: 6px;
 			font-weight: 600;
 		}
+		
+
+		& > li > ul > li.active > a {
+			position: relative;
+
+			&:before {
+				background-color: #004AD7;
+				border-radius: 0 8px 8px 0;
+				content: "";
+				display: block;
+				height: 100%;
+				left: -24px;
+				position: absolute;
+				top: 0;
+				width: 3px;
+			}
+		}
 
 		& > li > ul > li.active > a:focus,
 		& > li > a:focus,
