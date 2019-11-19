@@ -1,0 +1,28 @@
+.nav {
+	align-items: center;
+	background-color: #134194;
+	color: #FFF;
+	display: flex;
+	justify-content: space-between;
+	padding: 1.5rem;
+	position: fixed;
+	top: 0;
+	width: 100%;
+
+	.logo {
+		padding-right: 0.5rem;
+	}
+
+	.titleContainer {
+		display: flex;
+		align-items: center;
+	}
+
+	.navTitle {
+		color: #FFF;
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 28px;
+		margin-bottom: 0;
+	}
+}
