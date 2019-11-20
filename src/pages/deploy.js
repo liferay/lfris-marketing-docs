@@ -13,7 +13,7 @@ class Deploy extends React.Component {
 		}
 
         return (
-			<MainLayout className="deploy-page">
+			<MainLayout className="deploy-page" location={this.props.location}>
 				<Auth needsAuth={needsAuth}>
 					<section className={`${styles.container}`}>
 						<ol>

@@ -25,7 +25,7 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-            <MainLayout className="docs">
+            <MainLayout className="docs" location={this.props.location}>
                 <Auth needsAuth={needsAuth}>
                     <Sidebar location={location} navbarToggled={this.state.navbarToggled} />
                     <article dangerouslySetInnerHTML={{__html: html}}>

@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import { Footer, LayoutNav } from 'components/organisms';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 
-const MainLayout = ({ className, children }) => {
+const MainLayout = ({ className, children, location }) => {
     const description = "Empowering Liferay Marketing";
 
 	const data = useStaticQuery(
@@ -29,7 +29,7 @@ const MainLayout = ({ className, children }) => {
 				<meta name="og:title" content={process.env.PROJECT_NAME} />
 			</Helmet>
 			<main className={styles.contentWrapper}>
-				<LayoutNav siteTitle={data.site.siteMetadata.title} search={true} />
+				<LayoutNav location={location} siteTitle={data.site.siteMetadata.title} search={true} />
 				<section className={styles.content}>
 					{children}
 				</section>

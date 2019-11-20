@@ -20,7 +20,7 @@ const SearchForm = ({ query, onChangeEvent, inputFocusEvent }) => (
       value={query}
     />
     <button className={styles.searchButton} type="submit">
-      <svg className="lexicon-icon">
+      <svg className={styles.lexiconIcon}>
         <use xlinkHref={withPrefix("images/icons/icons.svg#search")} />
       </svg>
     </button>

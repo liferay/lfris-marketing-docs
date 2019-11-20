@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link, withPrefix, graphql } from 'gatsby';
-
 import { Login, Search } from 'components/molecules';
 import styles from './styles.module.scss'
 
-const LayoutNav = ({ siteTitle }) => {
+const LayoutNav = ({ siteTitle, location }) => {
     return (
         <nav className={styles.nav}>
             <Link to="/" className={styles.titleContainer}>
@@ -13,7 +12,13 @@ const LayoutNav = ({ siteTitle }) => {
                 <h1 className={styles.navTitle}>{siteTitle}</h1>
             </Link>
 
-            <Login />
+            <div className={styles.itemContainer}>
+                {
+                    (location.pathname == "/" || location.pathname == "/search") ? '' :
+                    <Search location={location} childClass={`sidebarWrapper`} />
+                }
+                <Login />
+            </div>
         </nav>
     );
 };
