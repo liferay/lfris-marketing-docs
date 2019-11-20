@@ -1,5 +1,5 @@
 import React from 'react';
-import { Auth, CodeClipboard, CodeTabs} from 'components/molecules'
+import { Auth } from 'components/molecules'
 import { LayoutNav, Sidebar, SimpleFooter} from 'components/organisms';
 import { graphql } from 'gatsby';
 import {Helmet} from 'react-helmet';
@@ -10,16 +10,6 @@ export default class Docs extends React.Component {
         this.state = {
             navbarToggled: false
 		}
-    }
-
-    componentDidMount() {
-        this._codeTabs = new CodeTabs();
-        this._codeClipboard = new CodeClipboard();
-    }
-
-    componentWillUnmount() {
-        this._codeTabs = null;
-        this._codeClipboard.dispose();
     }
 
     docsNavbarToggleClick() {

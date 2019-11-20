@@ -3,20 +3,6 @@ const path = require('path');
 module.exports = ({actions, stage}) => {
 	let module = {};
 
-	if (stage === 'build-html') {
-		module = {
-			rules: [
-				{
-					test: [
-						path.resolve(__dirname, '../node_modules/wowjs'),
-						path.resolve(__dirname, '../node_modules/metal-clipboard')
-					],
-					loader: 'null-loader',
-				},
-			],
-		};
-	}
-
 	actions.setWebpackConfig({
 		module,
 		resolve: {
