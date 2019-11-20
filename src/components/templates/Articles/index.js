@@ -1,6 +1,7 @@
 import React from 'react';
 import { Auth } from 'components/molecules'
 import { LayoutNav, Sidebar, SimpleFooter} from 'components/organisms';
+import { MainLayout } from 'components/layouts'
 import { graphql } from 'gatsby';
 import {Helmet} from 'react-helmet';
 
@@ -24,28 +25,9 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-            <div className="docs">
+            <MainLayout className="docs">
                 <Auth needsAuth={needsAuth}>
-                    <Helmet>
-                        <title>{title}</title>
-                        <meta name="description" content={excerpt} />
-                        <meta name="og:description" content={excerpt} />
-                        <meta name="twitter:description" content={excerpt} />
-                        <meta name="og:title" content={title} />
-                        <meta name="og:type" content="article" />
-                        <meta name="twitter.label1" content="Reading time" />
-                        <meta
-                            name="twitter:data1"
-                            content={`${timeToRead} min read`}
-                        />
-                    </Helmet>
-
-                    <header>
-                        <LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} onNavbarToggleClick={this.docsNavbarToggleClick.bind(this)} />
-                    </header>
-
-                    <main className="content">
-                        <Sidebar location={location} navbarToggled={this.state.navbarToggled} />
+                    <Sidebar location={location} navbarToggled={this.state.navbarToggled} />
                         <div className="sidebar-offset">
                             <div className="clay-site-container container-fluid">
                                 <div className="row">
@@ -55,12 +37,9 @@ export default class Docs extends React.Component {
                                     </div>
                                 </div>
                             </div>
-
-                            <SimpleFooter editContentURL={process.env.EDIT_CONTENT_URL} issuesURL={process.env.ISSUES_URL} slug={this.props["*"]}/>
                         </div>
-                    </main>
                 </Auth>
-            </div>
+            </MainLayout>
         );
     }
 }

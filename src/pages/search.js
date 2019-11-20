@@ -4,6 +4,7 @@ import { Auth, Search } from 'components/molecules'
 import { Footer, LayoutNav } from 'components/organisms';
 import { StaticQuery } from 'gatsby';
 import { getUserAuthentication } from 'services/auth';
+import { MainLayout } from 'components/layouts'
 
 class search extends React.Component {
 	constructor(props) {
@@ -21,23 +22,13 @@ class search extends React.Component {
 		}
 
         return (
-			<div className="search-page">
+			<MainLayout className="search-page">
 				<Auth needsAuth={needsAuth}>
-					<main className="content">
-						<header className="header">
-							<LayoutNav effect={true} static={true} sidebarHamburguerIcon={true} />
-						</header>
-
-						<section className={`container-fluid container-fluid-max-lg ${styles.container}`}>
-							<Search location={this.props.location} childClass="searchPage" />	
-						</section>
-
-						<section className={styles.footerContainer}>
-							<Footer />
-						</section>
-					</main>
+					<section className={`container-fluid container-fluid-max-lg ${styles.container}`}>
+						<Search location={this.props.location} childClass="searchPage" />	
+					</section>
 				</Auth>
-			</div>
+			</MainLayout>
     )};
 }
 
