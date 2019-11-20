@@ -1,9 +1,10 @@
 import React from 'react';
 import { MainLayout } from 'components/layouts';
+import { checkPropTypes } from 'prop-types';
 
-const Index = () =>  {    
+const Index = ({ location }) =>  {    
     return (
-        <MainLayout className='home'>
+        <MainLayout className='home' location={location}>
             test
         </MainLayout>
     );  
