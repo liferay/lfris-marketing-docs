@@ -4,7 +4,7 @@ import { Link, withPrefix, graphql } from 'gatsby';
 import { Login, Search } from 'components/molecules';
 import styles from './styles.module.scss'
 
-const LayoutNav = ({ siteTitle, search }) => {
+const LayoutNav = ({ siteTitle }) => {
     return (
         <nav className={styles.nav}>
             <Link to="/" className={styles.titleContainer}>
@@ -12,8 +12,6 @@ const LayoutNav = ({ siteTitle, search }) => {
 
                 <h1 className={styles.navTitle}>{siteTitle}</h1>
             </Link>
-
-            {/* { search ? <Search  /> : ''} */}
 
             <Login />
         </nav>

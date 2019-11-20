@@ -1,7 +1,6 @@
 import { StaticQuery, graphql } from 'gatsby';
 import Navigation from './Navigation';
 import React from 'react';
-import { Search } from 'components/molecules';
 
 const SideNavRef = React.createRef();
 
@@ -90,9 +89,6 @@ export default (props) => (
 						}
 					}
 				}
-				siteSearchIndex {
-					index
-				}
 			}
 		`}
 		render={data => {
@@ -106,8 +102,6 @@ export default (props) => (
 				<nav className={navbarClasses} id="clay-sidebar">
 					<SideNavScroll>
 						<div className="sidebar-body mb-auto mt-5">
-							<Search location={props.location} childClass="sidebarWrapper"  searchIndex={data.siteSearchIndex.index} />
-
 							<Navigation sectionList={getTree(data)} location={props.location} />
 						</div>
 					</SideNavScroll>

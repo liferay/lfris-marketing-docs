@@ -3,8 +3,9 @@ import SearchForm from './SearchForm'
 import SearchResults from './SearchResults'
 import styles from './styles.module.scss'
 import { Index } from "elasticlunr"
+import { StaticQuery, graphql } from 'gatsby'
 
-export default class Search extends Component {
+class Search extends Component {
   constructor(props) {
     super(props)
 
@@ -66,3 +67,22 @@ export default class Search extends Component {
 	  })
   }
 }
+
+export default (props) => (
+  <StaticQuery 
+    query={graphql`
+      query SearchIndex {
+        siteSearchIndex {
+          index
+        }
+      }
+    `}
+    
+    render={data => {
+      return (
+        <Search {...props} searchIndex={data.siteSearchIndex.index} />
+      )
+    }
+    }
+  />
+);
