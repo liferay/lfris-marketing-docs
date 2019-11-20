@@ -1,4 +1,15 @@
-.content {
+@import '~theme/variables';
+
+$nav-height: 3.875rem;
+
+.contentWrapper {
 	position: relative;
-	min-height: 100vh;
+	min-height: calc(100vh - #{$nav-height});
+}
+
+.content {	
+	margin: 0 auto;
+	max-width: $max-width-full;
+	position: relative;
+	margin-top: $nav-height;
 }

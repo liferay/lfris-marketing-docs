@@ -19,7 +19,8 @@ $max-width-map: (
 );
 
 @each $max-width-class, $max-width-value in $max-width-map {
-	.max-width#{$max-width-class} {
+	.max-width#{$max-width-class},
+	%max-width#{$max-width-class} {
 		max-width: $max-width-value;
 	}
 }
