@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './styles.module.scss';
 import { Auth, Search } from 'components/molecules'
 import { getUserAuthentication } from 'services/auth';
 import { MainLayout } from 'components/layouts'
@@ -22,9 +21,7 @@ class search extends React.Component {
         return (
 			<MainLayout className="search-page" location={this.props.location}>
 				<Auth needsAuth={needsAuth}>
-					<section className={`${styles.container}`}>
-						<Search location={this.props.location} childClass="searchPage" />	
-					</section>
+					<Search location={this.props.location} childClass="searchPage" />	
 				</Auth>
 			</MainLayout>
     )};
