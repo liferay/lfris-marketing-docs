@@ -30,9 +30,9 @@ const MainLayout = ({ className, children, location }) => {
 			</Helmet>
 			<main className={styles.contentWrapper}>
 				<LayoutNav location={location} siteTitle={data.site.siteMetadata.title} search={true} />
-				<section className={styles.content}>
+				<div className={styles.content}>
 					{children}
-				</section>
+				</div>
 				<Footer />
 			</main>
 		</div>
