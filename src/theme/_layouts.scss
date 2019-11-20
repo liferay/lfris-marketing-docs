@@ -1,70 +1,9 @@
-html .content #main-content.layout-content {
+html body {
 	margin: 0;
 	max-width: none;
-}
 
-.layout-content {
-	.container {
-		max-width: $max-width-full;
-
-		&.sidebar-layouts-section__layout-preview {
-			padding: 0;
-
-			.sidebar-layouts-section__layout-preview__row {
-				margin: 0;
-			}
-		}
-	}
-
-	@include for-phone-only {
-		.container {
-			padding-left: $container-horizontal-padding-for-phone-only;
-			padding-right: $container-horizontal-padding-for-phone-only;
-		}
-
-		div[class*='col-md'] {
-			padding-left: $container-gutter-padding-for-phone-only;
-			padding-right: $container-gutter-padding-for-phone-only;
-		}
-
-		.row {
-			margin-left: -$container-gutter-padding-for-phone-only;
-			margin-right: -$container-gutter-padding-for-phone-only;
-		}
-	}
-
-	@include for-tablet-portrait-up {
-		.container {
-			padding-left: $container-horizontal-padding-for-tablet-portrait-up;
-			padding-right: $container-horizontal-padding-for-tablet-portrait-up;
-		}
-
-		div[class*='col-md'] {
-			padding-left: $container-gutter-padding-for-tablet-portrait-up;
-			padding-right: $container-gutter-padding-for-tablet-portrait-up;
-		}
-
-		.row {
-			margin-left: -$container-gutter-padding-for-tablet-portrait-up;
-			margin-right: -$container-gutter-padding-for-tablet-portrait-up;
-		}
-	}
-
-	@include for-tablet-landscape-up {
-		.container {
-			padding-left: $container-horizontal-padding-for-tablet-landscape-up;
-			padding-right: $container-horizontal-padding-for-tablet-landscape-up;
-		}
-
-		div[class*='col-md'] {
-			padding-left: $container-gutter-padding-for-tablet-landscape-up;
-			padding-right: $container-gutter-padding-for-tablet-landscape-up;
-		}
-
-		.row {
-			margin-left: -$container-gutter-padding-for-tablet-landscape-up;
-			margin-right: -$container-gutter-padding-for-tablet-landscape-up;
-		}
+	img {
+		max-width: 100%;
 	}
 }
 
