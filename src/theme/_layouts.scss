@@ -9,6 +9,17 @@ html body {
 	}
 }
 
+section {
+	margin: 0 auto;
+	max-width: $max-width-full;
+	padding: 1.5rem;
+}
+
+.full-screen {
+	max-width: none;
+	padding: 1.5rem 0;
+}
+
 // max[key]
 $max-width-map: (
 	'-none': 'none',
