@@ -28,16 +28,12 @@ const MainLayout = ({ className, children }) => {
 				<meta name="twitter:description" content={description} />
 				<meta name="og:title" content={process.env.PROJECT_NAME} />
 			</Helmet>
-			<main className="content">
-				<header className="header">
-					<LayoutNav siteTitle={data.site.siteMetadata.title} search={true} />
-				</header>
+			<main className={styles.content}>
+				<LayoutNav siteTitle={data.site.siteMetadata.title} search={true} />
 				<section>
 					{children}
 				</section>
-				<section>
-					<Footer />
-				</section>
+				<Footer />
 			</main>
 		</div>
 	);
