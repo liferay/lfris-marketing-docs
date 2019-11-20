@@ -1,0 +1,17 @@
+.footer {
+	background-color: #F3F7FF;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	padding: 1.5rem;
+
+	.footerText {
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		color: #5B6170;
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 600;
+	}	
+}
