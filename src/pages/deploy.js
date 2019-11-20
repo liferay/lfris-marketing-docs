@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './styles.module.scss';
 import { Auth, DeployButton } from 'components/molecules'
 import { Footer, LayoutNav } from 'components/organisms';
 import { MainLayout } from 'components/layouts'
@@ -15,7 +14,6 @@ class Deploy extends React.Component {
         return (
 			<MainLayout className="deploy-page" location={this.props.location}>
 				<Auth needsAuth={needsAuth}>
-					<section className={`${styles.container}`}>
 						<ol>
 							<li>
 								<h2>Write your documentation <a href="https://drive.google.com/drive/u/1/folders/1M0L3J8z5MTjppfs7uJrahVTDti1TZewh">here</a>
@@ -41,7 +39,6 @@ class Deploy extends React.Component {
 								</h2>
 							</li>
 						</ol>
-					</section>
 				</Auth>
 			</MainLayout>
     )};
