@@ -33,6 +33,7 @@
     "@mdx-js/react": "^1.0.21",
     "@mdx-js/tag": "^0.18.0",
     "axios": "^0.19.0",
+    "bootstrap-4-grid": "^3.2.0",
     "browser-monads": "1.0.0",
     "classnames": "2.2.6",
     "clay-component": "2.14.0",
