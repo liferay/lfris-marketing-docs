@@ -1,12 +1,4 @@
-.dark .content .layout-content {
-	background-color: $color-primary-dark;
-}
-
-.content .layout-content {
-	.color-default {
-		@include light-dark(color, $color-black, $color-white);
-	}
-
+* {
 	font: 400 16px/1.5 'Source Sans Pro', Tahoma, 'Trebuchet MS', sans-serif;
 
 	*,
@@ -44,13 +36,4 @@
 			text-align: center;
 		}
 	}
-}
-
-
-// Long text with no white-space inside lfr-editable should break to new line
-// Remove if t-echo fixes
-.fragments-editor__editable[type='text'],
-.fragments-editor__editable[type='rich-text'] {
-	max-width: 100%;
-	word-wrap: break-word;
 }
