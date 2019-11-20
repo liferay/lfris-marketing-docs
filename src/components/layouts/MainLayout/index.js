@@ -28,9 +28,9 @@ const MainLayout = ({ className, children }) => {
 				<meta name="twitter:description" content={description} />
 				<meta name="og:title" content={process.env.PROJECT_NAME} />
 			</Helmet>
-			<main className={styles.content}>
+			<main className={styles.contentWrapper}>
 				<LayoutNav siteTitle={data.site.siteMetadata.title} search={true} />
-				<section>
+				<section className={styles.content}>
 					{children}
 				</section>
 				<Footer />
