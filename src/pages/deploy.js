@@ -15,7 +15,7 @@ class Deploy extends React.Component {
         return (
 			<MainLayout className="deploy-page">
 				<Auth needsAuth={needsAuth}>
-					<section className={`container-fluid container-fluid-max-lg ${styles.container}`}>
+					<section className={`${styles.container}`}>
 						<ol>
 							<li>
 								<h2>Write your documentation <a href="https://drive.google.com/drive/u/1/folders/1M0L3J8z5MTjppfs7uJrahVTDti1TZewh">here</a>

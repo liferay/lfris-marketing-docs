@@ -25,10 +25,10 @@ class Login extends React.Component {
     render() {
        return(
            !this.state.login ? 
-            (<button className="btn btn-sm btn-outline-light font-weight-bold mx-3" onClick={handleLogin}>
+            (<button className="" onClick={handleLogin}>
                 Login
             </button>) :
-            (<button className="btn btn-sm btn-outline-light font-weight-bold mx-3" onClick={handleLogout}>
+            (<button className="" onClick={handleLogout}>
             Logout
              </button>)
         )

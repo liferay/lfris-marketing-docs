@@ -9,7 +9,7 @@ class DeployButton extends React.Component {
 
     render() {
         return (
-			<button className={`btn btn-sm btn-primary btn-outline-light font-weight-bold mx-3 ${styles.deployButton}`} onClick={this.handleDeploy}>
+			<button className={styles.deployButton} onClick={this.handleDeploy}>
 				{this.props.children}
 			</button>
         )
