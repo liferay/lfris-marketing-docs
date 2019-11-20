@@ -24,7 +24,7 @@ class search extends React.Component {
         return (
 			<MainLayout className="search-page">
 				<Auth needsAuth={needsAuth}>
-					<section className={`container-fluid container-fluid-max-lg ${styles.container}`}>
+					<section className={`${styles.container}`}>
 						<Search location={this.props.location} childClass="searchPage" />	
 					</section>
 				</Auth>
