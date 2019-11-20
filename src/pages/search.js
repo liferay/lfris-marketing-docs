@@ -29,21 +29,7 @@ class search extends React.Component {
 						</header>
 
 						<section className={`container-fluid container-fluid-max-lg ${styles.container}`}>
-							<StaticQuery
-								query={graphql`
-									query SearchIndexQueryPage {
-										siteSearchIndex {
-											index
-										}
-									}
-								`}
-
-								render={data => {
-									return (
-										<Search location={this.props.location} childClass="searchPage"  searchIndex={data.siteSearchIndex.index} />
-									)}
-								}
-							/>						
+							<Search location={this.props.location} childClass="searchPage" />	
 						</section>
 
 						<section className={styles.footerContainer}>
