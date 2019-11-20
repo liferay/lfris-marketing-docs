@@ -1,0 +1,56 @@
+.dark .content .layout-content {
+	background-color: $color-primary-dark;
+}
+
+.content .layout-content {
+	.color-default {
+		@include light-dark(color, $color-black, $color-white);
+	}
+
+	font: 400 16px/1.5 'Source Sans Pro', Tahoma, 'Trebuchet MS', sans-serif;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box !important;
+	}
+
+	h1 {
+		@extend %font-size-heading-f1;
+	}
+
+	h2 {
+		@extend %font-size-heading-f2;
+	}
+
+	h3 {
+		@extend %font-size-heading-f3;
+	}
+
+	h4 {
+		@extend %font-size-heading-f4;
+	}
+
+	h5 {
+		@extend %font-size-heading-f5;
+	}
+
+	p {
+		@extend %font-size-paragraph-base;
+	}
+
+	.text-center-tablet-portrait-up {
+		@include for-tablet-portrait-up {
+			text-align: center;
+		}
+	}
+}
+
+
+// Long text with no white-space inside lfr-editable should break to new line
+// Remove if t-echo fixes
+.fragments-editor__editable[type='text'],
+.fragments-editor__editable[type='rich-text'] {
+	max-width: 100%;
+	word-wrap: break-word;
+}

@@ -1,0 +1,85 @@
+.aspect-ratio-item-flush-110 {
+	max-width: none;
+	position: absolute;
+	width: 110%;
+}
+
+.aspect-ratio-item-flush-120 {
+	max-width: none;
+	position: absolute;
+	width: 120%;
+}
+
+.aspect-ratio-item-flush-130 {
+	max-width: none;
+	position: absolute;
+	width: 130%;
+}
+
+.aspect-ratio-item-vertical-flush-110 {
+	height: 110%;
+	max-height: none;
+	position: absolute;
+}
+
+.aspect-ratio-item-vertical-flush-120 {
+	height: 120%;
+	max-height: none;
+	position: absolute;
+}
+
+.aspect-ratio-item-vertical-flush-130 {
+	height: 130%;
+	max-height: none;
+	position: absolute;
+}
+
+.aspect-ratio-object-fit-cover {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	.fragments-image-div,
+	.fragments-editor__editable[type='image'] {
+		height: 100%;
+		position: absolute;
+		width: 100%;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			width: 100%;
+		}
+	}
+}
+
+.hide-phone {
+	@include for-phone-only {
+		display: none !important;
+	}
+}
+
+.hide-tablet-portrait {
+	@include for-tablet-portrait-only {
+		display: none !important;
+	}
+}
+
+.hide-tablet-landscape {
+	@include for-tablet-landscape-only {
+		display: none !important;
+	}
+}
+
+.hide-desktop {
+	@include for-desktop-only {
+		display: none !important;
+	}
+}
+
+.hide-large-desktop-up {
+	@include for-large-desktop-up {
+		display: none !important;
+	}
+}

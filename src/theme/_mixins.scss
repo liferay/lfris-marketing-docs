@@ -1,0 +1,11 @@
+@mixin light-dark($property, $light, $dark) {
+	@at-root .aui .dark#{&},
+		.dark & {
+		#{$property}: $dark;
+	}
+
+	@at-root .aui .light#{&},
+		.light & {
+		#{$property}: $light;
+	}
+}

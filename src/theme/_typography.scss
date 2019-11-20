@@ -1,0 +1,81 @@
+@import 'typography-extendables';
+
+.font-family-mono {
+	@extend %font-family-mono;
+}
+
+.font-family-sans {
+	@extend %font-family-sans;
+}
+
+.font-family-serif {
+	@extend %font-family-serif;
+}
+
+// Generates styles for class .font-size-small-caps
+
+@each $small-caps-style-class,
+	$small-caps-style-values in $small-caps-styles-map
+{
+	.font-size#{$small-caps-style-class} {
+		@extend %font-size#{$small-caps-style-class};
+	}
+}
+
+// Generates styles for classes .font-size-display-large,
+// .font-size-display-small
+
+@each $display-style-class, $display-style-values in $display-styles-map {
+	.font-size-display#{$display-style-class} {
+		@extend %font-size-display#{$display-style-class};
+	}
+}
+
+// Generates styles for classes .font-size-heading-h1, .font-size-heading-h2,
+// .font-size-heading-h3, .font-size-heading-h4, .font-size-heading-h5
+
+@each $heading-style-class, $heading-style-values in $heading-styles-map {
+	.font-size-heading#{$heading-style-class} {
+		@extend %font-size-heading#{$heading-style-class};
+	}
+}
+
+// Generates styles for classes .font-size-long-form-sans-serif,
+// .font-size-long-form-serif
+
+@each $long-form-style-class, $long-form-style-values in $long-form-styles-map {
+	.font-size-long-form#{$long-form-style-class} {
+		@extend %font-size-long-form#{$long-form-style-class};
+	}
+}
+
+// Generates styles for classes .font-size-paragraph-large,
+// .font-size-paragraph-base, .font-size-paragraph-base-semi-bold,
+// .font-size-paragraph-small, .font-size-paragraph-xsmall,
+// .font-size-paragraph-tiny
+
+@each $paragraph-style-class, $paragraph-style-values in $paragraph-styles-map {
+	.font-size-paragraph#{$paragraph-style-class} {
+		@extend %font-size-paragraph#{$paragraph-style-class};
+	}
+}
+
+.font-weight-bold {
+	@extend %font-weight-bold;
+}
+
+.font-weight-extra-light {
+	@extend %font-weight-extra-light;
+}
+
+.font-weight-light {
+	@extend %font-weight-light;
+}
+
+.font-weight-normal {
+	@extend %font-weight-normal;
+}
+
+.font-weight-semi-bold {
+	@extend %font-weight-semi-bold;
+}

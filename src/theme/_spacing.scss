@@ -1,0 +1,30 @@
+@import 'spacing-extendables';
+
+// Generates styles for classes .padding-top-0, .margin-top-0, etc
+
+@each $spacing-class, $spacing-value in $spacing-variables-map {
+	@each $direction-class, $direction-value in $directions-map {
+		@each $spacing-type in $spacing-types {
+			.#{$spacing-type}#{$direction-class}#{$spacing-class} {
+				@extend %#{$spacing-type}#{$direction-class}#{$spacing-class};
+			}
+		}
+	}
+}
+
+.section-padding {
+	@extend %section-padding;
+}
+
+.margin-left-auto {
+	margin-left: auto;
+}
+
+.margin-right-auto {
+	margin-right: auto;
+}
+
+.margin-horizontal-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
