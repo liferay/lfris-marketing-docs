@@ -1,6 +1,6 @@
 import { StaticQuery, graphql, navigate } from 'gatsby';
 import Navigation from './Navigation';
-import Sidebarselect from './SidebarSelect';
+import SidebarSelect from './SidebarSelect';
 import React from 'react';
 import styles from './styles.module.scss';
 
@@ -116,13 +116,9 @@ class Sidebar extends React.Component {
 					const rootLevelNames = this._getTreeRootNames(dataTree);
 					const dataTreeChildren = this._getTreeChildren(dataTree);
 
-
-
 					return (
 						<nav className={styles.sideBarBody}>
-								<Sidebarselect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
-
-								<h2>{this.state.selectedValue}</h2>
+								<SidebarSelect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
 
 								<Navigation sectionList={dataTreeChildren[this.state.selectedValue]} location={this.props.location} />
 						</nav>

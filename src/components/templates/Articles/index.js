@@ -22,10 +22,10 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
 
         return (
-                <Auth needsAuth={needsAuth}>
-                    <article dangerouslySetInnerHTML={{__html: html}}>
-                    </article>    
-                </Auth>
+            <Auth needsAuth={needsAuth}>
+                <article dangerouslySetInnerHTML={{__html: html}}>
+                </article>    
+            </Auth>
         );
     }
 }
