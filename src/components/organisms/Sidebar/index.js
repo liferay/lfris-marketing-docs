@@ -1,4 +1,4 @@
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, navigate } from 'gatsby';
 import Navigation from './Navigation';
 import Sidebarselect from './SidebarSelect';
 import React from 'react';
@@ -13,9 +13,9 @@ class Sidebar extends React.Component {
 
 		this._getTree = this._getTree.bind(this);
 		this._findFolder = this._findFolder.bind(this);
-		this._selected = this._selected.bind(this);
 		this._getTreeChildren = this._getTreeChildren.bind(this);
-		this._getTreeValues = this._getTreeValues.bind(this);
+		this._getTreeRootNames = this._getTreeRootNames.bind(this);
+		this._handleSelected = this._handleSelected.bind(this);
 	}
 
 	_getTree = (data) => {
@@ -47,24 +47,28 @@ class Sidebar extends React.Component {
 				}
 			});
 		});
-		console.log(tree);
-		console.log(tree[0].children);
 	
 		return tree;
 	};
 
-	_getTreeChildren = (data, index) => {
-		return data[index].children;
-	}
+	_getTreeChildren = (data) => {
+		const treeChildren = [];
 
-	_getTreeValues = (data) => {
-		const test = [];
-
-		data.forEach(blah => {
-			test.push(blah.name);
+		data.forEach(treeItems => {
+			treeChildren.push(treeItems.children)
 		})
 
-		return test;
+		return treeChildren;
+	}
+
+	_getTreeRootNames = (data) => {
+		const treeRootNames = [];
+
+		data.forEach(treeItems => {
+			treeRootNames.push(treeItems.name);
+		})
+
+		return treeRootNames;
 	}
 	
 	_findFolder(array, key, value) {
@@ -78,10 +82,8 @@ class Sidebar extends React.Component {
 		}
 	}
 
-	_selected = (e) => {
-		console.log('value: ' + e.target.value);
-		console.log('index: ' + e.target.key);
-
+	_handleSelected = (e, dataTree) => {
+		navigate(dataTree[e.target.value].link);
 		this.setState({
 			selectedValue: e.target.value,
 		});
@@ -91,7 +93,7 @@ class Sidebar extends React.Component {
 		return (
 			<StaticQuery
 				query={graphql`
-					query SearchIndexQuery {
+					query {
 						allMarkdownRemark(filter: { fields: { slug: { regex: "//i" } } }) {
 							edges {
 								node {
@@ -114,16 +116,21 @@ class Sidebar extends React.Component {
 						navbarClasses += ' toggler-expanded';
 					}
 
+					const dataEdges = data.allMarkdownRemark.edges;
+					const dataTree = this._getTree(dataEdges);
+					const rootLevelNames = this._getTreeRootNames(dataTree);
+					const dataTreeChildren = this._getTreeChildren(dataTree);
+
+
+
 					return (
 						<nav className={navbarClasses} id="clay-sidebar">
 							<div className={`${styles.sideBarBody} sidebar-body mb-auto mt-5`}>
-								<Sidebarselect selectItems={this._getTree(data.allMarkdownRemark.edges)} handleSelect={this._selected} />
+								<Sidebarselect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
 
 								<h2>{this.state.selectedValue}</h2>
 
-
-
-								<Navigation sectionList={this._getTree(data.allMarkdownRemark.edges)[this.state.selectedValue].children} location={this.props.location} />
+								<Navigation sectionList={dataTreeChildren[this.state.selectedValue]} location={this.props.location} />
 							</div>
 						</nav>
 					)}
