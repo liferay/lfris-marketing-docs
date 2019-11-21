@@ -4,9 +4,9 @@ import styles from './styles.module.scss';
 import { Footer, LayoutNav, Sidebar } from 'components/organisms';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const MainLayout = ({ className, children, location }) => {
-    const description = "Empowering Liferay Marketing";
-
+const MainLayout = ({ className, children, location, pageContext }) => {
+	const description = "Empowering Liferay Marketing";
+	
 	const data = useStaticQuery(
 		graphql`
 			query {
@@ -30,7 +30,13 @@ const MainLayout = ({ className, children, location }) => {
 			</Helmet>
 			<main className={styles.contentWrapper}>
 				<LayoutNav location={location} siteTitle={data.site.siteMetadata.title} search={true} />
-				<Sidebar location={location} />
+
+
+                {
+                    (pageContext.layout ? <Sidebar location={location} /> : '')
+                }
+				
+				
 				<div className={styles.content}>
 					{children}
 				</div>

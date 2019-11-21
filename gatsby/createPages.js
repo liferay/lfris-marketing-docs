@@ -5,6 +5,7 @@ const path = require('path');
 
 const createPages = (actions, edges, scope) => {
 	const {createPage} = actions;
+	const layout = 'article';
 
 	edges.forEach(({node}, index) => {
 		const {slug} = node.fields;
@@ -20,14 +21,13 @@ const createPages = (actions, edges, scope) => {
 				slug,
 				previous,
 				next,
+				layout
 			},
 		});
 	});
 };
 
 module.exports = async ({actions, graphql}) => {
-
-
 	return graphql(
 		`
 			query {
