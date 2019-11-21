@@ -1,7 +1,5 @@
 import React from 'react';
 import { Auth, DeployButton } from 'components/molecules'
-import { Footer, LayoutNav } from 'components/organisms';
-import { MainLayout } from 'components/layouts'
 
 class Deploy extends React.Component {
     render() {
@@ -12,7 +10,6 @@ class Deploy extends React.Component {
 		}
 
         return (
-			<MainLayout className="deploy-page" location={this.props.location}>
 				<Auth needsAuth={needsAuth}>
 						<ol>
 							<li>
@@ -40,7 +37,6 @@ class Deploy extends React.Component {
 							</li>
 						</ol>
 				</Auth>
-			</MainLayout>
     )};
 }
 

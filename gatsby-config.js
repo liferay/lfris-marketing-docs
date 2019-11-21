@@ -67,6 +67,12 @@ module.exports = {
 				]
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-layout',
+			options: {
+				component: require.resolve('./src/components/layouts/MainLayout/index.js')
+			}
+		},
 		'gatsby-plugin-remove-trailing-slashes',
 		'gatsby-plugin-resolve-src',
 		{
