@@ -4,7 +4,7 @@ const SidebarSelect = ({ selectItems, handleSelect }) => (
 	<select onChange={handleSelect}>
 		{
 			selectItems.map((item, index) => (
-				<option key={index} value={item.name}>{item.name}</option>	
+				<option key={index} value={index}>{item.name}</option>	
 			))
 		}
 	</select>
