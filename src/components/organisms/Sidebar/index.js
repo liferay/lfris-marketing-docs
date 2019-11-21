@@ -14,9 +14,11 @@ class Sidebar extends React.Component {
 		this._getTree = this._getTree.bind(this);
 		this._findFolder = this._findFolder.bind(this);
 		this._selected = this._selected.bind(this);
+		this._getTreeChildren = this._getTreeChildren.bind(this);
+		this._getTreeValues = this._getTreeValues.bind(this);
 	}
 
-	_getTree = (data, index) => {
+	_getTree = (data) => {
 		let tree = [];
 		let paths = data.map(({node}) => {
 			const { fields: { slug } } = node;
@@ -50,6 +52,20 @@ class Sidebar extends React.Component {
 	
 		return tree;
 	};
+
+	_getTreeChildren = (data, index) => {
+		return data[index].children;
+	}
+
+	_getTreeValues = (data) => {
+		const test = [];
+
+		data.forEach(blah => {
+			test.push(blah.name);
+		})
+
+		return test;
+	}
 	
 	_findFolder(array, key, value) {
 		var t = 0;
@@ -103,7 +119,11 @@ class Sidebar extends React.Component {
 							<div className={`${styles.sideBarBody} sidebar-body mb-auto mt-5`}>
 								<Sidebarselect selectItems={this._getTree(data.allMarkdownRemark.edges)} handleSelect={this._selected} />
 
-								<Navigation sectionList={this._getTree(data.allMarkdownRemark.edges)} location={this.props.location} />
+								<h2>{this.state.selectedValue}</h2>
+
+
+
+								<Navigation sectionList={this._getTree(data.allMarkdownRemark.edges)[this.state.selectedValue].children} location={this.props.location} />
 							</div>
 						</nav>
 					)}
