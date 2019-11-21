@@ -1,19 +1,20 @@
 import { StaticQuery, graphql } from 'gatsby';
 import Navigation from './Navigation';
+import Sidebarselect from './SidebarSelect';
 import React from 'react';
-
-const SideNavRef = React.createRef();
+import styles from './styles.module.scss';
 
 const getTree = data => {
 	let tree = [];
-	let paths = data.allMarkdownRemark.edges.map(({node}) => {
+	let paths = data.map(({node}) => {
 		const { fields: { slug } } = node;
 
 		return slug.startsWith('/') ? slug.slice(1).split('/') : slug.split('/');
 	});
 
 	paths.forEach(path => {
-        var currentLevel = tree;
+		var currentLevel = tree;
+		
         path.forEach((folder, index) => {	
 			var existingPath = findFolder(currentLevel, 'name', folder);
 	
@@ -32,6 +33,8 @@ const getTree = data => {
 			}
 		});
 	});
+	console.log(tree);
+	console.log(tree[0].children);
 
 	return tree;
 };
@@ -44,30 +47,6 @@ function findFolder(array, key, value) {
 		return array[t]
 	} else {
 		return false;
-	}
-}
-
-let scrollTop = 0;
-
-class SideNavScroll extends React.Component {
-	onScroll(event) {
-		scrollTop = event.currentTarget.scrollTop;
-	}
-
-	componentDidMount() {
-		SideNavRef.current.scrollTop = scrollTop;
-	}
-
-	render() {
-		return (
-			<div
-				ref={SideNavRef}
-				onScroll={this.onScroll.bind(this)}
-				className="sidebar sidebar-clay-site sidenav-menu d-flex flex-column"
-			>
-				{this.props.children}
-			</div>
-		);
 	}
 }
 
@@ -98,13 +77,21 @@ export default (props) => (
 				navbarClasses += ' toggler-expanded';
 			}
 
+			const selected = (e) => {
+				console.log('value: ' + e.target.value);
+
+				// this.setState({
+				// 	selectedValue: e.target.value,
+				// });
+			}
+
 			return (
 				<nav className={navbarClasses} id="clay-sidebar">
-					<SideNavScroll>
-						<div className="sidebar-body mb-auto mt-5">
-							<Navigation sectionList={getTree(data)} location={props.location} />
-						</div>
-					</SideNavScroll>
+					<div className={`${styles.sideBarBody} sidebar-body mb-auto mt-5`}>
+						<Sidebarselect selectItems={getTree(data.allMarkdownRemark.edges)} handleSelect={selected} />
+
+						<Navigation sectionList={getTree(data.allMarkdownRemark.edges)} location={props.location} />
+					</div>
 				</nav>
 			)}
 		}
