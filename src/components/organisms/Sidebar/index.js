@@ -111,11 +111,6 @@ class Sidebar extends React.Component {
 					}
 				`}
 				render={data => {
-					let navbarClasses = 'sidebar-toggler-content sidenav-fixed sidenav-menu-slider mt-5';
-					if (this.props.navbarToggled) {
-						navbarClasses += ' toggler-expanded';
-					}
-
 					const dataEdges = data.allMarkdownRemark.edges;
 					const dataTree = this._getTree(dataEdges);
 					const rootLevelNames = this._getTreeRootNames(dataTree);
@@ -124,14 +119,12 @@ class Sidebar extends React.Component {
 
 
 					return (
-						<nav className={navbarClasses} id="clay-sidebar">
-							<div className={`${styles.sideBarBody} sidebar-body mb-auto mt-5`}>
+						<nav className={styles.sideBarBody}>
 								<Sidebarselect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
 
 								<h2>{this.state.selectedValue}</h2>
 
 								<Navigation sectionList={dataTreeChildren[this.state.selectedValue]} location={this.props.location} />
-							</div>
 						</nav>
 					)}
 				}
