@@ -37,7 +37,7 @@ class Search extends Component {
     const entryNumber = 5;
 
     return (    
-      <div className={childClass + ' ' + styles.searchContainer} onblur={this.handleInputBlur}>
+      <div className={childClass + ' ' + styles.searchContainer} onBlur={this.handleInputBlur}>
         <SearchForm inputFocusEvent={this.handleInputFocus} inputBlurEvent={this.handleInputBlur} query={this.state.query} onChangeEvent={evt => this.search(evt, this.state.query)} />
 
         {this.state.results.length > 0 ?
