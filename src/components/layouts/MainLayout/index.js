@@ -28,18 +28,22 @@ const MainLayout = ({ className, children, location, pageContext }) => {
 				<meta name="twitter:description" content={description} />
 				<meta name="og:title" content={process.env.PROJECT_NAME} />
 			</Helmet>
-			<main className={styles.contentWrapper}>
+			<main className={`${styles.contentWrapper} ${pageContext.layout ? styles.article : ''}`}>
 				<LayoutNav location={location} siteTitle={data.site.siteMetadata.title} search={true} />
 
+				{pageContext.layout === 'article' ? 
+					(<div className={`${styles.content} row`}>
+						<Sidebar className='col-md-3' location={location} />
+						<div className='col-md-9'>
+							{children}
+						</div>
+					</div>)
+					:
+					(<div className={styles.content}>
+						{children}
+					</div>)
+				}
 
-                {
-                    (pageContext.layout ? <Sidebar location={location} /> : '')
-                }
-				
-				
-				<div className={styles.content}>
-					{children}
-				</div>
 				<Footer />
 			</main>
 		</div>
