@@ -17,9 +17,9 @@ export default class Docs extends React.Component {
     }
 
     render() {
-        const { data, location } = this.props;
+        const { data } = this.props;
 
-        const { markdownRemark: { html, fields: {title, needsAuth}, excerpt, timeToRead } } = data;
+        const { markdownRemark: { html, fields: { needsAuth}}} = data;
 
         return (
             <Auth needsAuth={needsAuth}>
@@ -34,11 +34,8 @@ export const pageQuery = graphql`
     query($slug: String!) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
             html
-            excerpt
-            timeToRead
             fields {
                 needsAuth
-                title
             }
         }
     }

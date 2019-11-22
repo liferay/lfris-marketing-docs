@@ -1,5 +1,4 @@
 import React from 'react';
-import { withPrefix } from 'gatsby';
 import styles from './styles.module.scss'
 
 const Footer = () => {
