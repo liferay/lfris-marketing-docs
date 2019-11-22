@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles.module.scss'
+import { Icon } from 'components/atoms'
 import { withPrefix } from 'gatsby' 
 
 export default class Accordion extends Component {
@@ -17,25 +18,20 @@ export default class Accordion extends Component {
 
 	render() {
 		return (
-			<li
-			className={`${this.props.className} ${styles.accordion}`}
-			onClick={this.toggleVisibility}
-			>
-				<div>
+			<li className={`${this.props.className} ${styles.accordion}`}>
+				<div onClick={this.toggleVisibility}>
 					<span>{this.props.title}</span>
 
 					{this.state.showChildren ? (
-						<svg>
-							<use xlinkHref={withPrefix("images/icons/icons.svg#caret-bottom")} />
-						</svg>
+						<Icon name="keyboardArrowRight" rotate={90} />
 					) : (
-						<svg >
-							<use xlinkHref={withPrefix("images/icons/icons.svg#caret-bottom")} />
-						</svg>
+						<Icon name="keyboardArrowRight" />
 					)}
 				</div>
 
-				<ul>{this.props.children}</ul>
+				<ul className={`${styles.childrenContainer} ${this.state.showChildren ? styles.visible : styles.hidden}`}>
+					{this.props.children}
+				</ul>
 			</li>
 		)
 	}
