@@ -32,12 +32,14 @@ const MainLayout = ({ className, children, location, pageContext }) => {
 				<LayoutNav location={location} siteTitle={data.site.siteMetadata.title} search={true} />
 
 				{pageContext.layout === 'article' ? 
-					(<div className={`${styles.content} row`}>
-						<Sidebar className='col-md-3' location={location} />
-						<div className='col-md-9'>
-							{children}
+					(
+						<div className={`${styles.content} row w-100`}>
+							<Sidebar className='col-md-3' location={location} />
+							<div className='col-md-9'>
+								{children}
+							</div>
 						</div>
-					</div>)
+					)
 					:
 					(<div className={styles.content}>
 						{children}
