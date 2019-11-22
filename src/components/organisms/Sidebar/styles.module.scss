@@ -1,7 +1,69 @@
-.sideBarBody {
-	background-color: #F5F7FA;
-	position: fixed;
-	top: 4rem;
+.sidebarContainer {
 	left: 0;
+	position: fixed;
 	z-index: 1;
+	
+	.sideNav {
+		background-color: #F5F7FA;
+		height: 100%;
+		padding: 1.5rem;
+		position: relative;
+	}
+
+	.navItemContainer {
+		list-style: none;
+		padding-left: 1.5rem;
+
+		.navItemContainer {
+			max-height: 0;
+			overflow-y: hidden;
+		}
+
+		.active .navItemContainer {
+			max-height: 10000px;
+		}
+	}
+
+	.navItem {
+		padding: 0.75rem 0;
+		color: #5B6170;
+		text-decoration: none;
+
+		&.active {
+			color: #09101D;
+		}
+	}
+
+	.activeLink {
+		border-left: 3px blue solid;
+		color: #09101D;
+	}
+
+	.navItemText {
+		font-weight: 600;
+	}
+
+	.navItemLink {
+
+	}
+
+	.navItemParent {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.caretBottom {
+		height: 0.75rem;
+		width: 0.75rem;
+		position: absolute;
+		right: 1.5rem;
+	}
+}
+
+.sidebarSelect {
+	appearance: none;
+	width: 100%;
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
+	background-image: url('/images/icons/icons.svg#caret-bottom')
 }

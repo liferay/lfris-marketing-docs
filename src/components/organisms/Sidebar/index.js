@@ -1,14 +1,48 @@
-import { StaticQuery, graphql, navigate } from 'gatsby';
-import Navigation from './Navigation';
+import { Link, StaticQuery, graphql, navigate } from 'gatsby';
 import SidebarSelect from './SidebarSelect';
 import React from 'react';
 import styles from './styles.module.scss';
+
+import { Accordion } from 'components/molecules'
+
+const SidebarContent = ({ path, tree }) => {
+	const navTree = tree.map((node, index) => {
+		const className = `
+			${styles.leafLink}
+			${node.link === path ? styles.active : ''}
+			${node.firstLevel ? styles.firstLevelNode : ''}
+		`
+
+		if (node.children.length > 0) {
+			return (
+				<Accordion
+					className={className}
+					key={index}
+					open={path}
+					title={node.name}
+				>
+					<SidebarContent path={path} tree={node.children} />
+				</Accordion>
+			)
+		}
+
+		return (
+			<li key={index}>
+				<Link className={className} to={node.link}>
+					{node.name}
+				</Link>
+			</li>
+		)
+	})
+
+	return navTree
+}
 
 class Sidebar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state= {
-			selectedValue: 0
+			selectedValue: 2
 		}
 
 		this._getTree = this._getTree.bind(this);
@@ -117,11 +151,15 @@ class Sidebar extends React.Component {
 					const dataTreeChildren = this._getTreeChildren(dataTree);
 
 					return (
-						<nav className={styles.sideBarBody}>
+						<div className={`${styles.sidebarContainer} ${this.props.className}`}>
+							<nav className={styles.sideNav}>
 								<SidebarSelect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
 
-								<Navigation sectionList={dataTreeChildren[this.state.selectedValue]} location={this.props.location} />
-						</nav>
+								<ul>
+									<SidebarContent path={this.props.location.pathname} tree={dataTreeChildren[this.state.selectedValue]} />
+								</ul>
+							</nav>
+						</div>
 					)}
 				}
 			/>
