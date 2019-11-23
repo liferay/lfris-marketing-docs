@@ -18,9 +18,9 @@ export default class Accordion extends Component {
 
 	render() {
 		return (
-			<li className={`${this.props.className} ${styles.accordion}`}>
-				<div onClick={this.toggleVisibility}>
-					<span>{this.props.title}</span>
+			<li className={`${styles.accordion}`}>
+				<div className={`${this.props.className} ${styles.accordionHeader}`} onClick={this.toggleVisibility}>
+					<span className={`${this.state.showChildren ?this.props.activeClassName : ''}`}>{this.props.title}</span>
 
 					{this.state.showChildren ? (
 						<Icon name="keyboardArrowRight" rotate={90} />
