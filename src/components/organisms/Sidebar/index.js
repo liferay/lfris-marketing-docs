@@ -8,17 +8,16 @@ import { Accordion } from 'components/molecules'
 const SidebarContent = ({ path, tree }) => {
 	const navTree = tree.map((node, index) => {
 		const className = `
-			${styles.leafLink}
-			${node.link === path ? styles.active : ''}
-			${node.firstLevel ? styles.firstLevelNode : ''}
+			${escape(node.link) === path ? styles.active : ''}
 		`
 
 		if (node.children.length > 0) {
 			return (
 				<Accordion
+					activeClassName={styles.activeTitle}
 					className={className}
 					key={index}
-					open={path}
+					open={path.includes(node.name.toLowerCase().replace(/ /g, "-"))}
 					title={node.name}
 				>
 					<SidebarContent path={path} tree={node.children} />
@@ -28,7 +27,11 @@ const SidebarContent = ({ path, tree }) => {
 
 		return (
 			<li key={index}>
-				<Link className={className} to={node.link}>
+				<Link
+					activeClassName={styles.activeLink}
+					className={styles.link}
+					to={escape(node.link)}
+				>
 					{node.name}
 				</Link>
 			</li>
@@ -81,6 +84,8 @@ class Sidebar extends React.Component {
 				}
 			});
 		});
+
+		console.log(tree);
 	
 		return tree;
 	};
@@ -155,7 +160,7 @@ class Sidebar extends React.Component {
 							<nav className={styles.sideNav}>
 								<SidebarSelect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
 
-								<ul>
+								<ul className={styles.sidebarContentWrapper}>
 									<SidebarContent path={this.props.location.pathname} tree={dataTreeChildren[this.state.selectedValue]} />
 								</ul>
 							</nav>

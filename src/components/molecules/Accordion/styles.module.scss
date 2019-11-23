@@ -4,14 +4,15 @@
 	padding-left: 0;
 }
 
-.children-container {
+.accordionHeader {
+	align-items: center;
 	display: flex;
-	flex-direction: column;
-	padding-left: 1rem;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .visible {
-	display: flex;
+	display: block;
 }
 
 .hidden {
