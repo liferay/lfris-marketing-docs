@@ -1,45 +1,8 @@
-import { Link, StaticQuery, graphql, navigate } from 'gatsby';
-import SidebarSelect from './SidebarSelect';
 import React from 'react';
+import { StaticQuery, graphql, navigate } from 'gatsby';
+import SidebarContent from './SidebarContent';
+import SidebarSelect from './SidebarSelect';
 import styles from './styles.module.scss';
-
-import { Accordion } from 'components/molecules'
-
-const SidebarContent = ({ path, tree }) => {
-	const navTree = tree.map((node, index) => {
-		const className = `
-			${escape(node.link) === path ? styles.active : ''}
-		`
-
-		if (node.children.length > 0) {
-			return (
-				<Accordion
-					activeClassName={styles.activeTitle}
-					className={className}
-					key={index}
-					open={path.includes(escape(node.name))}
-					title={node.name}
-				>
-					<SidebarContent path={path} tree={node.children} />
-				</Accordion>
-			)
-		}
-
-		return (
-			<li key={index}>
-				<Link
-					activeClassName={styles.activeLink}
-					className={styles.link}
-					to={escape(node.link)}
-				>
-					{node.name}
-				</Link>
-			</li>
-		)
-	})
-
-	return navTree
-}
 
 class Sidebar extends React.Component {
 	constructor(props) {
@@ -48,11 +11,22 @@ class Sidebar extends React.Component {
 			selectedValue: props.location.pathname.split('/')[1]
 		}
 
-		this._getTree = this._getTree.bind(this);
 		this._findFolder = this._findFolder.bind(this);
+		this._getTree = this._getTree.bind(this);
 		this._getTreeChildren = this._getTreeChildren.bind(this);
 		this._getTreeRootNames = this._getTreeRootNames.bind(this);
 		this._handleSelected = this._handleSelected.bind(this);
+	}
+
+	_findFolder(array, key, value) {
+		var t = 0;
+		while (t < array.length && array[t][key] !== value) { t++; };
+	
+		if (t < array.length) {
+			return array[t]
+		} else {
+			return false;
+		}
 	}
 
 	_getTree = (data) => {
@@ -102,16 +76,6 @@ class Sidebar extends React.Component {
 		return treeRootNames;
 	}
 	
-	_findFolder(array, key, value) {
-		var t = 0;
-		while (t < array.length && array[t][key] !== value) { t++; };
-	
-		if (t < array.length) {
-			return array[t]
-		} else {
-			return false;
-		}
-	}
 
 	_handleSelected = (e, dataTree) => {
 		const { link } = dataTree.find(obj => {
@@ -135,10 +99,6 @@ class Sidebar extends React.Component {
 								node {
 									fields {
 										slug
-									}
-									frontmatter {
-										title
-										description
 									}
 									excerpt
 								}
