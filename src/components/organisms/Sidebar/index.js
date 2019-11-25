@@ -45,7 +45,7 @@ class Sidebar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state= {
-			selectedValue: 2
+			selectedValue: props.location.pathname.split('/')[1]
 		}
 
 		this._getTree = this._getTree.bind(this);
@@ -84,28 +84,20 @@ class Sidebar extends React.Component {
 				}
 			});
 		});
-
-		console.log(tree);
 	
 		return tree;
 	};
 
-	_getTreeChildren = (data) => {
-		const treeChildren = [];
-
-		data.forEach(treeItems => {
-			treeChildren.push(treeItems.children)
+	_getTreeChildren = (data, selectedValue) => {
+		const { children } = data.find(obj => {
+			return obj.name === selectedValue;
 		})
 
-		return treeChildren;
+		return children;
 	}
 
 	_getTreeRootNames = (data) => {
-		const treeRootNames = [];
-
-		data.forEach(treeItems => {
-			treeRootNames.push(treeItems.name);
-		})
+		const treeRootNames = data.map(treeRootNames => treeRootNames.name)
 
 		return treeRootNames;
 	}
@@ -122,10 +114,15 @@ class Sidebar extends React.Component {
 	}
 
 	_handleSelected = (e, dataTree) => {
-		navigate(dataTree[e.target.value].link);
+		const { link } = dataTree.find(obj => {
+			return obj.name === e.target.value;
+		});
+		
 		this.setState({
 			selectedValue: e.target.value,
 		});
+
+		navigate(link);
 	}
 
 	render() {
@@ -150,18 +147,21 @@ class Sidebar extends React.Component {
 					}
 				`}
 				render={data => {
-					const dataEdges = data.allMarkdownRemark.edges;
-					const dataTree = this._getTree(dataEdges);
+					const { className, location: { pathname }} = this.props;
+					const { selectedValue } = this.state;
+					const { allMarkdownRemark: { edges }} = data;
+
+					const dataTree = this._getTree(edges);
 					const rootLevelNames = this._getTreeRootNames(dataTree);
-					const dataTreeChildren = this._getTreeChildren(dataTree);
+					const selectedChildren = this._getTreeChildren(dataTree, selectedValue);
 
 					return (
-						<div className={`${styles.sidebarContainer} ${this.props.className}`}>
+						<div className={`${styles.sidebarContainer} ${className}`}>
 							<nav className={styles.sideNav}>
-								<SidebarSelect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} />
+								<SidebarSelect selectItems={rootLevelNames} handleSelected={(e) => this._handleSelected(e,dataTree)} defaultValue={selectedValue} />
 
 								<ul className={styles.sidebarContentWrapper}>
-									<SidebarContent path={this.props.location.pathname} tree={dataTreeChildren[this.state.selectedValue]} />
+									<SidebarContent path={pathname} tree={selectedChildren} />
 								</ul>
 							</nav>
 						</div>
