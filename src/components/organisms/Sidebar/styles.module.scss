@@ -12,8 +12,8 @@
 }
 
 .sidebarContentWrapper {
-	padding-left: 0;
 	list-style: none;
+	padding-left: 0;
 
 	.activeTitle {
 		color: #09101D;
@@ -34,8 +34,8 @@
 
 	.link, span {
 		color: #5B6170;
-		text-decoration: none;
 		font-weight: 600;
+		text-decoration: none;
 	}
 
 	.active span {
@@ -47,21 +47,24 @@
 		position: relative;
 
 		&:before {
+			background-color: #004AD7;
+			border-radius: 0.5rem;
 			content: '';
 			display: block;
-			position: absolute;
-			left: -1.5rem;
-			background-color: #004AD7;
 			height: 100%;
+			left: -1.5rem;
+			position: absolute;
 			width: 3px;
-			border-radius: 0.5rem;
 		}
 	}
 }
 
 .sidebarSelect {
 	appearance: none;
-	width: 100%;
+	background-image: url('/images/icons/caret-bottom-l.svg');
+	background-position-x: 100%;
+	background-repeat: no-repeat;
+	margin-bottom: 0.5rem;
 	padding: 0.5rem 2.5rem 0.5rem 1rem;
-	background-image: url('/images/icons/icons.svg#caret-bottom')
+	width: 100%;
 }
