@@ -18,10 +18,11 @@ class search extends React.Component {
 		}
 
         return (
-				<Auth needsAuth={needsAuth}>
-					<Search location={this.props.location} childClass="searchPage" />	
-				</Auth>
-    )};
+			<Auth needsAuth={needsAuth}>
+				<Search location={this.props.location} childClass="searchPage" />	
+			</Auth>
+		)
+	};
 }
 
 export default search;
