@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles.module.scss'
 import { Icon } from 'components/atoms'
-import { withPrefix } from 'gatsby' 
 
 export default class Accordion extends Component {
 	constructor(props) {

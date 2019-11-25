@@ -17,7 +17,7 @@ const SidebarContent = ({ path, tree }) => {
 					activeClassName={styles.activeTitle}
 					className={className}
 					key={index}
-					open={path.includes(node.name.toLowerCase().replace(/ /g, "-"))}
+					open={path.includes(escape(node.name))}
 					title={node.name}
 				>
 					<SidebarContent path={path} tree={node.children} />
