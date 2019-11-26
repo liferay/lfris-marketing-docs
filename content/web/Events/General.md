@@ -1,6 +1,7 @@
 ---
 title: Events
 description: Hi this is a description
+needsAuth: false
 ---
 
 # Events Microsites
