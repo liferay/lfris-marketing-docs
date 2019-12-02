@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { Sidebar } from 'components/organisms';
 
 export default class Docs extends React.Component {
     constructor(props) {
@@ -12,8 +13,13 @@ export default class Docs extends React.Component {
         const { markdownRemark: { html }} = data;
 
         return (
-            <article dangerouslySetInnerHTML={{__html: html}}>
-            </article>    
+            <div className='row w-100'>
+                <Sidebar className='col-md-3' location={this.props.location} />
+                <div className='col-md-9'>
+                    <article dangerouslySetInnerHTML={{__html: html}}>
+                    </article>
+                </div>
+            </div>
         );
     }
 }
