@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withPrefix, graphql } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 import { Login, Search } from 'components/molecules';
 import styles from './styles.module.scss'
 
@@ -22,15 +22,5 @@ const LayoutNav = ({ siteTitle, location }) => {
         </nav>
     );
 };
-
-export const query = graphql`
-    query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-    }
-`
 
 export default LayoutNav;
