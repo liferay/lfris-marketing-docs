@@ -1,5 +1,6 @@
 import React from 'react';
 import IdentityModal, { useIdentityContext } from 'react-netlify-identity-widget'
+import styles from './styles.module.scss'
 
 const Login = () => {
     const [dialog, setDialog] = React.useState(false);
@@ -7,9 +8,12 @@ const Login = () => {
 
     return(
         <div>
-            <button className="btn" style={{ maxWidth: 400, background: 'darkgreen' }} onClick={() => setDialog(true)}>
+            <button className={`${styles.loginButton}`} onClick={() => setDialog(true)}>
                 {
-                    identity && identity.isLoggedIn ? 'LOG OUT' : 'LOG IN'
+                    identity && identity.isLoggedIn ?
+                        <img className={styles.avatar} src={identity.user.user_metadata.avatar_url} />
+                        :
+                        'Sign In'
                 }
             </button>
 
