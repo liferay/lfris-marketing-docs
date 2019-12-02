@@ -2,7 +2,7 @@ import Helmet from 'react-helmet';
 import { IdentityContextProvider } from 'react-netlify-identity-widget'
 import React from 'react';
 import styles from './styles.module.scss';
-import { Auth, Footer, LayoutNav, Sidebar } from 'components/organisms';
+import { Auth, Footer, LayoutNav } from 'components/organisms';
 import { graphql, useStaticQuery } from 'gatsby';
 import 'react-netlify-identity-widget/styles.css'
 
