@@ -11,7 +11,7 @@ const Login = () => {
             <button className={`${styles.loginButton}`} onClick={() => setDialog(true)}>
                 {
                     identity && identity.isLoggedIn ?
-                        <img className={styles.avatar} src={identity.user.user_metadata.avatar_url} />
+                        <img alt="avatar" className={styles.avatar} src={identity.user.user_metadata.avatar_url} />
                         :
                         'Sign In'
                 }
