@@ -47,7 +47,7 @@ const MainLayout = ({ className, children, location, pageContext, data }) => {
 					<LayoutNav location={location} siteTitle={title} search={true} />
 					
 					<div className={`${styles.content}`}>
-						<Auth className={styles.content} needsAuth={needsAuth}>
+						<Auth needsAuth={needsAuth}>
 								{children}
 						</Auth>
 					</div>
