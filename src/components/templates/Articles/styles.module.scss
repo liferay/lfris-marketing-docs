@@ -1,0 +1,13 @@
+@import '~theme/main';
+
+.article {
+	img {
+		border-radius: 4px;
+		display: block;
+		margin: 1.25rem auto;
+		max-width: 28rem;
+		width: 100%;
+
+		@extend %elevation-7;
+	}
+}

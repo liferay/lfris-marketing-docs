@@ -48,7 +48,7 @@ const MainLayout = ({ className, children, location, pageContext, data }) => {
 					
 					<div className={`${styles.content}`}>
 						<Auth needsAuth={needsAuth}>
-								{children}
+							{children}
 						</Auth>
 					</div>
 
