@@ -9,7 +9,11 @@ class search extends React.Component {
     render() {
         return (
 			<section className="max-width-medium">
-				<Search location={this.props.location} childClass="searchPage" />	
+				<Search
+					entryNumber={100}
+					location={this.props.location}
+					onPageSearch={true}
+				/>	
 			</section>
 		)
 	};

@@ -5,17 +5,23 @@ import styles from './styles.module.scss'
 
 const Index = ({ location }) =>  {    
     return (
-        <div className={styles.home}>
-            <section className={`${styles.sectionOne} bg-primary-7 full-screen`}>
-                <div className="max-width-full margin-horizontal-auto">
+        <div className={`${styles.home}`}>
+            <section className={`${styles.sectionOne} bg-primary-7 full-screen section-padding`}>
+                <div className="max-width-full margin-horizontal-auto padding-horizontal-1_5">
                     <h1 className="padding-top-3_5 padding-bottom-0_5 margin-vertical-0 text-center">Welcome to Liferay Marketing Docs</h1>
                     <p className="text-center color-neutral-4 margin-vertical-0 padding-bottom-2">All your marketing documentation needs in one place</p>
 
-                    <Search location={location} className={`max-width-medium margin-horizontal-auto`} />
+                    <div className={`max-width-medium margin-horizontal-auto padding-vertical-3`}>
+                        <Search
+                            entryNumber={0}
+                            location={location} 
+                            onPageSearch={true} 
+                        />
+                    </div>
                 </div>
             </section>
-            <section className="padding-vertical-2_5">
-                <h3 className="text-center">Browser by Marketing Function</h3>
+            <section className="section-padding">
+                <h3 className="text-center padding-bottom-1_5">Browser by Marketing Function</h3>
                 <div className="row">
                     <div className="col-md">
                         <Card
@@ -75,8 +81,8 @@ const Index = ({ location }) =>  {
                     </div>
                 </div>
             </section>
-            <section className="padding-vertical-2_5">
-                <h3 className="text-center">Browse by Topics</h3>
+            <section className="section-padding">
+                <h3 className="text-center padding-bottom-1_5">Browse by Topics</h3>
                 <div className="row">
                     <div className="col-md">
                         <Card

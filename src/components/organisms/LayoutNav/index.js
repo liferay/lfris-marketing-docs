@@ -15,7 +15,11 @@ const LayoutNav = ({ siteTitle, location }) => {
             <div className={styles.itemContainer}>
                 {
                     (location.pathname === "/" || location.pathname === "/search") ? '' :
-                    <Search location={location} childClass={`sidebarWrapper`} />
+                    <Search
+                        entryNumber={5}
+                        location={location}
+                        onPageSearch={false}
+                    />
                 }
                 <Login />
             </div>
