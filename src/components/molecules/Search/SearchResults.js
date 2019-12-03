@@ -1,22 +1,22 @@
 import React from "react"
 import styles from './styles.module.scss'
-import { Link } from 'gatsby'
+import { Link, replace } from 'gatsby'
 
-const SearchResults = ({ results, entryNumber }) => (
-  <ul className={styles.searchResultsContainer}>
+const SearchResults = ({ results, entryNumber, onClick }) => (
+  <ul className={styles.searchResultsContainer} onClick={onClick}>
     {results.slice(0, entryNumber).map(page => (
       <li className={styles.searchResultsItem} key={page.id}>
-        <Link to={`${page.path}`}>
-            <h4 className={styles.resultsTitle}>
+        <Link className={styles.searchResultsLinkContainer} to={`${page.path}`}>
+            <h5 className={styles.resultsTitle}>
               {page.title}
-            </h4>
+            </h5>
 
-            <div className={styles.resultsDescription}>
+            <div className={`font-size-paragraph-base ${styles.resultsDescription}`}>
               {page.description ? page.description : page.excerpt}
             </div>
 
-            <div className={styles.resultsPath}>
-              {page.path ? page.path : ''}
+            <div className={`color-neutral-3 font-size-paragraph-small ${styles.resultsPath}`}>
+              {page.path ? page.path.replace(/\//ig, ' > ') : ''}
             </div>
         </Link>
       </li>

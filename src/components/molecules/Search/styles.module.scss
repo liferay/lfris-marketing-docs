@@ -1,81 +1,111 @@
+@import '~theme/main';
+
 .searchContainer {
 	.searchButton {
 		background-color: transparent;
 		border-style: none;
 		height: 100%;
+		padding: 0;
 		position: absolute;
-		right: 0;
+		right: 0.25rem;
+		width: 24px;
+	}
 
-		.lexiconIcon {
-			fill: #FFF;
-			height: 24px;
-			max-width: 24px;
-		}
+	input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+	input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+	input[type="search"]::-webkit-search-decoration,
+	input[type="search"]::-webkit-search-cancel-button,
+	input[type="search"]::-webkit-search-results-button,
+	input[type="search"]::-webkit-search-results-decoration {
+		display: none;
 	}
 
 	.searchForm {
 		position: relative;
+
+		.searchInput {
+			border-radius: 4px;
+			border-style: none;
+			padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
 	}
 
-	.searchInput {
-		background-color: #F3F7FD;
-		border-radius: 4px;
-		border-style: none;
-		font-weight: 600;
-		padding: 0.5em 1.5em;
-		position: relative;
-		width: 100%;
+	.searchResultsContainer {
+		list-style: none;
+
+		.searchResultsItem {
+			padding: 1em 0;
+		}
+
+		.resultsDescription {
+			color: $color-black;
+			margin-bottom: 0.5rem;
+		}
+
+		.searchResultsLinkContainer:hover {
+			text-decoration: none;
+
+			.resultsTitle,
+			.resultsPath {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	&.searchPage {
-		.searchResultsContainer{
-			list-style: none;
-			padding: 4em 0;
-			text-align: left;
+		.searchForm {
+			.searchInput {
+				background-color: white;
+				height: 2.75rem;
+				padding: 0.75rem 2.5rem 0.75rem 1rem;
 
-			.searchResultsItem {
-				padding: 1em;
-
-				.resultsDescription {
-					margin-bottom: 0.5em;
-				}
-
-				.resultsPath {
-					opacity: 0.7;
-				}
-				
-				.resultsTitle {
-					margin-bottom: 0.25em;
-					font-weight: 600;
-					color: #0B5FFF;
-				}
-				
-				.resultsDescription, .resultsPath {
-					color: #000000;		
-				}
+				@extend %elevation-6;
 			}
+
+			.searchButton {
+				right: 0.5rem;
+			}
+
+			.lexiconIcon {
+				fill: $color-primary;
+				height: 18px;
+				width: 18px;
+			}		
+		}
+
+		.searchResultsContainer{
+			padding: 3rem 0;
 		}
 	}
 
 	&.sidebarWrapper {
 		position: relative;
+		margin-right: 1rem;
+
+		.lexiconIcon {
+			fill: #FFF;
+			height: 16px;
+			width: 16px;
+		}
 
 		.searchResultsContainer {
 			background: #FFF;
 			border-radius: 4px;
 			border: 1px solid gray;
 			box-shadow: 0 0 0.875em 0 rgba(109,117,128,.16), 0 0.5em 1.125em -0.5em rgba(109,117,128,.8);
-			list-style: none;
 			margin: 0;
-			padding: 1em;
+			padding: 0 1rem;
 			position: absolute;
+			right: -1rem;
 			top: 2.5em;
+			width: 28rem;
 			z-index: 1;
 
 			.searchResultsItem {
 				border-bottom: 1px solid gray;
-				padding: 1em 0;
-				text-decoration: none;
 
 				&:last-child {
 					border-bottom: 0;
@@ -84,7 +114,8 @@
 		}
 
 		.searchInput {
-			background-color: #FFF;
+			background-color: rgba(255, 255, 255, 0.2);
+			color: rgba(255, 255, 255, 0.7);
 		}
 	}
 }
