@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 
 const Index = ({ location }) =>  {    
     return (
-        <>
+        <div className={styles.home}>
             <section className={`${styles.sectionOne} bg-primary-7 full-screen`}>
                 <div className="max-width-full margin-horizontal-auto">
                     <h1 className="padding-top-3_5 padding-bottom-0_5 margin-vertical-0 text-center">Welcome to Liferay Marketing Docs</h1>
@@ -154,7 +154,7 @@ const Index = ({ location }) =>  {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );  
 };
 
