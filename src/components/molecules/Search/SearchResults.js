@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 
 const SearchResults = ({ results, entryNumber, onClick }) => {
 	const resultsArray = results.slice(0, entryNumber);
-	console.log(resultsArray);
 
 	return (
 		resultsArray.length > 0 ?
@@ -22,7 +21,10 @@ const SearchResults = ({ results, entryNumber, onClick }) => {
 								</div>
 
 								<div className={`color-neutral-3 font-size-paragraph-small ${styles.resultsPath}`}>
-								{page.path ? page.path.replace(/\//ig, ' > ') : ''}
+									{page.path ?
+										page.path.replace(/\//ig, ' > ') : 
+										''
+									}
 								</div>
 							</Link>
 						</li>)

@@ -4,10 +4,6 @@ import { Sidebar } from 'components/organisms';
 import styles from './styles.module.scss'
 
 export default class Docs extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { data } = this.props;
         const { markdownRemark: { html }} = data;
