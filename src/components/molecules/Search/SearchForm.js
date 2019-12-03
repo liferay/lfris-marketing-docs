@@ -11,11 +11,13 @@ const SearchForm = ({ query, onChangeEvent, inputFocusEvent }) => (
   >
     <input
       aria-controls="search-results-count"
+      autoComplete="off"
       className={styles.searchInput}
       id="search-input"
       name="keywords"
       onChange={onChangeEvent}
       onFocus={inputFocusEvent}
+      placeholder="Search Docs"
       type="search"
       value={query}
     />

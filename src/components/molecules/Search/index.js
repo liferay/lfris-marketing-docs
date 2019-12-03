@@ -11,6 +11,7 @@ class Search extends Component {
 
     this.handleInputBlur = this.handleInputBlur.bind(this);
     this.handleInputFocus = this.handleInputFocus.bind(this);
+    this.removeQuery = this.removeQuery.bind(this);
 
     this.state = {
       query: new URLSearchParams(this.props.location.search).get("keywords") || '',
@@ -20,11 +21,27 @@ class Search extends Component {
     }
   }
 
+  componentWillMount() {
+    document.addEventListener('mousedown', this.handleInputBlur, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleInputBlur, false);
+  }
+
   handleInputBlur(evt) {
+    if(this.node.contains(evt.target)) {
+      return;
+    }
+
+    this.removeQuery();
+  }
+
+  removeQuery() {
     if(!this.props.location.pathname.includes('/search')) {
       this.setState({
         results: ''
-      })  
+      }) 
     }
   }
 
@@ -34,14 +51,14 @@ class Search extends Component {
 
   render() {
     const childClass = (this.props.childClass ? styles[this.props.childClass] : '')
-    const entryNumber = 5;
+    const entryNumber = 100;
 
     return (    
-      <div className={childClass + ' ' + styles.searchContainer} onBlur={this.handleInputBlur}>
-        <SearchForm inputFocusEvent={this.handleInputFocus} inputBlurEvent={this.handleInputBlur} query={this.state.query} onChangeEvent={evt => this.search(evt, this.state.query)} />
+      <div className={childClass + ' ' + styles.searchContainer} ref={node => this.node = node}>
+        <SearchForm inputFocusEvent={this.handleInputFocus} query={this.state.query} onChangeEvent={evt => this.search(evt, this.state.query)} />
 
         {this.state.results.length > 0 ?
-          <SearchResults results={this.state.results} entryNumber={entryNumber} />
+          <SearchResults onClick={this.removeQuery} results={this.state.results} entryNumber={entryNumber} />
         :
         ''
         }

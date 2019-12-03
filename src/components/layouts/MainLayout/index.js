@@ -26,7 +26,7 @@ const MainLayout = ({ className, children, location, pageContext, data }) => {
 		pageContext.layout === 'article' ?
 			data.markdownRemark.fields.needsAuth
 			:
-			(location.pathname === '/' ?
+			(location.pathname === '/' || location.pathname.includes('/search') ?
 				false
 				:
 				true
