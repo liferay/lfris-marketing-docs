@@ -21,7 +21,7 @@ class Search extends Component {
 		this.removeQuery = this.removeQuery.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		document.addEventListener('mousedown', this.handleInputBlur, false);
 	}
 

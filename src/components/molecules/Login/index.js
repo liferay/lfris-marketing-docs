@@ -18,6 +18,7 @@ const Login = () => {
             </button>
 
             <IdentityModal
+                aria-labelledby='sign-in'
                 showDialog={dialog}
                 onCloseDialog={() => setDialog(false)}
             />
