@@ -1,13 +1,11 @@
 @import '~theme/main';
 
-.article {
-	img {
-		border-radius: 4px;
-		display: block;
-		margin: 1.25rem auto;
-		max-width: 28rem;
-		width: 100%;
+.image {
+	border-radius: 4px;
+	display: block;
+	margin: 1.25rem auto;
+	max-width: 32rem;
+	width: 100%;
 
-		@extend %elevation-7;
-	}
+	@extend %elevation-7;
 }

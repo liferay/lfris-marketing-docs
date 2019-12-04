@@ -1,26 +1,53 @@
 import {graphql} from 'gatsby';
+import Img from 'gatsby-image';
+import parse from 'html-react-parser';
 import React from 'react';
 
 import {Sidebar} from 'components/organisms';
 import styles from './styles.module.scss';
 
-export default class Docs extends React.Component {
-	render() {
-		const {data} = this.props;
-		const {
-			markdownRemark: {html}
-		} = data;
+const Docs = ({data, location}) => {
+	const {
+		markdownRemark: {html},
+		googleDocImages
+	} = data;
 
-		return (
-			<div className='row w-100'>
-				<Sidebar className='col-md-3' location={this.props.location} />
-				<div className={`col-md-9 padding-top-1_5 ${styles.article}`}>
-					<article dangerouslySetInnerHTML={{__html: html}}></article>
-				</div>
+	const options = {
+		replace: domNode => {
+			const {children} = domNode;
+			if (!children) return;
+			const hasImgTag = children.find(img => img.name === 'img');
+			if (hasImgTag) {
+				const {attribs} = hasImgTag;
+				const {src, alt} = attribs;
+				return (
+					<Img
+						fluid={
+							googleDocImages.edges.find(
+								({node}) => node.id === src
+							).node.childImageSharp.fluid
+						}
+						alt={alt}
+						className={`ui fluid image ${styles.image}`}
+					/>
+				);
+			}
+		}
+	};
+
+	const htmlContent = parse(html, options);
+
+	return (
+		<div className='row w-100'>
+			<Sidebar className='col-md-3' location={location} />
+			<div className={`col-md-9 padding-top-1_5 ${styles.article}`}>
+				<article>{htmlContent}></article>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
+
+export default Docs;
 
 export const pageQuery = graphql`
 	query($slug: String!) {
@@ -28,6 +55,32 @@ export const pageQuery = graphql`
 			html
 			fields {
 				needsAuth
+			}
+		}
+		googleDocImages: allFile(
+			filter: {name: {glob: "google-doc-image-**"}}
+		) {
+			edges {
+				node {
+					id
+					name
+					childImageSharp {
+						fluid {
+							base64
+							tracedSVG
+							aspectRatio
+							src
+							srcSet
+							srcWebp
+							srcSetWebp
+							sizes
+							originalImg
+							originalName
+							presentationWidth
+							presentationHeight
+						}
+					}
+				}
 			}
 		}
 	}

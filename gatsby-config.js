@@ -92,6 +92,7 @@ module.exports = {
 				)
 			}
 		},
+		'gatsby-plugin-sharp',
 		'gatsby-plugin-zopfli',
 		{
 			resolve: 'gatsby-source-filesystem',
@@ -112,7 +113,8 @@ module.exports = {
 				},
 				fields: ['createdTime'],
 				fieldsMapper: {createdTime: 'date', name: 'title'},
-				fieldsDefault: {draft: false}
+				fieldsDefault: {draft: false},
+				convertImgToNode: true
 			}
 		},
 		{
@@ -149,6 +151,7 @@ module.exports = {
 					}
 				]
 			}
-		}
+		},
+		'gatsby-transformer-sharp'
 	]
 };

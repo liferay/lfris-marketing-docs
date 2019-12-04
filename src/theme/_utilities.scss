@@ -34,26 +34,6 @@
 	position: absolute;
 }
 
-.aspect-ratio-object-fit-cover {
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-
-	.fragments-image-div,
-	.fragments-editor__editable[type='image'] {
-		height: 100%;
-		position: absolute;
-		width: 100%;
-
-		img {
-			height: 100%;
-			object-fit: cover;
-			position: absolute;
-			width: 100%;
-		}
-	}
-}
-
 .hide-phone {
 	@include for-phone-only {
 		display: none !important;
