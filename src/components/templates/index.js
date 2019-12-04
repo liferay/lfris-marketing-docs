@@ -1,5 +1,3 @@
-import Articles from "./Articles"
+import Articles from './Articles';
 
-export {
-	Articles
-}
+export {Articles};

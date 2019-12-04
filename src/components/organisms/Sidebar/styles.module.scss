@@ -2,9 +2,9 @@
 	left: 0;
 	position: fixed;
 	z-index: 1;
-	
+
 	.sideNav {
-		background-color: #F5F7FA;
+		background-color: #f5f7fa;
 		height: 100%;
 		padding: 1.5rem;
 		position: relative;
@@ -16,7 +16,7 @@
 	padding-left: 0;
 
 	.activeTitle {
-		color: #09101D;
+		color: #09101d;
 	}
 
 	ul {
@@ -32,22 +32,23 @@
 		padding: 0.5rem 0;
 	}
 
-	.link, span {
-		color: #5B6170;
+	.link,
+	span {
+		color: #5b6170;
 		font-weight: 600;
 		text-decoration: none;
 	}
 
 	.active span {
-		color: #09101D;
+		color: #09101d;
 	}
 
 	.activeLink {
-		color: #09101D;
+		color: #09101d;
 		position: relative;
 
 		&:before {
-			background-color: #004AD7;
+			background-color: #004ad7;
 			border-radius: 0.5rem;
 			content: '';
 			display: block;

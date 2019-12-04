@@ -44,7 +44,7 @@ $heading-styles-map: (
 	'-f1': (
 		'additional-styles': (
 			(
-				font-weight: $font-weight-semi-bold,
+				font-weight: $font-weight-semi-bold
 			)
 		),
 		'phone-only': 2rem 1.125,
@@ -55,7 +55,7 @@ $heading-styles-map: (
 	'-f2': (
 		'additional-styles': (
 			(
-				font-weight: $font-weight-semi-bold,
+				font-weight: $font-weight-semi-bold
 			)
 		),
 		'phone-only': 1.813rem 1.103,
@@ -66,7 +66,7 @@ $heading-styles-map: (
 	'-f3': (
 		'additional-styles': (
 			(
-				font-weight: $font-weight-semi-bold,
+				font-weight: $font-weight-semi-bold
 			)
 		),
 		'phone-only': 1.625rem 1.23,
@@ -77,7 +77,7 @@ $heading-styles-map: (
 	'-f4': (
 		'additional-styles': (
 			(
-				font-weight: $font-weight-semi-bold,
+				font-weight: $font-weight-semi-bold
 			)
 		),
 		'phone-only': 1.375rem 1.244,
@@ -88,7 +88,7 @@ $heading-styles-map: (
 	'-f5': (
 		'additional-styles': (
 			(
-				font-weight: $font-weight-semi-bold,
+				font-weight: $font-weight-semi-bold
 			)
 		),
 		'phone-only': 1.25rem 1.2,
@@ -136,9 +136,9 @@ $long-form-styles-map: (
 		'additional-styles': (
 			(
 				font-weight: $font-weight-bold,
-				letter-spacing: 0.01em,
-			),
-		),
+				letter-spacing: 0.01em
+			)
+		)
 	),
 	'-serif': (
 		'all': 1.063rem 1.647,
@@ -147,7 +147,7 @@ $long-form-styles-map: (
 			(
 				font-family: $font-family-serif,
 				font-weight: $font-weight-bold,
-				letter-spacing: 0.01em,
+				letter-spacing: 0.01em
 			)
 		)
 	)
@@ -278,7 +278,9 @@ $small-caps-styles-map: (
 
 // Generates Sass placeholder(s) %font-size-small-caps
 
-@each $small-caps-style-class, $small-caps-style-values in $small-caps-styles-map {
+@each $small-caps-style-class,
+	$small-caps-style-values in $small-caps-styles-map
+{
 	@include font-sizing(
 		'',
 		$small-caps-style-class,
