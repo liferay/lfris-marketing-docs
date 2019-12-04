@@ -7,7 +7,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import 'react-netlify-identity-widget/styles.css'
 
 const MainLayout = ({ className, children, location, pageContext, data }) => {
-	const url = 'https://dreamy-hugle-ec0273.netlify.com/';
+	const url = 'https://lwm-docs.liferay.com';
 	const description = "Empowering Liferay Marketing";
 
 	const {site: {siteMetadata: {title}}} = useStaticQuery(
