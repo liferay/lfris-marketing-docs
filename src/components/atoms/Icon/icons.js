@@ -1,6 +1,6 @@
+import React from 'react'
 
-		import React from 'react'
-		export default { arrow:
+export default { arrow:
    props => ( <svg viewBox="0 0 16 16" fill="none" {...props}> <path d="M3 8h9m0 0L9 5m3 3l-3 3" stroke="inherit" strokeLinecap="round" strokeLinejoin="round" /> </svg> ) ,
   cards2:
    props => ( <svg viewBox="0 0 512 512" {...props}> <path d="M192 0H32C14.336 0 0 14.336 0 32v160c0 17.664 14.336 32 32 32h160c17.664 0 32-14.336 32-32V32c0-17.664-14.336-32-32-32zm0 288H32c-17.664 0-32 14.336-32 32v160c0 17.664 14.336 32 32 32h160c17.664 0 32-14.336 32-32V320c0-17.664-14.336-32-32-32zM480 0H320c-17.664 0-32 14.336-32 32v160c0 17.664 14.336 32 32 32h160c17.664 0 32-14.336 32-32V32c0-17.664-14.336-32-32-32zm0 288H320c-17.664 0-32 14.336-32 32v160c0 17.664 14.336 32 32 32h160c17.664 0 32-14.336 32-32V320c0-17.664-14.336-32-32-32z" /> </svg> ) ,

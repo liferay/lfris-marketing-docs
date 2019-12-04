@@ -1,7 +1,4 @@
-import Card from "./Card"
-import Icon from "./Icon"
+import Card from './Card';
+import Icon from './Icon';
 
-export {
-	Card,
-	Icon
-}
+export {Card, Icon};
