@@ -1,0 +1,30 @@
+@import '~theme/main.scss';
+
+.onPageNav {
+	list-style: none;
+	position: fixed;
+	top: 5.5rem;
+
+	.onPageNavItem {
+		padding-bottom: 0.5rem;
+
+		.onPageNavItemAnchor {
+			color: $color-black;
+			display: inline-block;
+			max-width: 14rem;
+			padding: 0.5rem 1rem;
+			width: 100%;
+
+			&:hover {
+				background-color: #f3f7ff;
+				color: $color-action-default-hover;
+				text-decoration: none;
+			}
+
+			&.currentLink {
+				color: $color-action-default-active;
+				font-weight: 600;
+			}
+		}
+	}
+}
