@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 const Docs = ({data, location}) => {
 	const {
 		markdownRemark: {html},
-		googleDocImages
+		googleDocImages: {edges: gDocImage}
 	} = data;
 
 	const options = {
@@ -20,17 +20,25 @@ const Docs = ({data, location}) => {
 			if (hasImgTag) {
 				const {attribs} = hasImgTag;
 				const {src, alt} = attribs;
-				return (
-					<Img
-						fluid={
-							googleDocImages.edges.find(
-								({node}) => node.id === src
-							).node.childImageSharp.fluid
-						}
-						alt={alt}
-						className={`ui fluid image ${styles.image}`}
-					/>
+				const gDocImageEdge = gDocImage.find(
+					({node}) => node.id === src
 				);
+
+				if (!!gDocImageEdge) {
+					const {
+						node: {
+							childImageSharp: {fluid}
+						}
+					} = gDocImageEdge;
+
+					return (
+						<Img
+							fluid={fluid}
+							alt={alt}
+							className={`ui fluid image ${styles.image}`}
+						/>
+					);
+				}
 			}
 		}
 	};
