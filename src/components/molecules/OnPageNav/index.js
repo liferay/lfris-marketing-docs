@@ -3,15 +3,12 @@ import {Link as ScrollLink} from 'react-scroll';
 
 import styles from './styles.module.scss';
 
-const OnPageNav = ({linkArray, location}) => {
-	const {hash} = location;
-	console.log(hash);
-
+const OnPageNav = ({linkArray}) => {
 	return (
 		<ul className={styles.onPageNav}>
 			{linkArray.map(item => {
 				return (
-					<li className={styles.onPageNavItem}>
+					<li className={styles.onPageNavItem} key={item.id}>
 						<ScrollLink
 							activeClass={styles.currentLink}
 							className={`${styles.onPageNavItemAnchor}`}

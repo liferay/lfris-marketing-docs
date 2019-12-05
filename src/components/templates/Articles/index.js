@@ -4,7 +4,6 @@ import {graphql} from 'gatsby';
 import Img from 'gatsby-image';
 import parse from 'html-react-parser';
 import React from 'react';
-
 import {Element as ScrollElement} from 'react-scroll';
 
 import {OnPageNav} from 'components/molecules';
@@ -21,25 +20,38 @@ const Docs = ({data, location}) => {
 
 	const options = {
 		replace: domNode => {
-			if (domNode.name === 'h2' && domNode.children.length > 0) {
+			const {children, name} = domNode;
+
+			if (!children) return;
+
+			//h2 replacement
+			if (name === 'h2') {
+				const {data: text} = children.find(h2 => h2.type === 'text');
+				const headerId = camelCase(text);
+
 				h2Array.push({
-					id: camelCase(domNode.children[0].data),
-					name: domNode.children[0].data
+					id: headerId,
+					name: text
 				});
 
 				return (
-					<ScrollElement id={camelCase(domNode.children[0].data)}>
-						<h2 className='documentation-h2'>
-							{domNode.children[0].data}
+					<ScrollElement id={headerId}>
+						<h2
+							className='documentation-h2'
+							style={{
+								marginBottom: '-128px',
+								marginTop: '-32px',
+								paddingBottom: '128px',
+								paddingTop: '32px'
+							}}
+						>
+							{text}
 						</h2>
 					</ScrollElement>
 				);
 			}
 
-			const {children} = domNode;
-
-			if (!children) return;
-
+			//img replacement
 			const hasImgTag = children.find(img => img.name === 'img');
 
 			if (hasImgTag) {
@@ -77,7 +89,7 @@ const Docs = ({data, location}) => {
 				<article>{htmlContent}</article>
 			</div>
 			<div className='col-md-2 padding-top-1_5'>
-				<OnPageNav linkArray={h2Array} location={location} />
+				<OnPageNav linkArray={h2Array} />
 			</div>
 		</div>
 	);
