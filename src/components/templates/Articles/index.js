@@ -2,6 +2,7 @@ import {graphql} from 'gatsby';
 import Img from 'gatsby-image';
 import parse from 'html-react-parser';
 import React from 'react';
+import DOMpurify from 'dompurify';
 
 import {Sidebar} from 'components/organisms';
 import styles from './styles.module.scss';
@@ -15,8 +16,11 @@ const Docs = ({data, location}) => {
 	const options = {
 		replace: domNode => {
 			const {children} = domNode;
+
 			if (!children) return;
+
 			const hasImgTag = children.find(img => img.name === 'img');
+
 			if (hasImgTag) {
 				const {attribs} = hasImgTag;
 				const {src, alt} = attribs;
@@ -43,7 +47,7 @@ const Docs = ({data, location}) => {
 		}
 	};
 
-	const htmlContent = parse(html, options);
+	const htmlContent = parse(DOMpurify.sanitize(html), options);
 
 	return (
 		<div className='row w-100'>
