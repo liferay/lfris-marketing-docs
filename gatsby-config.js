@@ -57,29 +57,6 @@ module.exports = {
 				)
 			}
 		},
-		{
-			resolve: 'gatsby-plugin-manifest',
-			options: {
-				name: 'Gatsby Boilerplate',
-				short_name: 'Gatsby Boilerplate',
-				start_url: '/',
-				background_color: '#FFFFFF',
-				theme_color: '#0B5FFF',
-				display: 'minimal-ui',
-				icons: [
-					{
-						src: 'favicons/android-chrome-192x192.png',
-						sizes: '192x192',
-						type: 'image/png'
-					},
-					{
-						src: 'favicons/android-chrome-512x512.png',
-						sizes: '512x512',
-						type: 'image/png'
-					}
-				]
-			}
-		},
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-remove-trailing-slashes',
 		'gatsby-plugin-resolve-src',
