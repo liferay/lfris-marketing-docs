@@ -8,7 +8,7 @@ import {Auth, Footer, LayoutNav} from 'components/organisms';
 import styles from './styles.module.scss';
 
 const MainLayout = ({className, children, location, pageContext, data}) => {
-	const url = 'https://lwm-docs.liferay.com';
+	const url = 'https://mktg-docs.liferay.com/';
 	const description = 'Empowering Liferay Marketing';
 
 	const {
