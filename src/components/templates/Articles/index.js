@@ -1,9 +1,9 @@
 import camelCase from 'camelcase';
-import DOMpurify from 'dompurify';
 import {graphql} from 'gatsby';
 import Img from 'gatsby-image';
 import parse from 'html-react-parser';
 import React from 'react';
+import sanitizeHTML from 'sanitize-html';
 import {Element as ScrollElement} from 'react-scroll';
 
 import {OnPageNav} from 'components/molecules';
@@ -26,29 +26,34 @@ const Docs = ({data, location}) => {
 
 			//h2 replacement
 			if (name === 'h2') {
-				const {data: text} = children.find(h2 => h2.type === 'text');
-				const headerId = camelCase(text);
+				const hasText = children.find(h2 => h2.type === 'text');
 
-				h2Array.push({
-					id: headerId,
-					name: text
-				});
+				if (hasText) {
+					const {data: text} = hasText;
 
-				return (
-					<ScrollElement id={headerId}>
-						<h2
-							className='documentation-h2'
-							style={{
-								marginBottom: '-128px',
-								marginTop: '-32px',
-								paddingBottom: '128px',
-								paddingTop: '32px'
-							}}
-						>
-							{text}
-						</h2>
-					</ScrollElement>
-				);
+					const headerId = camelCase(text);
+
+					h2Array.push({
+						id: headerId,
+						name: text
+					});
+
+					return (
+						<ScrollElement id={headerId}>
+							<h2
+								className='documentation-h2'
+								style={{
+									marginBottom: '-128px',
+									marginTop: '-32px',
+									paddingBottom: '128px',
+									paddingTop: '32px'
+								}}
+							>
+								{text}
+							</h2>
+						</ScrollElement>
+					);
+				}
 			}
 
 			//img replacement
@@ -80,7 +85,10 @@ const Docs = ({data, location}) => {
 		}
 	};
 
-	const htmlContent = parse(DOMpurify.sanitize(html), options);
+	const htmlContent = parse(
+		sanitizeHTML(html, {allowedTags: false, allowedAttributes: false}),
+		options
+	);
 
 	return (
 		<div className='row w-100'>
