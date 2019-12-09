@@ -13,22 +13,20 @@ const Auth = ({children, needsAuth}) => {
 			  identity.isLoggedIn &&
 			  identity.user.email.includes('@liferay.com');
 
+	if (!needsAuth || identityNullCheck) {
+		return children;
+	}
+
 	return (
-		<>
-			{!needsAuth || identityNullCheck ? (
-				children
-			) : (
-				<div className={`row ${styles.gateStyles}`}>
-					<div
-						className={`max-width-full margin-horizontal-auto ${styles.gateNotice}`}
-					>
-						Please sign in with a @liferay.com email address to view
-						this content
-						<Login className={styles.loginButton} />
-					</div>
-				</div>
-			)}
-		</>
+		<section className={`row ${styles.gateStyles}`}>
+			<div
+				className={`max-width-full margin-horizontal-auto ${styles.gateNotice}`}
+			>
+				Please sign in with a @liferay.com email address to view this
+				content
+				<Login className={styles.loginButton} />
+			</div>
+		</section>
 	);
 };
 
