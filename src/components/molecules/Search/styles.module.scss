@@ -109,6 +109,8 @@
 			box-shadow: 0 0 0.875em 0 rgba(109, 117, 128, 0.16),
 				0 0.5em 1.125em -0.5em rgba(109, 117, 128, 0.8);
 			margin: 0;
+			max-height: calc(100vh - 4.5rem);
+			overflow-y: auto;
 			padding: 0 1rem;
 			position: absolute;
 			right: -1rem;
