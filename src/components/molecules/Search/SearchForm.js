@@ -2,6 +2,7 @@ import {navigate} from '@reach/router';
 import {withPrefix} from 'gatsby';
 import React from 'react';
 
+import {Icon} from 'components/atoms';
 import styles from './styles.module.scss';
 
 const SearchForm = ({query, onChangeEvent, inputFocusEvent}) => (
@@ -26,9 +27,7 @@ const SearchForm = ({query, onChangeEvent, inputFocusEvent}) => (
 			value={query}
 		/>
 		<button className={styles.searchButton} type='submit'>
-			<svg className={styles.lexiconIcon}>
-				<use xlinkHref={withPrefix('images/icons/icons.svg#search')} />
-			</svg>
+			<Icon name='search' className={styles.lexiconIcon} />
 		</button>
 	</form>
 );
