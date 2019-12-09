@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {Icon} from 'components/atoms';
 import styles from './styles.module.scss';
 
 const SidebarSelect = ({selectItems, handleSelected, defaultValue}) => (

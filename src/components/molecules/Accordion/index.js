@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'gatsby';
 
 import {Icon} from 'components/atoms';
 import styles from './styles.module.scss';
