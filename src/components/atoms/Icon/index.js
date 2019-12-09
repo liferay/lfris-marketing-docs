@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import IconsObject from './icons'
+import PropTypes from 'prop-types';
+import React from 'react';
+import IconsObject from './icons';
 
 const Icon = ({
 	className,
@@ -15,29 +15,34 @@ const Icon = ({
 }) => {
 	const styles = {
 		...style,
-		fill: '#09101D',
+		fill,
 		height,
 		margin,
-		width,
-	}
+		width
+	};
 
 	if (rotate) {
-		styles.transform = `rotate(${rotate}deg)`
-		styles.transition = 'transform 0.5s'
+		styles.transform = `rotate(${rotate}deg)`;
+		styles.transition = 'transform 0.5s';
 	}
 
-	const DynamicIcon = IconsObject[name]
+	const DynamicIcon = IconsObject[name];
 
 	if (!DynamicIcon) {
-		console.log(`${name} icon not found`)
+		console.log(`${name} icon not found`);
 	}
 
 	return DynamicIcon ? (
-		<DynamicIcon className={className} style={styles} name={name} {...props} />
+		<DynamicIcon
+			className={className}
+			style={styles}
+			name={name}
+			{...props}
+		/>
 	) : (
 		<span />
-	)
-}
+	);
+};
 
 Icon.propTypes = {
 	className: PropTypes.string,
@@ -47,7 +52,7 @@ Icon.propTypes = {
 	name: PropTypes.string.isRequired,
 	style: PropTypes.object,
 	margin: PropTypes.string,
-	rotate: PropTypes.number,
-}
+	rotate: PropTypes.number
+};
 
-export default Icon
+export default Icon;
