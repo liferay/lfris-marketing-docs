@@ -18,7 +18,7 @@ const Auth = ({children, needsAuth}) => {
 	}
 
 	return (
-		<div className={`row ${styles.gateStyles}`}>
+		<section className={`row ${styles.gateStyles}`}>
 			<div
 				className={`max-width-full margin-horizontal-auto ${styles.gateNotice}`}
 			>
@@ -26,7 +26,7 @@ const Auth = ({children, needsAuth}) => {
 				content
 				<Login className={styles.loginButton} />
 			</div>
-		</div>
+		</section>
 	);
 };
 
