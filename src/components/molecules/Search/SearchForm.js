@@ -1,5 +1,4 @@
 import {navigate} from '@reach/router';
-import {withPrefix} from 'gatsby';
 import React from 'react';
 
 import {Icon} from 'components/atoms';
