@@ -8,7 +8,7 @@ import {Auth, Footer, LayoutNav} from 'components/organisms';
 import styles from './styles.module.scss';
 
 const MainLayout = ({className, children, location, pageContext, data}) => {
-	const url = 'https://mktg-docs.liferay.com/';
+	const url = 'https://dreamy-hugle-ec0273.netlify.com/';
 	const description = 'Empowering Liferay Marketing';
 
 	const {
