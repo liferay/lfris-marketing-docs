@@ -18,7 +18,7 @@ const Auth = ({children, needsAuth}) => {
 	}
 
 	return (
-		<section className={`row ${styles.gateStyles}`}>
+		<section className={`${styles.gateStyles}`}>
 			<div
 				className={`max-width-full margin-horizontal-auto ${styles.gateNotice}`}
 			>

@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 
-import styles from './styles.module.scss';
-
 class DeployButton extends React.Component {
 	handleDeploy = event => {
 		axios.post(this.props.deployHook, {});
@@ -10,7 +8,11 @@ class DeployButton extends React.Component {
 
 	render() {
 		return (
-			<button className={styles.deployButton} onClick={this.handleDeploy}>
+			<button
+				className={'btn btn-primary btn-sm margin-horizontal-0_5'}
+				onClick={this.handleDeploy}
+				type='button'
+			>
 				{this.props.children}
 			</button>
 		);
