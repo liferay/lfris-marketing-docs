@@ -86,7 +86,7 @@ const Docs = ({data, location}) => {
 	};
 
 	const htmlContent = parse(
-		sanitizeHTML(html, {allowedAttributes: false}),
+		sanitizeHTML(html, {allowedTags: sanitizeHTML.defaults.allowedTags.concat(['h1', 'h2', 'span', 'img']), allowedAttributes: false}),
 		options
 	);
 
