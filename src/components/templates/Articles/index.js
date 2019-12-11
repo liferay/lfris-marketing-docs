@@ -86,7 +86,7 @@ const Docs = ({data, location}) => {
 	};
 
 	const htmlContent = parse(
-		sanitizeHTML(html, {allowedTags: false, allowedAttributes: false}),
+		sanitizeHTML(html, {allowedAttributes: false}),
 		options
 	);
 
