@@ -1,10 +1,10 @@
 import camelCase from 'camelcase';
 import {graphql} from 'gatsby';
+import Img from 'gatsby-image';
 import parse from 'html-react-parser';
 import React from 'react';
 import sanitizeHTML from 'sanitize-html';
 import {Element as ScrollElement} from 'react-scroll';
-import {renderToStaticMarkup} from 'react-dom/server';
 
 import {OnPageNav} from 'components/molecules';
 import {Sidebar} from 'components/organisms';
@@ -69,17 +69,15 @@ const Docs = ({data, location}) => {
 				if (!!gDocImageEdge) {
 					const {
 						node: {
-							childImageSharp: {
-								fluid: {src}
-							}
+							childImageSharp: {fluid}
 						}
 					} = gDocImageEdge;
 
 					return (
-						<img
-							src={src}
+						<Img
+							fluid={fluid}
 							alt={alt}
-							className={`${styles.image}`}
+							className={`ui fluid image ${styles.image}`}
 						/>
 					);
 				}
@@ -87,18 +85,16 @@ const Docs = ({data, location}) => {
 		}
 	};
 
-	const htmlContent = renderToStaticMarkup(
-		parse(
-			sanitizeHTML(html, {allowedTags: false, allowedAttributes: false}),
-			options
-		)
+	const htmlContent = parse(
+		sanitizeHTML(html, {allowedTags: false, allowedAttributes: false}),
+		options
 	);
 
 	return (
 		<div className='row w-100'>
 			<Sidebar className='col-md-3' location={location} />
 			<div className={`col-md-7 padding-top-1_5 ${styles.article}`}>
-				<article dangerouslySetInnerHTML={{__html: htmlContent}} />
+				<article>{htmlContent}</article>
 			</div>
 			<div className='col-md-2 padding-top-1_5'>
 				<OnPageNav linkArray={h2Array} />
@@ -126,7 +122,18 @@ export const pageQuery = graphql`
 					name
 					childImageSharp {
 						fluid {
+							base64
+							tracedSVG
+							aspectRatio
 							src
+							srcSet
+							srcWebp
+							srcSetWebp
+							sizes
+							originalImg
+							originalName
+							presentationWidth
+							presentationHeight
 						}
 					}
 				}
