@@ -1,0 +1,15 @@
+@import '~theme/main.scss';
+
+.contributionLink {
+	background-color: $color-neutral-9;
+	border-radius: 4px;
+	display: inline-block;
+	font-weight: $font-weight-semi-bold;
+	margin: 0.5rem 0;
+	padding: 0.5rem 0.75rem;
+
+	a {
+		font-weight: $font-weight-semi-bold;
+		text-decoration: underline;
+	}
+}

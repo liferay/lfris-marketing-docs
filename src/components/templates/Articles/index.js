@@ -6,13 +6,17 @@ import React from 'react';
 import sanitizeHTML from 'sanitize-html';
 import {Element as ScrollElement} from 'react-scroll';
 
+import {ContributionLink} from 'components/atoms';
 import {OnPageNav} from 'components/molecules';
 import {Sidebar} from 'components/organisms';
 import styles from './styles.module.scss';
 
 const Docs = ({data, location}) => {
 	const {
-		markdownRemark: {html},
+		markdownRemark: {
+			html,
+			frontmatter: {id: googleDocId}
+		},
 		googleDocImages: {edges: gDocImage}
 	} = data;
 
@@ -93,8 +97,23 @@ const Docs = ({data, location}) => {
 	return (
 		<div className='row w-100'>
 			<Sidebar className='col-md-3' location={location} />
-			<div className={`col-md-7 padding-top-1_5 ${styles.article}`}>
+			<div className={`col-md-7 padding-vertical-1_5 ${styles.article}`}>
 				<article>{htmlContent}</article>
+
+				<div className='padding-vertical-2'>
+					<ContributionLink>
+						Want to contribute?{' '}
+						<a
+							href={`https://docs.google.com/document/d/${googleDocId}/edit`}
+						>
+							Edit this article
+						</a>
+					</ContributionLink>
+					<ContributionLink>
+						Questions, Comments, Bug Reporting: join
+						<a href='#'> #s-mktg-docs</a> in Slack.
+					</ContributionLink>
+				</div>
 			</div>
 			<div className='col-md-2 padding-top-1_5'>
 				<OnPageNav linkArray={h2Array} />
@@ -111,6 +130,9 @@ export const pageQuery = graphql`
 			html
 			fields {
 				needsAuth
+			}
+			frontmatter {
+				id
 			}
 		}
 		googleDocImages: allFile(
