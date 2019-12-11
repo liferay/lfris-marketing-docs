@@ -60,9 +60,8 @@ class Sidebar extends React.Component {
 					var newFolder = {
 						children: [],
 						isFolder: index < path.length - 1,
-						link:
-							'/' + path.join('/').replace(/.html|.md|.mdx/g, ''),
-						name: folder.replace(/.html|.md|.mdx/g, '')
+						link: '/' + path.join('/'),
+						name: folder
 					};
 
 					currentLevel.push(newFolder);
