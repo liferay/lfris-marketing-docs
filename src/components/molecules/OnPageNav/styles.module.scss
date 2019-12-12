@@ -2,6 +2,8 @@
 
 .onPageNav {
 	list-style: none;
+	max-width: 100%;
+	padding-left: 0;
 	position: fixed;
 	top: 5.5rem;
 
@@ -9,10 +11,12 @@
 		padding-bottom: 0.5rem;
 
 		.onPageNavItemAnchor {
+			border-radius: 4px;
 			color: $color-black;
 			display: inline-block;
 			max-width: 14rem;
 			padding: 0.5rem 1rem;
+			margin: 0 -1rem;
 			width: 100%;
 
 			&:hover {

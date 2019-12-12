@@ -48,9 +48,9 @@ const Docs = ({data, location}) => {
 								className='documentation-h2'
 								style={{
 									marginBottom: '-128px',
-									marginTop: '-32px',
-									paddingBottom: '128px',
-									paddingTop: '32px'
+									marginTop: '-16px',
+									paddingBottom: '136px',
+									paddingTop: '16px'
 								}}
 							>
 								{text}
@@ -90,7 +90,15 @@ const Docs = ({data, location}) => {
 	};
 
 	const htmlContent = parse(
-		sanitizeHTML(html, {allowedTags: sanitizeHTML.defaults.allowedTags.concat(['h1', 'h2', 'span', 'img']), allowedAttributes: false}),
+		sanitizeHTML(html, {
+			allowedTags: sanitizeHTML.defaults.allowedTags.concat([
+				'h1',
+				'h2',
+				'span',
+				'img'
+			]),
+			allowedAttributes: false
+		}),
 		options
 	);
 
@@ -98,7 +106,9 @@ const Docs = ({data, location}) => {
 		<div className='row w-100'>
 			<Sidebar className='col-md-3' location={location} />
 			<div className={`col-md-7 padding-vertical-1_5 ${styles.article}`}>
-				<article>{htmlContent}</article>
+				<article className='padding-horizontal-2'>
+					{htmlContent}
+				</article>
 
 				<div className='padding-vertical-2'>
 					<ContributionLink>
