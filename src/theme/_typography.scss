@@ -12,18 +12,7 @@
 	@extend %font-family-serif;
 }
 
-// Generates styles for class .font-size-small-caps
-
-@each $small-caps-style-class,
-	$small-caps-style-values in $small-caps-styles-map
-{
-	.font-size#{$small-caps-style-class} {
-		@extend %font-size#{$small-caps-style-class};
-	}
-}
-
 // Generates styles for classes .font-size-display-large,
-// .font-size-display-small
 
 @each $display-style-class, $display-style-values in $display-styles-map {
 	.font-size-display#{$display-style-class} {
@@ -40,19 +29,9 @@
 	}
 }
 
-// Generates styles for classes .font-size-long-form-sans-serif,
-// .font-size-long-form-serif
-
-@each $long-form-style-class, $long-form-style-values in $long-form-styles-map {
-	.font-size-long-form#{$long-form-style-class} {
-		@extend %font-size-long-form#{$long-form-style-class};
-	}
-}
-
-// Generates styles for classes .font-size-paragraph-large,
-// .font-size-paragraph-base, .font-size-paragraph-base-semi-bold,
-// .font-size-paragraph-small, .font-size-paragraph-xsmall,
-// .font-size-paragraph-tiny
+// Generates styles for classes
+// .font-size-paragraph-base
+// .font-size-paragraph-small
 
 @each $paragraph-style-class, $paragraph-style-values in $paragraph-styles-map {
 	.font-size-paragraph#{$paragraph-style-class} {

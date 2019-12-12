@@ -11,10 +11,10 @@ const Index = ({location}) => {
 				className={`${styles.sectionOne} bg-primary-7 full-screen section-padding`}
 			>
 				<div className='max-width-full margin-horizontal-auto padding-horizontal-1_5'>
-					<h1 className='padding-top-3_5 padding-bottom-0_5 margin-vertical-0 text-center'>
+					<h1 className='font-size-display-large text-center'>
 						Welcome to Liferay Marketing Docs
 					</h1>
-					<p className='text-center color-neutral-4 margin-vertical-0 padding-bottom-2'>
+					<p className='text-center color-neutral-4 margin-vertical-0'>
 						All your marketing documentation needs in one place
 					</p>
 
@@ -30,9 +30,9 @@ const Index = ({location}) => {
 				</div>
 			</section>
 			<section className='section-padding'>
-				<h3 className='text-center padding-bottom-1_5'>
-					Browser by Marketing Function
-				</h3>
+				<h2 className='text-center margin-bottom-1'>
+					Browse by Marketing Function
+				</h2>
 				<div className='row'>
 					<div className='col-md'>
 						<Card
@@ -93,9 +93,9 @@ const Index = ({location}) => {
 				</div>
 			</section>
 			<section className='section-padding'>
-				<h3 className='text-center padding-bottom-1_5'>
+				<h2 className='text-center margin-bottom-1'>
 					Browse by Topics
-				</h3>
+				</h2>
 				<div className='row'>
 					<div className='col-md'>
 						<Card

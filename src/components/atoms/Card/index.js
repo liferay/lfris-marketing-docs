@@ -8,7 +8,7 @@ const Card = ({title, color, direction, href, icon}) => (
 		href={href}
 	>
 		<div className={styles.icon}>{icon}</div>
-		<h5 className={styles.cardTitle}>{title}</h5>
+		<h4 className={styles.cardTitle}>{title}</h4>
 	</a>
 );
 
