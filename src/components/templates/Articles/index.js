@@ -120,7 +120,11 @@ const Docs = ({data, location}) => {
 						</ContributionLink>
 						<ContributionLink>
 							Questions, Comments, Bug Reporting: join
-							<a href='#'> #s-mktg-docs</a> in Slack.
+							<a href='https://liferay.slack.com/archives/CRMK64DFS'>
+								{' '}
+								#s-mktg-docs
+							</a>{' '}
+							in Slack.
 						</ContributionLink>
 					</div>
 				</article>
