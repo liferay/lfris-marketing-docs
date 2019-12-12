@@ -1,40 +1,33 @@
 * {
 	font: 400 16px/1.5 'Source Sans Pro', Tahoma, 'Trebuchet MS', sans-serif;
 
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box !important;
-	}
-
 	h1 {
 		@extend %font-size-heading-f1;
+		margin-bottom: 0.5rem;
 	}
 
 	h2 {
 		@extend %font-size-heading-f2;
+		margin-bottom: 0.5rem;
 	}
 
 	h3 {
 		@extend %font-size-heading-f3;
+		margin-bottom: 0.5rem;
 	}
 
 	h4 {
 		@extend %font-size-heading-f4;
+		margin-bottom: 0.25em;
 	}
 
 	h5 {
 		@extend %font-size-heading-f5;
+		margin-bottom: 0.25em;
 	}
 
 	p {
 		@extend %font-size-paragraph-base;
 		margin-bottom: 0.5rem;
-	}
-
-	.text-center-tablet-portrait-up {
-		@include for-tablet-portrait-up {
-			text-align: center;
-		}
 	}
 }

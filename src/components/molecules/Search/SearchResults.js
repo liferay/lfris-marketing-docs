@@ -14,7 +14,7 @@ const SearchResults = ({results, entryNumber, onClick}) => {
 						className={styles.searchResultsLinkContainer}
 						to={`${page.path}`}
 					>
-						<h5 className={styles.resultsTitle}>{page.title}</h5>
+						<h4 className={styles.resultsTitle}>{page.title}</h4>
 
 						<div
 							className={`font-size-paragraph-base ${styles.resultsDescription}`}

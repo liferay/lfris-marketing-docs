@@ -103,22 +103,22 @@ module.exports = {
 						resolve: `gatsby-remark-default-html-attrs`,
 						options: {
 							h1: {
-								className: 'documentation-h1'
+								className: 'font-size-heading-f1'
 							},
 							h2: {
-								className: 'documentation-h2'
+								className: 'font-size-heading-f2'
 							},
 							h3: {
-								className: 'documentation-h3'
+								className: 'font-size-heading-f3'
 							},
 							h4: {
-								className: 'documentation-h4'
+								className: 'font-size-heading-f4'
 							},
 							h5: {
-								className: 'documentation-h5'
+								className: 'font-size-heading-f5'
 							},
 							p: {
-								className: 'documentation-p'
+								className: 'font-size-paragraph-base'
 							},
 							table: {
 								className:
