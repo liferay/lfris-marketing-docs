@@ -71,13 +71,13 @@ module.exports = {
 		},
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-zopfli',
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				name: 'packages',
-				path: `${__dirname}/content`
-			}
-		},
+		// {
+		// 	resolve: 'gatsby-source-filesystem',
+		// 	options: {
+		// 		name: 'packages',
+		// 		path: `${__dirname}/content`
+		// 	}
+		// },
 		{
 			resolve: 'gatsby-source-google-docs',
 			options: {
