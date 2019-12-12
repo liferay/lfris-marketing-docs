@@ -51,6 +51,7 @@
 		"gatsby-transformer-remark": "^2.6.39",
 		"gatsby-transformer-sharp": "^2.3.6",
 		"html-react-parser": "^0.10.0",
+		"lodash.startcase": "^4.4.0",
 		"node-sass": "^4.13.0",
 		"nothing": "0.1.0",
 		"react": "16.12.0",

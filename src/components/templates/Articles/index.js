@@ -108,22 +108,22 @@ const Docs = ({data, location}) => {
 			<div className={`col-md-7 padding-vertical-1_5 ${styles.article}`}>
 				<article className='padding-horizontal-2'>
 					{htmlContent}
-				</article>
 
-				<div className='padding-vertical-2'>
-					<ContributionLink>
-						Want to contribute?{' '}
-						<a
-							href={`https://docs.google.com/document/d/${googleDocId}/edit`}
-						>
-							Edit this article
-						</a>
-					</ContributionLink>
-					<ContributionLink>
-						Questions, Comments, Bug Reporting: join
-						<a href='#'> #s-mktg-docs</a> in Slack.
-					</ContributionLink>
-				</div>
+					<div className='padding-vertical-2'>
+						<ContributionLink>
+							Want to contribute?{' '}
+							<a
+								href={`https://docs.google.com/document/d/${googleDocId}/edit`}
+							>
+								Edit this article
+							</a>
+						</ContributionLink>
+						<ContributionLink>
+							Questions, Comments, Bug Reporting: join
+							<a href='#'> #s-mktg-docs</a> in Slack.
+						</ContributionLink>
+					</div>
+				</article>
 			</div>
 			<div className='col-md-2 padding-top-1_5'>
 				<OnPageNav linkArray={h2Array} />

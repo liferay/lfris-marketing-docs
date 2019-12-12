@@ -1,5 +1,6 @@
 import {StaticQuery, graphql, navigate} from 'gatsby';
 import React from 'react';
+import startCase from 'lodash.startcase';
 
 import SidebarContent from './SidebarContent';
 import SidebarSelect from './SidebarSelect';
@@ -12,56 +13,41 @@ class Sidebar extends React.Component {
 			selectedValue: props.location.pathname.split('/')[1]
 		};
 
-		this._findFolder = this._findFolder.bind(this);
 		this._getTree = this._getTree.bind(this);
 		this._getTreeChildren = this._getTreeChildren.bind(this);
 		this._getTreeRootNames = this._getTreeRootNames.bind(this);
 		this._handleSelected = this._handleSelected.bind(this);
 	}
 
-	_findFolder(array, key, value) {
-		var t = 0;
-		while (t < array.length && array[t][key] !== value) {
-			t++;
-		}
-
-		if (t < array.length) {
-			return array[t];
-		} else {
-			return false;
-		}
-	}
-
 	_getTree = data => {
 		let tree = [];
-		let paths = data.map(({node}) => {
-			const {
-				fields: {slug}
-			} = node;
 
-			return slug.startsWith('/')
-				? slug.slice(1).split('/')
-				: slug.split('/');
-		});
-
-		paths.forEach(path => {
+		data.forEach(({node}) => {
 			var currentLevel = tree;
 
-			path.forEach((folder, index) => {
-				var existingPath = this._findFolder(
-					currentLevel,
-					'name',
-					folder
+			const {
+				fields: {slug, title}
+			} = node;
+
+			const folderNames = slug.startsWith('/')
+				? slug.slice(1).split('/')
+				: slug.split('/');
+
+			folderNames.forEach((folderName, index) => {
+				const existingPath = currentLevel.find(
+					root => root.folderName === folderName
 				);
+
+				const isFolder = index < slug.length - 1;
 
 				if (existingPath) {
 					currentLevel = existingPath.children;
 				} else {
 					var newFolder = {
 						children: [],
-						isFolder: index < path.length - 1,
-						link: '/' + path.join('/'),
-						name: folder
+						slug: slug,
+						folderName: folderName,
+						title: isFolder ? startCase(folderName) : title
 					};
 
 					currentLevel.push(newFolder);
@@ -75,28 +61,31 @@ class Sidebar extends React.Component {
 
 	_getTreeChildren = (data, selectedValue) => {
 		const {children} = data.find(obj => {
-			return obj.name === selectedValue;
+			return obj.folderName === selectedValue;
 		});
 
 		return children;
 	};
 
 	_getTreeRootNames = data => {
-		const treeRootNames = data.map(treeRootNames => treeRootNames.name);
+		const treeRootNames = data.map(treeRootNames => ({
+			folderName: treeRootNames.folderName,
+			title: treeRootNames.title
+		}));
 
 		return treeRootNames;
 	};
 
 	_handleSelected = (e, dataTree) => {
-		const {link} = dataTree.find(obj => {
-			return obj.name === e.target.value;
+		const {slug} = dataTree.find(obj => {
+			return obj.folderName === e.target.value;
 		});
 
 		this.setState({
 			selectedValue: e.target.value
 		});
 
-		navigate(link);
+		navigate(slug);
 	};
 
 	render() {
@@ -111,6 +100,7 @@ class Sidebar extends React.Component {
 								node {
 									fields {
 										slug
+										title
 									}
 									excerpt
 								}

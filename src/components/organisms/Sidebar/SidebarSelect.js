@@ -9,8 +9,8 @@ const SidebarSelect = ({selectItems, handleSelected, defaultValue}) => (
 		defaultValue={defaultValue}
 	>
 		{selectItems.map((item, index) => (
-			<option key={index} value={item}>
-				{item}
+			<option key={index} value={item.folderName}>
+				{item.title}
 			</option>
 		))}
 	</select>
