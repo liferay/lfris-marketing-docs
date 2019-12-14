@@ -65,7 +65,6 @@
 		"strip-markdown": "^3.1.0"
 	},
 	"devDependencies": {
-		"gatsby-plugin-force-trailing-slashes": "^1.0.4",
 		"gatsby-plugin-remove-trailing-slashes": "^2.1.15",
 		"gatsby-plugin-resolve-src": "^2.0.0",
 		"globby": "9.2.0",
