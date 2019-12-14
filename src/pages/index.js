@@ -38,7 +38,7 @@ const Index = ({location}) => {
 						<Card
 							color='blue'
 							direction='horizontal'
-							href='/web/General/working-with-web-team'
+							href='/web/landing-page-builder/landing-page-fragment-templates'
 							icon={<Icon name='dxpIcon' />}
 							title='Web'
 						/>
@@ -47,9 +47,9 @@ const Index = ({location}) => {
 						<Card
 							color='blue'
 							direction='horizontal'
-							href='/portfolio/portfolio-marketing-intro'
+							href='/mar-comm/asset-types/content-types-and-workflows'
 							icon={<Icon name='dxpIcon' />}
-							title='Portfolio'
+							title='MarComm'
 						/>
 					</div>
 					<div className='col-md'>
@@ -76,9 +76,9 @@ const Index = ({location}) => {
 						<Card
 							color='blue'
 							direction='horizontal'
-							href='/field/field-marketing-intro'
+							href='/operations/analytics-and-reporting/mktg-reporting-documentation'
 							icon={<Icon name='dxpIcon' />}
-							title='Field'
+							title='Analytics and Reporting'
 						/>
 					</div>
 					<div className='col-md'>
