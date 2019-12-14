@@ -92,14 +92,15 @@ Here is an example of what to place into the description:
 ```
 
 Here is a table for the available fields and what they are:
-| Field | Description | Type |
-| ------- | ------------------ | ------- |
-| path | sets the desired url path for the document | string ex: /test/test/ |
-| title | overrides the default title | string |
-| Date | overrides the default date | string |
-| description | sets the description for the doc (appears in search results and indeces) | string |
-| author | author name | string |
-| needsAuth | sets if the doc will be gated | boolean (don't use quotation marks)|
+
+| Field       | Description                                                              | Type                                |
+| ----------- | ------------------------------------------------------------------------ | ----------------------------------- |
+| path        | sets the desired url path for the document                               | string ex: /test/test/              |
+| title       | overrides the default title                                              | string                              |
+| Date        | overrides the default date                                               | string                              |
+| description | sets the description for the doc (appears in search results and indeces) | string                              |
+| author      | author name                                                              | string                              |
+| needsAuth   | sets if the doc will be gated                                            | boolean (don't use quotation marks) |
 
 ##### Additional Notes
 
