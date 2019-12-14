@@ -54,6 +54,17 @@ class Deploy extends React.Component {
 						</h4>
 					</li>
 				</ol>
+				<div>
+					<h3>
+						Production Deploy Status:{' '}
+						<a href='https://app.netlify.com/sites/lfrism-doc/deploys'>
+							<img
+								src='https://api.netlify.com/api/v1/badges/a37de724-defa-4a86-a2cc-3267dc619447/deploy-status'
+								alt='Netlify Status'
+							/>
+						</a>
+					</h3>
+				</div>
 			</section>
 		);
 	}
