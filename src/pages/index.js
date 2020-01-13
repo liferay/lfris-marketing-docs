@@ -56,7 +56,7 @@ const Index = ({location}) => {
 						<Card
 							color='blue'
 							direction='horizontal'
-							href='/operations/mark-ops-only/funnel-stages-detailed-doc'
+							href='/operations/funnel-stages-detailed-doc'
 							icon={<Icon name='dxpIcon' />}
 							title='Operations'
 						/>
@@ -76,7 +76,7 @@ const Index = ({location}) => {
 						<Card
 							color='blue'
 							direction='horizontal'
-							href='/operations/analytics-and-reporting/mktg-reporting-documentation'
+							href='/operations/analytics-and-reporting/intro-to-marketing-reporting-analytics'
 							icon={<Icon name='dxpIcon' />}
 							title='Analytics and Reporting'
 						/>
