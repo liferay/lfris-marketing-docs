@@ -50,6 +50,14 @@ module.exports = {
 			}
 		},
 		{
+			resolve: "gatsby-plugin-google-tagmanager",
+			options: {
+				id: process.env.GATSBY_GTM_ID,
+				includeInDevelopment: true,
+				defaultDataLayer: { platform: "gatsby" },
+			},
+		},
+		{
 			resolve: 'gatsby-plugin-layout',
 			options: {
 				component: require.resolve(
