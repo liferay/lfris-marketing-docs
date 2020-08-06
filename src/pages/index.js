@@ -47,9 +47,9 @@ const Index = ({location}) => {
 						<Card
 							color='blue'
 							direction='horizontal'
-							href='/mar-comm/asset-types/content-types-and-workflows'
+							href='/content-marketing/asset-types/content-types-and-workflows'
 							icon={<Icon name='dxpIcon' />}
-							title='MarComm'
+							title='Content Marketing'
 						/>
 					</div>
 					<div className='col-md'>
